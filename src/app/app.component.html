@@ -1,22 +1,22 @@
-<!-- home page html  -->
+<!-- current navbar for all home pages. will become its 
+own separate component in the future -->
 <div class="container">
     <!-- navbar  -->
-    <!-- <nav class="navbar bg-body-tertiary">
+    <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand">
                 <img src="../assets/Images/companyLogo.png" alt="Logo" width="45" height="33"
                     class="d-inline-block align-text-top">
                 Plutus Solutions
             </a>
-            <router-outlet routerLinkActive="active" routerLink="transactionTypes">Home</router-outlet>
             <ul class="nav" style="list-style-type: none; align-items: center;">
                 <li class="nav-item">
-                    <a class="nav-link active" routerLinkActive="active" routerLink="/transactionTypes" href="">Home</a>
+                    <a class="nav-link" routerLink="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">About</a>
+                    <a class="nav-link" routerLink="/transactionType">type</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="">Social</a>
                 </li>
                 <li class="nav-item">
@@ -24,32 +24,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">FAQ</a>
-                </li>
+                </li> -->
             </ul>
         </div>
-    </nav> -->
+    </nav>
+    <router-outlet></router-outlet>
 
-    <!-- <a routerLink="/transactionType">transactionTypes</a>
-    <router-outlet></router-outlet> -->
-
-    <!-- header  -->
-    <h1 id="homeHeader">{{title | uppercase}} Wise Wealth</h1>
-
-    <h2 style="margin-left: 10%;">
-        YOUR MONEY, <br>
-        SIMPLIFIED.
-    </h2>
-
-    <h5 style="margin-left: 10%; width: 50%;">
-        At Plutus, we strive to put customers at our forefront. Enjoy seamless tracking and visibility of your
-        financials. Find everything you need in one place.
-    </h5>
-
-    <div>
-        <label for="name">Hero name: </label>
-        <input id="name" [(ngModel)]="title" placeholder="Enter name">
-      </div>
-
-    <!-- imported component within home page  -->
-    <!-- <app-transaction-type></app-transaction-type> -->
+    <!-- footer for all home pages, will become
+    its own separate component -->
 </div>

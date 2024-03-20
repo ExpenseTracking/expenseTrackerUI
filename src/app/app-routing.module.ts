@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TransactionTypeComponent } from './transaction-type/transaction-type.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/appHome', pathMatch: 'full' },
-    { path: 'appHome', component: AppComponent },
-    { path: 'transactionType', component: TransactionTypeComponent }
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'transactionType', component: TransactionTypeComponent },
+    { path: 'home', component: HomeComponent}
   ];
 
 @NgModule({
