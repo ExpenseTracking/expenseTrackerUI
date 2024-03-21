@@ -1,0 +1,32 @@
+<!-- current navbar for all home pages. will become its 
+own separate component in the future -->
+<div class="container">
+    <!-- navbar  -->
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <img src="../assets/Images/companyLogo.png" alt="Logo" width="45" height="33"
+                    class="d-inline-block align-text-top">
+                Plutus Solutions
+            </a>
+            <ul class="nav" style="list-style-type: none; align-items: center;">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/transactionType">type</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="">Social</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">FAQ</a>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+    <router-outlet></router-outlet>
+</div>
