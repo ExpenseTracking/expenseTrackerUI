@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { TransactionTypeComponent } from './transaction-type/transaction-type.component';
-import { HomeComponent } from './home/home.component';
+import { CompanyHomePageComponent } from './Home/company-home-page/company-home-page.component';
+import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
+import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
+import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'transactionType', component: TransactionTypeComponent },
-    { path: 'home', component: HomeComponent}
+    { path: '', redirectTo: '/companyHome', pathMatch: 'full' },
+    { path: 'companyHome', component: CompanyHomePageComponent},
+    { path: 'companyNav', component: CompanyNavbarComponent},
+    { path: 'companyFooter', component: CompanyFooterComponent},
+    { path: 'transactionType', component: TransactionTypeComponent }
   ];
 
 @NgModule({

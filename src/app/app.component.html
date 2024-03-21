@@ -1,35 +1,14 @@
-<!-- current navbar for all home pages. will become its 
-own separate component in the future -->
-<div class="container">
-    <!-- navbar  -->
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand">
-                <img src="../assets/Images/companyLogo.png" alt="Logo" width="45" height="33"
-                    class="d-inline-block align-text-top">
-                Plutus Solutions
-            </a>
-            <ul class="nav" style="list-style-type: none; align-items: center;">
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/transactionType">type</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="">Social</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Reviews</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">FAQ</a>
-                </li> -->
-            </ul>
-        </div>
-    </nav>
-    <router-outlet></router-outlet>
+<!-- starting point for web app.
+    whatever is in this file will be rendered in all
+    page views unless otherwise authorized. angular revolves
+    around using a 'single page application'. 1 page is loaded
+    in and different views/components can be rendered to it to 
+    'switch pages'. -->
 
-    <!-- footer for all home pages, will become
-    its own separate component -->
-</div>
+<!-- company nav component -->
+<app-company-navbar></app-company-navbar>
+
+<router-outlet></router-outlet>
+
+<!-- company footer component -->
+<app-company-footer></app-company-footer>
