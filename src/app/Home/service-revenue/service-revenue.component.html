@@ -1,0 +1,26 @@
+<h1>--Username--, your income and expenses for the last 30 days:</h1>
+
+<!-- displaying all income elements in the mock array -->
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="col-md-3">Source</th>
+            <th class="col-md-3">Amount</th>
+            <th class="col-md-3">Date</th>
+            <th class="col-md-3">Description</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let anIncome of income">
+        <ng-container *ngIf="!anIncome.isDeleted">
+            <tr>
+                <td>{{anIncome.source}}</td>
+                <td>${{anIncome.amount.toFixed(2)}}</td>
+                <td>
+                    {{anIncome.date.toLocaleDateString('en-US', { weekday: 'short' })}}
+                    {{anIncome.date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}}
+                </td>
+                <td>{{anIncome.description}}</td>
+            </tr>
+        </ng-container>
+    </tbody>
+</table>
