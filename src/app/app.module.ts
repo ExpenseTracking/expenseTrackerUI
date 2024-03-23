@@ -12,6 +12,7 @@ import { CompanyHomePageComponent } from './Home/company-home-page/company-home-
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
 import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
 <<<<<<< HEAD
+
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 =======
 import { ServiceDashboardComponent } from './Home/service-dashboard/service-dashboard.component';
