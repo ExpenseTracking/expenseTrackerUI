@@ -6,17 +6,19 @@ import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.com
 import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
 import { ServiceDashboardComponent } from './Home/service-dashboard/service-dashboard.component';
-import { AboutPageComponent } from './Home/about-page/about-page.component'; // Import the AboutPageComponent
+import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.component';
+import { AboutPageComponent } from './Home/about-page/about-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/companyHome', pathMatch: 'full' },
-  { path: 'companyHome', component: CompanyHomePageComponent },
-  { path: 'companyNav', component: CompanyNavbarComponent },
-  { path: 'companyFooter', component: CompanyFooterComponent },
-  { path: 'dashboard', component: ServiceDashboardComponent },
-  { path: 'transactionType', component: TransactionTypeComponent },
-  { path: 'about', component: AboutPageComponent } // Route for the AboutPageComponent
-];
+    { path: '', redirectTo: '/companyHome', pathMatch: 'full' },
+    { path: 'companyHome', component: CompanyHomePageComponent},
+    { path: 'companyNav', component: CompanyNavbarComponent},
+    { path: 'companyFooter', component: CompanyFooterComponent},
+    { path: 'dashboard', component: ServiceDashboardComponent},
+    { path: 'revenue', component: ServiceRevenueComponent},
+    { path: 'transactionType', component: TransactionTypeComponent },
+    { path: 'about', component: AboutPageComponent }
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

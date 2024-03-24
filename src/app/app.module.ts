@@ -11,6 +11,7 @@ import { CompanyHomePageComponent } from './Home/company-home-page/company-home-
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
 import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
 import { ServiceDashboardComponent } from './Home/service-dashboard/service-dashboard.component';
+import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.component';
 import { AboutPageComponent } from './Home/about-page/about-page.component';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { AboutPageComponent } from './Home/about-page/about-page.component';
     CompanyNavbarComponent,
     CompanyFooterComponent,
     ServiceDashboardComponent,
+    ServiceRevenueComponent,
     AboutPageComponent
   ],
   imports: [
