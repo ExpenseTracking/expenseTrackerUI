@@ -1,6 +1,5 @@
-<h1>--Username--, your income and expenses for the last 30 days:</h1>
-
 <!-- displaying all income elements in the mock array -->
+<h1>--Username--, your income:</h1>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -10,17 +9,146 @@
             <th class="col-md-3">Description</th>
         </tr>
     </thead>
-    <tbody *ngFor="let anIncome of income">
-        <ng-container *ngIf="!anIncome.isDeleted">
-            <tr>
-                <td>{{anIncome.source}}</td>
-                <td>${{anIncome.amount.toFixed(2)}}</td>
-                <td>
-                    {{anIncome.date.toLocaleDateString('en-US', { weekday: 'short' })}}
-                    {{anIncome.date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}}
-                </td>
-                <td>{{anIncome.description}}</td>
-            </tr>
-        </ng-container>
-    </tbody>
+    <ng-container *ngIf="income.length != 0">
+        <tbody *ngFor="let anIncome of income">
+            <ng-container *ngIf="!anIncome.isDeleted">
+                <tr>
+                    <td>{{anIncome.source}}</td>
+                    <td style="color: #6f9460;">${{anIncome.amount.toFixed(2)}}</td>
+                    <td>
+                        {{anIncome.date.toLocaleDateString('en-US', { weekday: 'short' })}}
+                        {{anIncome.date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}}
+                    </td>
+                    <td>{{anIncome.description}}</td>
+                    <td><button type="button" class="btn btn-info">Details</button></td>
+                    <td><button type="button" class="btn btn-secondary">Edit</button></td>
+                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </ng-container>
 </table>
+
+<!-- Button trigger modal -->
+<div style="text-align: center;">
+    <button type="button" class="btn btn-primary" (click)="openIncomeModal()">Add new income</button>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="newIncomeModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>New income details</strong></h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="md-form mb-5">
+                    <p class="text-primary">Source</p>
+                    <input type="text" id="formIncomeSource" class="form-control validate">
+                </div>
+            
+                <div class="md-form mb-4">
+                    <p class="text-primary">Amount $</p> 
+                    <input type="number" id="formIncomeSource" class="form-control validate">
+                </div>
+
+                <div class="md-form mb-4">
+                    <p class="text-primary">Date occurred</p> 
+                    <input type="date" id="formIncomeDate" class="form-control validate">
+                </div>
+
+                <div class="md-form mb-4">
+                    <p class="text-primary">Description</p> 
+                    <input type="text" id="formIncomeDescription" class="form-control validate">
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success">Add income</button>
+                <button type="button" class="btn btn-danger" (click)="closeIncomeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- displaying all expense elements in the mock array -->
+<h1>Your expenses:</h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th class="col-md-3">Transaction</th>
+            <th class="col-md-3">Amount</th>
+            <th class="col-md-3">Date</th>
+            <th class="col-md-3">Description</th>
+        </tr>
+    </thead>
+    <ng-container *ngIf="expense.length != 0">
+        <tbody *ngFor="let anExpense of expense">
+            <ng-container *ngIf="!anExpense.isDeleted">
+                <tr>
+                    <td>{{anExpense.type}}</td>
+                    <td style="color: red;">${{anExpense.amount.toFixed(2)}}</td>
+                    <td>
+                        {{anExpense.date.toLocaleDateString('en-US', { weekday: 'short' })}}
+                        {{anExpense.date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}}
+                    </td>
+                    <td>{{anExpense.description}}</td>
+                    <td><button type="button" class="btn btn-info">Details</button></td>
+                    <td><button type="button" class="btn btn-secondary">Edit</button></td>
+                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </ng-container>
+</table>
+
+<!-- Button trigger modal -->
+<div style="text-align: center;">
+    <button type="button" class="btn btn-primary" (click)="openExpenseModal()">Add new expense</button>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="newExpenseModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>New expense details</strong></h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="md-form mb-5">
+                    <p class="text-primary">Transaction</p>
+                    <input type="text" id="formExpenseSource" class="form-control validate">
+                </div>
+            
+                <div class="md-form mb-4">
+                    <p class="text-primary">Amount $</p>
+                    <input type="number" id="formExpenseSource" class="form-control validate">
+                </div>
+            
+                <div class="md-form mb-4">
+                    <p class="text-primary">Date occurred</p>
+                    <input type="date" id="formExpenseDate" class="form-control validate">
+                </div>
+            
+                <div class="md-form mb-4">
+                    <p class="text-primary">Description</p>
+                    <input type="text" id="formExpenseDescription" class="form-control validate">
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success">Add expense</button>
+                <button type="button" class="btn btn-danger" (click)="closeExpenseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
