@@ -10,6 +10,7 @@ import { TransactionTypeComponent } from './Home/transaction-type/transaction-ty
 import { CompanyHomePageComponent } from './Home/company-home-page/company-home-page.component';
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
 import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
+import { CompanyReviewsComponent } from './Home/company-reviews/company-reviews.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CompanyFooterComponent } from './Home/company-footer/company-footer.com
     TransactionTypeComponent,
     CompanyHomePageComponent,
     CompanyNavbarComponent,
-    CompanyFooterComponent
+    CompanyFooterComponent,
+    CompanyReviewsComponent
   ],
   imports: [
     BrowserModule,

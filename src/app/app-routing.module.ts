@@ -5,12 +5,14 @@ import { CompanyHomePageComponent } from './Home/company-home-page/company-home-
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
 import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
+import { CompanyReviewsComponent } from './Home/company-reviews/company-reviews.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/companyHome', pathMatch: 'full' },
     { path: 'companyHome', component: CompanyHomePageComponent},
     { path: 'companyNav', component: CompanyNavbarComponent},
     { path: 'companyFooter', component: CompanyFooterComponent},
+    { path: 'companyReviews', component: CompanyReviewsComponent},
     { path: 'transactionType', component: TransactionTypeComponent }
   ];
 
