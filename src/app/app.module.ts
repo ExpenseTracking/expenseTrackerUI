@@ -12,6 +12,7 @@ import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.com
 import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
 import { ServiceDashboardComponent } from './Home/service-dashboard/service-dashboard.component';
 import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.component';
+import { AboutPageComponent } from './Home/about-page/about-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.
     CompanyNavbarComponent,
     CompanyFooterComponent,
     ServiceDashboardComponent,
-    ServiceRevenueComponent
+    ServiceRevenueComponent,
+    AboutPageComponent
   ],
   imports: [
     BrowserModule,
