@@ -24,7 +24,7 @@ import { FAQPageComponent } from './Home/faq-page/faq-page.component';
     CompanyFooterComponent,
     ServiceDashboardComponent,
     ServiceRevenueComponent,
-    AboutPageComponent
+    AboutPageComponent,
     ServiceDashboardComponent,
     FAQPageComponent
   ],
