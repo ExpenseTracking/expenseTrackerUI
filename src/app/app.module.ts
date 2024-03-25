@@ -13,6 +13,7 @@ import { CompanyFooterComponent } from './Home/company-footer/company-footer.com
 import { ServiceDashboardComponent } from './Home/service-dashboard/service-dashboard.component';
 import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.component';
 import { AboutPageComponent } from './Home/about-page/about-page.component';
+import { FAQPageComponent } from './Home/faq-page/faq-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { AboutPageComponent } from './Home/about-page/about-page.component';
     CompanyFooterComponent,
     ServiceDashboardComponent,
     ServiceRevenueComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    ServiceDashboardComponent,
+    FAQPageComponent
   ],
   imports: [
     BrowserModule,
