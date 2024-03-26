@@ -38,6 +38,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MatSlideToggleModule,
     MatMenuModule,
     MatCheckboxModule,
     MatTableModule
