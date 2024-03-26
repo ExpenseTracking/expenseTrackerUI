@@ -45,14 +45,18 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                <div class="md-form mb-5">
+                <div class="md-form mb-4">
                     <p class="text-primary">Source</p>
-                    <input type="text" id="formIncomeSource" class="form-control validate">
+                    <button mat-button [matMenuTriggerFor]="menu">Select income source</button>
+                    <mat-menu id="formIncomeSource" #menu="matMenu">
+                        <li mat-menu-item>Job</li>
+                        <li mat-menu-item>Investing</li>
+                    </mat-menu>
                 </div>
             
                 <div class="md-form mb-4">
                     <p class="text-primary">Amount $</p> 
-                    <input type="number" id="formIncomeSource" class="form-control validate">
+                    <input type="number" id="formIncomeAmount" class="form-control validate">
                 </div>
 
                 <div class="md-form mb-4">
@@ -63,6 +67,11 @@
                 <div class="md-form mb-4">
                     <p class="text-primary">Description</p> 
                     <input type="text" id="formIncomeDescription" class="form-control validate">
+                </div>
+
+                <div class="md-form mb-4">
+                    <mat-checkbox id="formIncomeRecurring"></mat-checkbox>
+                    <label for="formIncomeRecurring" class="text-primary">Recurring</label>
                 </div>
             </div>
 
@@ -125,12 +134,16 @@
             <div class="modal-body">
                 <div class="md-form mb-5">
                     <p class="text-primary">Transaction</p>
-                    <input type="text" id="formExpenseSource" class="form-control validate">
+                    <button mat-button [matMenuTriggerFor]="menu2">Select transaction type</button>
+                    <mat-menu id="formExpenseType" #menu2="matMenu">
+                        <li mat-menu-item>Transportation</li>
+                        <li mat-menu-item>Groceries</li>
+                    </mat-menu>
                 </div>
             
                 <div class="md-form mb-4">
                     <p class="text-primary">Amount $</p>
-                    <input type="number" id="formExpenseSource" class="form-control validate">
+                    <input type="number" id="formExpenseAmount" class="form-control validate">
                 </div>
             
                 <div class="md-form mb-4">
@@ -141,6 +154,11 @@
                 <div class="md-form mb-4">
                     <p class="text-primary">Description</p>
                     <input type="text" id="formExpenseDescription" class="form-control validate">
+                </div>
+
+                <div class="md-form mb-4">
+                    <mat-checkbox id="formExpenseRecurring"></mat-checkbox>
+                    <label for="formExpenseRecurring" class="text-primary">Recurring</label>
                 </div>
             </div>
 
