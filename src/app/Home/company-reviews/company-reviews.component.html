@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="company-reviews.component.css" />
+    <title>Plutus Solutions | Customer Reviews</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        
+        <div class="container__left">
+          <h1>What our customers say about us!</h1>
+          <p>
+            At Plutus Solutions, we take immense pride in our commitment to excellence and customer satisfaction. With a dedicated team of experts and innovative solutions, we've had the privilege of helping numerous clients around the globe achieve their goals and surpass their expectations.
+          </p>
+          
+        </div>
+        <!-- right side container holds each customer review as a "card"-->
+        <div class="container__right">
+          <!-- Each card has an image attached of the person/company. The image would not render if I used 
+            the path of a folder inside company-reviews "assets1" so I added the images to the "assets" folder instead. The background image works fine though in css file-->
+          <div class="card">
+            <img src="../assets/Images/pic-1.jpg" alt="user">
+            <div class="card__content">
+              <span><i class="ri-double-quotes-l"></i></span>
+              <div class="card__details">
+                <!-- Alter the fake testimonials later-->
+                <p>
+                  Plutus Solutions saved my life!
+                </p>
+                <h4>- Marnus Stephen</h4>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="../assets/Images/pic-2.jpeg" alt="user"/>
+            <div class="card__content">
+              <span><i class="ri-double-quotes-l"></i></span>
+              <div class="card__details">
+                <p>
+                  I went from broke to owning a Lambo.
+                </p>
+                <h4>- Andrew Jettpace</h4>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="../assets/Images/pic-3.jpg" alt="user"/>
+            <div class="card__content">
+              <span><i class="ri-double-quotes-l"></i></span>
+              <div class="card__details">
+                <p>
+                  Truly life changing technology.
+                </p>
+                <h4>- Stacy Stone</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>
