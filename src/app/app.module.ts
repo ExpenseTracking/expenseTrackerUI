@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
@@ -14,6 +16,7 @@ import { ServiceDashboardComponent } from './Home/service-dashboard/service-dash
 import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.component';
 import { AboutPageComponent } from './Home/about-page/about-page.component';
 import { FAQPageComponent } from './Home/faq-page/faq-page.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -32,9 +35,13 @@ import { FAQPageComponent } from './Home/faq-page/faq-page.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule,
+    MatCheckboxModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
