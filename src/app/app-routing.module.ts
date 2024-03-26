@@ -17,7 +17,7 @@ const routes: Routes = [
     { path: 'companyNav', component: CompanyNavbarComponent},
     { path: 'companyFooter', component: CompanyFooterComponent},
     { path: 'companyReviews', component: CompanyReviewsComponent},
-    { path: 'transactionType', component: TransactionTypeComponent }
+    { path: 'transactionType', component: TransactionTypeComponent },
     { path: 'dashboard', component: ServiceDashboardComponent},
     { path: 'revenue', component: ServiceRevenueComponent},
     { path: 'transactionType', component: TransactionTypeComponent },
