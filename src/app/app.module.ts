@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table'
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
 import { CompanyHomePageComponent } from './Home/company-home-page/company-home-page.component';
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
@@ -38,7 +39,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     FormsModule,
     HttpClientModule,
     MatMenuModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule
   ],
   providers: [
     provideAnimationsAsync()
