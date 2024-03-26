@@ -4,6 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { AppRoutingModule } from './app-routing.module';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +14,7 @@ import { TransactionTypeComponent } from './Home/transaction-type/transaction-ty
 import { CompanyHomePageComponent } from './Home/company-home-page/company-home-page.component';
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
 import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
+import { CompanyReviewsComponent } from './Home/company-reviews/company-reviews.component';
 import { ServiceDashboardComponent } from './Home/service-dashboard/service-dashboard.component';
 import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.component';
 import { AboutPageComponent } from './Home/about-page/about-page.component';
@@ -24,10 +28,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     CompanyHomePageComponent,
     CompanyNavbarComponent,
     CompanyFooterComponent,
+    CompanyReviewsComponent,
     ServiceDashboardComponent,
     ServiceRevenueComponent,
     AboutPageComponent,
-    ServiceDashboardComponent,
     FAQPageComponent
   ],
   imports: [
@@ -35,7 +39,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatCheckboxModule
   ],
   providers: [
     provideAnimationsAsync()
