@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from '../../Shared/app.service';
 import { messages, transactionType } from "../../Shared/models"
@@ -8,7 +8,7 @@ import { messages, transactionType } from "../../Shared/models"
   templateUrl: './transaction-type.component.html',
   styleUrl: './transaction-type.component.css'
 })
-export class TransactionTypeComponent {
+export class TransactionTypeComponent implements OnInit {
   displayColumns: string[] = ['transactionTypeId', 'userId', 'transactionTypeName'];
   transactionTypes: transactionType[] = [];
   constructor(private apiService: ApiService) {}
