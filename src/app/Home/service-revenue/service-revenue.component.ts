@@ -8,6 +8,8 @@ import { mockExpense } from './mock-expense';
     styleUrl: './service-revenue.component.css'
 })
 export class ServiceRevenueComponent {
+    incomeColumns: string[] = ['source', 'amount', 'date', 'description', 'buttons'];
+    expenseColumns: string[] = ['type', 'amount', 'date', 'description', 'buttons'];
     // dummy data arrays
     income = mockIncome;
     expense = mockExpense;

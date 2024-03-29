@@ -6,6 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule} from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
@@ -38,7 +44,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     FormsModule,
     HttpClientModule,
     MatMenuModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [
     provideAnimationsAsync()

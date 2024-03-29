@@ -1,37 +1,102 @@
 <!-- displaying all income elements in the mock array -->
 <h1>--Username--, your income:</h1>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th class="col-md-3">Source</th>
-            <th class="col-md-3">Amount</th>
-            <th class="col-md-3">Date</th>
-            <th class="col-md-3">Description</th>
-        </tr>
-    </thead>
-    <ng-container *ngIf="income.length != 0">
-        <tbody *ngFor="let anIncome of income">
-            <ng-container *ngIf="!anIncome.isDeleted">
-                <tr>
-                    <td>{{anIncome.source}}</td>
-                    <td style="color: #6f9460;">${{anIncome.amount.toFixed(2)}}</td>
-                    <td>
-                        {{anIncome.date.toLocaleDateString('en-US', { weekday: 'short' })}}
-                        {{anIncome.date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}}
-                    </td>
-                    <td>{{anIncome.description}}</td>
-                    <td><button type="button" class="btn btn-info">Details</button></td>
-                    <td><button type="button" class="btn btn-secondary">Edit</button></td>
-                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                </tr>
-            </ng-container>
-        </tbody>
+
+<!-- income table -->
+<table mat-table [dataSource]="income" class="mat-elevation-z8" id="table">
+
+    <!-- source Column -->
+    <ng-container matColumnDef="source">
+        <th mat-header-cell *matHeaderCellDef> Source </th>
+        <td mat-cell *matCellDef="let element"> {{element.source}} </td>
     </ng-container>
+
+    <!-- amount Column -->
+    <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount.toFixed(2)}} </td>
+    </ng-container>
+
+    <!-- date Column -->
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date.toLocaleDateString('en-US', { weekday: 'short' }) + " " +
+            element.date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}}
+        </td>
+    </ng-container>
+
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <!-- actions column -->
+    <ng-container matColumnDef="buttons">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-button style="color: gold;">Edit</button>
+            <button mat-button color="warn">Delete</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="incomeColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: incomeColumns;"></tr>
 </table>
 
-<!-- Button trigger modal -->
+<br>
+<!-- button to add new income -->
 <div style="text-align: center;">
-    <button type="button" class="btn btn-primary" (click)="openIncomeModal()">Add new income</button>
+    <button mat-raised-button id="addNewButton">Add new income</button>
+</div>
+
+
+<!-- displaying all expense elements in the mock array -->
+<h1>Your expenses:</h1>
+<table mat-table [dataSource]="expense" class="mat-elevation-z8" id="table">
+
+    <!-- source Column -->
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Transaction type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+
+    <!-- amount Column -->
+    <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount.toFixed(2)}} </td>
+    </ng-container>
+
+    <!-- date Column -->
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date.toLocaleDateString('en-US', { weekday: 'short' }) + " " +
+            element.date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}}
+        </td>
+    </ng-container>
+
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <!-- actions column -->
+    <ng-container matColumnDef="buttons">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-button style="color: gold;">Edit</button>
+            <button mat-button color="warn">Delete</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="expenseColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: expenseColumns;"></tr>
+</table>
+
+<br>
+<!-- button to add new expense -->
+<div style="text-align: center;">
+    <button mat-raised-button id="addNewButton">Add new expense</button>
 </div>
 
 <!-- Modal -->
@@ -53,19 +118,19 @@
                         <li mat-menu-item>Investing</li>
                     </mat-menu>
                 </div>
-            
+
                 <div class="md-form mb-4">
-                    <p class="text-primary">Amount $</p> 
+                    <p class="text-primary">Amount $</p>
                     <input type="number" id="formIncomeAmount" class="form-control validate">
                 </div>
 
                 <div class="md-form mb-4">
-                    <p class="text-primary">Date occurred</p> 
+                    <p class="text-primary">Date occurred</p>
                     <input type="date" id="formIncomeDate" class="form-control validate">
                 </div>
 
                 <div class="md-form mb-4">
-                    <p class="text-primary">Description</p> 
+                    <p class="text-primary">Description</p>
                     <input type="text" id="formIncomeDescription" class="form-control validate">
                 </div>
 
@@ -85,41 +150,6 @@
 </div>
 
 
-<!-- displaying all expense elements in the mock array -->
-<h1>Your expenses:</h1>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th class="col-md-3">Transaction</th>
-            <th class="col-md-3">Amount</th>
-            <th class="col-md-3">Date</th>
-            <th class="col-md-3">Description</th>
-        </tr>
-    </thead>
-    <ng-container *ngIf="expense.length != 0">
-        <tbody *ngFor="let anExpense of expense">
-            <ng-container *ngIf="!anExpense.isDeleted">
-                <tr>
-                    <td>{{anExpense.type}}</td>
-                    <td style="color: red;">${{anExpense.amount.toFixed(2)}}</td>
-                    <td>
-                        {{anExpense.date.toLocaleDateString('en-US', { weekday: 'short' })}}
-                        {{anExpense.date.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}}
-                    </td>
-                    <td>{{anExpense.description}}</td>
-                    <td><button type="button" class="btn btn-info">Details</button></td>
-                    <td><button type="button" class="btn btn-secondary">Edit</button></td>
-                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                </tr>
-            </ng-container>
-        </tbody>
-    </ng-container>
-</table>
-
-<!-- Button trigger modal -->
-<div style="text-align: center;">
-    <button type="button" class="btn btn-primary" (click)="openExpenseModal()">Add new expense</button>
-</div>
 
 <!-- Modal -->
 <div class="modal" id="newExpenseModal">
@@ -140,17 +170,17 @@
                         <li mat-menu-item>Groceries</li>
                     </mat-menu>
                 </div>
-            
+
                 <div class="md-form mb-4">
                     <p class="text-primary">Amount $</p>
                     <input type="number" id="formExpenseAmount" class="form-control validate">
                 </div>
-            
+
                 <div class="md-form mb-4">
                     <p class="text-primary">Date occurred</p>
                     <input type="date" id="formExpenseDate" class="form-control validate">
                 </div>
-            
+
                 <div class="md-form mb-4">
                     <p class="text-primary">Description</p>
                     <input type="text" id="formExpenseDescription" class="form-control validate">
