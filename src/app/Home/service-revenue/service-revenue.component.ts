@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { mockIncome } from './mock-income';
 import { mockExpense } from './mock-expense';
+import { DeleteRevenueDialogComponent } from './delete-revenue-dialog/delete-revenue-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-service-revenue',
@@ -8,39 +10,46 @@ import { mockExpense } from './mock-expense';
     styleUrl: './service-revenue.component.css'
 })
 export class ServiceRevenueComponent {
+    // columns for data tables
     incomeColumns: string[] = ['source', 'amount', 'date', 'description', 'buttons'];
     expenseColumns: string[] = ['type', 'amount', 'date', 'description', 'buttons'];
+
     // dummy data arrays
     income = mockIncome;
     expense = mockExpense;
 
-    // open/close functions to add a new income
-    openIncomeModal() {
-        const incomeModalDiv = document.getElementById('newIncomeModal');
-        if (incomeModalDiv != null) {
-            incomeModalDiv.style.display = 'block';
-        }
+    // injecting DRD component via constructor
+    constructor(private deleteRevenueDialog: MatDialog) { }
+
+    // method to delete row of data when user clicks delete
+    deleteIncomeRow(row: any) {
+        // open dialog window
+        const dialogRef = this.deleteRevenueDialog.open(DeleteRevenueDialogComponent);
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result === 'delete') {
+                // user confirmed deletion
+                const index = this.income.indexOf(row);
+                if (index !== -1) {
+                    this.income.splice(index, 1);
+                }
+            }
+        });
     }
 
-    closeIncomeModal() {
-        const incomeModalDiv = document.getElementById('newIncomeModal');
-        if (incomeModalDiv != null) {
-            incomeModalDiv.style.display = 'none';
-        }
-    }
+    // method to delete row of data when user clicks delete
+    deleteExpenseRow(row: any) {
+        // open dialog window
+        const dialogRef = this.deleteRevenueDialog.open(DeleteRevenueDialogComponent);
 
-    // open/close functions to add a new expense
-    openExpenseModal() {
-        const incomeModalDiv = document.getElementById('newExpenseModal');
-        if (incomeModalDiv != null) {
-            incomeModalDiv.style.display = 'block';
-        }
-    }
-
-    closeExpenseModal() {
-        const incomeModalDiv = document.getElementById('newExpenseModal');
-        if (incomeModalDiv != null) {
-            incomeModalDiv.style.display = 'none';
-        }
+        dialogRef.afterClosed().subscribe(result => {
+            if (result === 'delete') {
+                // user confirmed deletion
+                const index = this.expense.indexOf(row);
+                if (index !== -1) {
+                    this.expense.splice(index, 1);
+                }
+            }
+        });
     }
 }
