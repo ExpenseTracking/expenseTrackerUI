@@ -25,6 +25,7 @@ import { AboutPageComponent } from './Home/about-page/about-page.component';
 import { FAQPageComponent } from './Home/faq-page/faq-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
+import { AddNewRevenueDialogComponent } from './Home/service-revenue/add-new-revenue-dialog/add-new-revenue-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-reve
     ServiceRevenueComponent,
     AboutPageComponent,
     FAQPageComponent,
-    DeleteRevenueDialogComponent
+    DeleteRevenueDialogComponent,
+    AddNewRevenueDialogComponent
   ],
   imports: [
     BrowserModule,

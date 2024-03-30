@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { mockIncome } from './mock-income';
 import { mockExpense } from './mock-expense';
 import { DeleteRevenueDialogComponent } from './delete-revenue-dialog/delete-revenue-dialog.component';
+import { AddNewRevenueDialogComponent } from './add-new-revenue-dialog/add-new-revenue-dialog.component';
+
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -19,7 +21,7 @@ export class ServiceRevenueComponent {
     expense = mockExpense;
 
     // injecting DRD component via constructor
-    constructor(private deleteRevenueDialog: MatDialog) { }
+    constructor(private deleteRevenueDialog: MatDialog, private addNewRevenueDialog: MatDialog) { }
 
     // method to delete row of data when user clicks delete
     deleteIncomeRow(row: any) {
@@ -50,6 +52,13 @@ export class ServiceRevenueComponent {
                     this.expense.splice(index, 1);
                 }
             }
+        });
+    }
+
+    // method to open dialog for adding new income
+    addNewRevenue(revenueType: string) {
+        const dialogRef = this.addNewRevenueDialog.open(AddNewRevenueDialogComponent, {
+            data: { revenueType }
         });
     }
 }
