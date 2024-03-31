@@ -1,4 +1,4 @@
-import { Income } from "./income";
+import { Income } from "../../Shared/models/income";
 
 export const mockIncome: Income[] = [
     { source: "Job", amount: 100, date: new Date(2024, 2, 23), description: "Biweekly check" },

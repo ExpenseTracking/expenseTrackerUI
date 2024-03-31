@@ -1,4 +1,4 @@
-import { Expense } from "./expense";
+import { Expense } from "../../Shared/models/expense";
 
 export const mockExpense: Expense[] = [
     { type: "Transportation", amount: 10, date: new Date(2024, 2, 19), description: "Metro bus" },
