@@ -1,6 +1,14 @@
 export interface Expense {
-    'type': string;
-    'amount': number;
-    'date': Date;
-    'description': string;
+    'expenseId': number,
+    'userId': number,
+    'transactionTypeId': number,
+    'amount': number,
+    'date': Date,
+    'description': string,
+    'CreatedAt': Date,
+    'updatedAt': Date,
+    'deletedAt': Date,
+    'isDeleted': boolean,
+    'transactionTypeName': string,
+    'userName': string
   }

@@ -34,4 +34,50 @@ export class ApiService {
         return this.http.delete<any>(`${this.apiUrl}/TransactionType/${id}`);
     }
     //// Transaction Type API Calls ////
+
+
+    //// income API Calls ////
+    getIncome(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/Income`);
+    }
+
+    getIncomeByUserId(id: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/Income/${id}`);
+    }
+
+    addIncome(income: any): Observable<any> {
+        return this.http.post<any>(`${this.apiUrl}/Income`, income);
+    }
+
+    updateIncome(id: number, income: any): Observable<any> {
+        return this.http.put<any>(`${this.apiUrl}/Income/${id}`, income);
+    }
+
+    deleteIncome(id: number): Observable<any> {
+        return this.http.delete<any>(`${this.apiUrl}/Income/${id}`);
+    }
+    //// income API Calls ////
+
+
+    //// expense API Calls ////
+    getExpense(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/Expense`);
+    }
+
+    getExpenseByUserId(id: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/Expense/${id}`);
+    }
+
+    addExpense(expense: any): Observable<any> {
+        return this.http.post<any>(`${this.apiUrl}/Expense`, expense);
+    }
+
+    updateExpense(id: number, expense: any): Observable<any> {
+        return this.http.put<any>(`${this.apiUrl}/Expense/${id}`, expense);
+    }
+
+    deleteExpense(id: number): Observable<any> {
+        return this.http.delete<any>(`${this.apiUrl}/Expense/${id}`);
+    }
+    //// expense API Calls ////
 }

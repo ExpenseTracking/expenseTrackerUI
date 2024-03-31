@@ -1,40 +1,57 @@
-import { Component } from '@angular/core';
-import { mockIncome } from './mock-income';
-import { mockExpense } from './mock-expense';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
+
 import { DeleteRevenueDialogComponent } from './delete-revenue-dialog/delete-revenue-dialog.component';
 import { AddNewRevenueDialogComponent } from './add-new-revenue-dialog/add-new-revenue-dialog.component';
-
-import { MatDialog } from '@angular/material/dialog';
+import { Income, Expense } from '../../Shared/models';
+import { ApiService } from '../../Shared/app.service';
 
 @Component({
     selector: 'app-service-revenue',
     templateUrl: './service-revenue.component.html',
     styleUrl: './service-revenue.component.css'
 })
-export class ServiceRevenueComponent {
+export class ServiceRevenueComponent implements OnInit {
     // columns for data tables
-    incomeColumns: string[] = ['source', 'amount', 'date', 'description', 'buttons'];
+    incomeColumns: string[] = ['incomeSourceName', 'amount', 'date', 'description', 'buttons'];
     expenseColumns: string[] = ['type', 'amount', 'date', 'description', 'buttons'];
 
-    // dummy data arrays
-    income = mockIncome;
-    expense = mockExpense;
+    // data variable to hold income and expenses
+    income: Income[] = [];
+    expense: Expense[] = [];
 
-    // injecting DRD component via constructor
-    constructor(private deleteRevenueDialog: MatDialog, private addNewRevenueDialog: MatDialog) { }
+    // injecting components/services via constructor
+    constructor(private apiService: ApiService,
+        private deleteRevenueDialog: MatDialog,
+        private addNewRevenueDialog: MatDialog,
+        private datePipe: DatePipe,
+        private cdr: ChangeDetectorRef) { }
 
+    ngOnInit() {
+        // income data
+        this.apiService.getIncomeByUserId(999).subscribe((data: Income[]) => {
+            this.income = data;
+        })
+
+        // expense data
+        this.apiService.getExpenseByUserId(999).subscribe((data: Expense[]) => {
+            this.expense = data;
+        })
+    }
     // method to delete row of data when user clicks delete
-    deleteIncomeRow(row: any) {
+    deleteIncomeRow(incomeId: any) {
         // open dialog window
         const dialogRef = this.deleteRevenueDialog.open(DeleteRevenueDialogComponent);
 
         dialogRef.afterClosed().subscribe(result => {
             if (result === 'delete') {
-                // user confirmed deletion
-                const index = this.income.indexOf(row);
-                if (index !== -1) {
-                    this.income.splice(index, 1);
-                }
+                this.apiService.deleteIncome(incomeId).subscribe(() => {
+                    this.apiService.getIncomeByUserId(999).subscribe(updatedIncome => {
+                        this.income = updatedIncome;
+                        this.cdr.detectChanges();
+                    });
+                });
             }
         });
     }

@@ -12,6 +12,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule} from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { DatePipe } from '@angular/common';
+import { MatIconButton } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -56,10 +58,12 @@ import { AddNewRevenueDialogComponent } from './Home/service-revenue/add-new-rev
     MatInputModule,
     MatDialogModule,
     MatTableModule,
-    MatGridListModule
+    MatGridListModule,
+    MatIconButton
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
