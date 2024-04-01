@@ -6,6 +6,7 @@ import { DeleteRevenueDialogComponent } from './delete-revenue-dialog/delete-rev
 import { AddNewRevenueDialogComponent } from './add-new-revenue-dialog/add-new-revenue-dialog.component';
 import { Income, Expense } from '../../Shared/models';
 import { ApiService } from '../../Shared/app.service';
+import { EditRevenueDialogComponent } from './edit-revenue-dialog/edit-revenue-dialog.component';
 
 @Component({
     selector: 'app-service-revenue',
@@ -30,12 +31,12 @@ export class ServiceRevenueComponent implements OnInit {
 
     ngOnInit() {
         // income data
-        this.apiService.getIncomeByUserId(999).subscribe((data: Income[]) => {
+        this.apiService.getIncomeByUserId(3).subscribe((data: Income[]) => {
             this.income = data;
         })
 
         // expense data
-        this.apiService.getExpenseByUserId(999).subscribe((data: Expense[]) => {
+        this.apiService.getExpenseByUserId(3).subscribe((data: Expense[]) => {
             this.expense = data;
         })
     }
@@ -47,7 +48,7 @@ export class ServiceRevenueComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result === 'delete') {
                 this.apiService.deleteIncome(incomeId).subscribe(() => {
-                    this.apiService.getIncomeByUserId(999).subscribe(updatedIncome => {
+                    this.apiService.getIncomeByUserId(3).subscribe(updatedIncome => {
                         this.income = updatedIncome;
                         this.cdr.detectChanges();
                     });
@@ -57,17 +58,18 @@ export class ServiceRevenueComponent implements OnInit {
     }
 
     // method to delete row of data when user clicks delete
-    deleteExpenseRow(row: any) {
+    deleteExpenseRow(expenseId: any) {
         // open dialog window
         const dialogRef = this.deleteRevenueDialog.open(DeleteRevenueDialogComponent);
 
         dialogRef.afterClosed().subscribe(result => {
             if (result === 'delete') {
-                // user confirmed deletion
-                const index = this.expense.indexOf(row);
-                if (index !== -1) {
-                    this.expense.splice(index, 1);
-                }
+                this.apiService.deleteExpense(expenseId).subscribe(() => {
+                    this.apiService.getExpenseByUserId(3).subscribe(updatedExpense => {
+                        this.income = updatedExpense;
+                        this.cdr.detectChanges();
+                    });
+                });
             }
         });
     }
@@ -76,6 +78,58 @@ export class ServiceRevenueComponent implements OnInit {
     addNewRevenue(revenueType: string) {
         const dialogRef = this.addNewRevenueDialog.open(AddNewRevenueDialogComponent, {
             data: { revenueType }
+        });
+
+        // get data back
+        dialogRef.afterClosed().subscribe(result => {
+            // add new income to list
+            if (result.action === 'createIncome') {
+                this.apiService.addIncome(result).subscribe(() => {
+                    this.apiService.getIncomeByUserId(3).subscribe(updatedIncome => {
+                        this.income = updatedIncome;
+                        this.cdr.detectChanges();
+                    });
+                });
+            }
+            // add new expense to list
+            else if (result.action === 'createExpense') {
+                this.apiService.addExpense(result).subscribe(() => {
+                    this.apiService.getExpenseByUserId(3).subscribe(updateExpense => {
+                        this.expense = updateExpense;
+                        this.cdr.detectChanges();
+                    });
+                });
+            }
+        });
+    }
+
+    // method to update revenue
+    editRevenue(revenueType: string, row: any) {
+        // open correct dialog income or expense
+        const dialogRef = this.addNewRevenueDialog.open(EditRevenueDialogComponent, {
+            data: { revenueType, row }
+        });
+
+        // get data back
+        dialogRef.afterClosed().subscribe(result => {
+            // update income in list
+            if (result.action === 'updateIncome') {
+                this.apiService.updateIncome(result.incomeId, result).subscribe(() => {
+                    this.apiService.getIncomeByUserId(3).subscribe(updatedIncome => {
+                        this.income = updatedIncome;
+                        this.cdr.detectChanges();
+                    });
+                });
+            }
+            // update expense in list
+            else if (result.action === 'updateExpense') {
+                this.apiService.updateExpense(result.expenseId, result).subscribe(() => {
+                    this.apiService.getExpenseByUserId(3).subscribe(updateExpense => {
+                        this.expense = updateExpense;
+                        this.cdr.detectChanges();
+                    });
+                });
+            }
         });
     }
 }

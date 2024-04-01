@@ -80,4 +80,27 @@ export class ApiService {
         return this.http.delete<any>(`${this.apiUrl}/Expense/${id}`);
     }
     //// expense API Calls ////
+
+
+    //// Transaction Type API Calls ////
+    getIncomeSource(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/IncomeSource`);
+    }
+
+    getIncomeSourceById(id: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/IncomeSource/${id}`);
+    }
+
+    addIncomeSource(transactionType: any): Observable<any> {
+        return this.http.post<any>(`${this.apiUrl}/IncomeSource`, transactionType);
+    }
+
+    updateIncomeSource(id: number, transactionType: any): Observable<any> {
+        return this.http.put<any>(`${this.apiUrl}/IncomeSource/${id}`, transactionType);
+    }
+
+    deleteIncomeSource(id: number): Observable<any> {
+        return this.http.delete<any>(`${this.apiUrl}/IncomeSource/${id}`);
+    }
+    //// Transaction Type API Calls ////
 }

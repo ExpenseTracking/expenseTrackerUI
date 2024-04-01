@@ -10,7 +10,7 @@
     <!-- body of dialog -->
     <mat-dialog-content>
         <header>
-            <h1><strong>New income details</strong></h1>
+            <h1><strong>Edit</strong></h1>
         </header>
 
         <!-- select source dropdown -->
@@ -26,14 +26,14 @@
         <!-- enter amount field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="number" placeholder="Amount $" [(ngModel)]="incomeDetails.amount">
+                <input matInput type="number" value="{{ incomeAmount }}" [(ngModel)]="incomeDetails.amount">
             </mat-form-field>
         </p>
 
         <!-- select date field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="date" placeholder="Date occurred" [(ngModel)]="incomeDetails.date">
+                <input matInput type="date" value="{{ incomeDate }}" [(ngModel)]="incomeDetails.date">
             </mat-form-field>
         </p>
 
@@ -54,7 +54,7 @@
 
     <!-- confirm actions -->
     <mat-dialog-actions align="end">
-        <button mat-raised-button color="accent" (click)="onConfirmIncome()">Create</button>
+        <button mat-raised-button color="accent" (click)="onConfirmIncome()">Update</button>
     </mat-dialog-actions>
 </ng-container>
 
@@ -71,7 +71,7 @@
     <!-- body of dialog -->
     <mat-dialog-content>
         <header>
-            <h1><strong>New expense details</strong></h1>
+            <h1><strong>Edit</strong></h1>
         </header>
 
         <!-- select source dropdown -->
@@ -115,6 +115,6 @@
 
     <!-- confirm actions -->
     <mat-dialog-actions align="end">
-        <button mat-raised-button color="accent" (click)="onConfirmExpense()">Create</button>
+        <button mat-raised-button color="accent" (click)="onConfirmExpense()">Update</button>
     </mat-dialog-actions>
 </ng-template>
