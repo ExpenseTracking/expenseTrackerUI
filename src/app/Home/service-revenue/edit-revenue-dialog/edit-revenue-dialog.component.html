@@ -40,7 +40,7 @@
         <!-- enter description field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="text" placeholder="Description" [(ngModel)]="incomeDetails.description">
+                <input matInput type="text" value="{{ incomeDescription }}" placeholder="Description" [(ngModel)]="incomeDetails.description">
             </mat-form-field>
         </p>
 
@@ -87,21 +87,21 @@
         <!-- enter amount field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="number" placeholder="Amount $" [(ngModel)]="expenseDetails.amount">
+                <input matInput type="number" value="{{ expenseAmount }}" [(ngModel)]="expenseDetails.amount">
             </mat-form-field>
         </p>
 
         <!-- select date field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="date" placeholder="Date occurred" [(ngModel)]="expenseDetails.date">
+                <input matInput type="date" value="{{ expenseDate }}" [(ngModel)]="expenseDetails.date">
             </mat-form-field>
         </p>
 
         <!-- enter description field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="text" placeholder="Description" [(ngModel)]="expenseDetails.description">
+                <input matInput type="text" value="{{ expenseDescription }}" [(ngModel)]="expenseDetails.description">
             </mat-form-field>
         </p>
 

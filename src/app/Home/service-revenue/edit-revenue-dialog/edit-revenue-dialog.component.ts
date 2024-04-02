@@ -5,11 +5,27 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from '../../../Shared/app.service';
 import { messages, transactionType, incomeSource, Income, Expense } from "../../../Shared/models";
 
+// global const
+let INCOME_ITEM: any;
+let INCOME_SOURCE_NAME: any;
+let INCOME_SOURCE_ID: any;
+let INCOME_AMOUNT: any;
+let INCOME_DATE: any;
+let INCOME_DESCRIPTION: any;
+
+let EXPENSE_ITEM: any;
+let EXPENSE_TYPE_NAME: any;
+let EXPENSE_TYPE_ID: any;
+let EXPENSE_AMOUNT: any;
+let EXPENSE_DATE: any;
+let EXPENSE_DESCRIPTION: any;
+
 @Component({
     selector: 'app-edit-revenue-dialog',
     templateUrl: './edit-revenue-dialog.component.html',
     styleUrl: './edit-revenue-dialog.component.css'
 })
+
 export class EditRevenueDialogComponent {
     // data variable to hold incoming string argument
     constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -28,11 +44,13 @@ export class EditRevenueDialogComponent {
             this.income = data;
 
             // data for source/type button dropdown
-            for (const item of this.income) {
-                if (item.incomeId == this.data.row) {
-                    this.incomeSourceButton = item.incomeSourceName;
-                    this.incomeAmount = item.amount;
-                    this.incomeDate = item.date;
+            for (INCOME_ITEM of this.income) {
+                if (INCOME_ITEM.incomeId == this.data.row) {
+                    INCOME_SOURCE_ID = INCOME_ITEM.incomeSourceId;
+                    INCOME_SOURCE_NAME = INCOME_ITEM.incomeSourceName;
+                    INCOME_AMOUNT = INCOME_ITEM.amount;
+                    INCOME_DATE = INCOME_ITEM.date;
+                    INCOME_DESCRIPTION = INCOME_ITEM.description;
                 }
             }
         })
@@ -42,9 +60,13 @@ export class EditRevenueDialogComponent {
             this.expense = data;
 
             // data for source/type button dropdown
-            for (const item of this.expense) {
-                if (item.expenseId == this.data.row) {
-                    this.expenseTypeButton = item.transactionTypeName;
+            for (EXPENSE_ITEM of this.expense) {
+                if (EXPENSE_ITEM.expenseId == this.data.row) {
+                    EXPENSE_TYPE_ID = EXPENSE_ITEM.transactionTypeId;
+                    EXPENSE_TYPE_NAME = EXPENSE_ITEM.transactionTypeName;
+                    EXPENSE_AMOUNT = EXPENSE_ITEM.amount;
+                    EXPENSE_DATE = EXPENSE_ITEM.date;
+                    EXPENSE_DESCRIPTION = EXPENSE_ITEM.description;
                 }
             }
         })
@@ -59,10 +81,15 @@ export class EditRevenueDialogComponent {
     }
 
     // data for source/type button dropdown
-    incomeSourceButton = '';
-    incomeAmount = 6;
-    incomeDate: Date = new Date(0, 0, 1);
-    expenseTypeButton = '';
+    incomeSourceButton = INCOME_SOURCE_NAME;
+    incomeAmount = INCOME_AMOUNT;
+    incomeDate = INCOME_DATE;
+    incomeDescription = INCOME_DESCRIPTION;
+
+    expenseTypeButton = EXPENSE_TYPE_NAME;
+    expenseAmount = EXPENSE_AMOUNT;
+    expenseDate = EXPENSE_DATE;
+    expenseDescription = EXPENSE_DESCRIPTION;
 
     // function to update value of income button string
     updateIncomeSourceButton(source: string): void {
@@ -78,15 +105,18 @@ export class EditRevenueDialogComponent {
     incomeDetails = {
         incomeId: this.data.row,
         userId: 3,
-        incomeSourceId: 0,
-        amount: 0,
-        date: 0,
-        description: '',
+        incomeSourceId: INCOME_SOURCE_ID,
+        amount: INCOME_AMOUNT,
+        date: INCOME_DATE,
+        description: INCOME_DESCRIPTION,
         action: ''
     };
 
+    
+
     // close dialog and send back 'create' to page
     onConfirmIncome(): void {
+        console.log(this.incomeDetails);
         this.incomeDetails.action = 'updateIncome';
         this.dialogRef.close(this.incomeDetails);
     }
@@ -95,10 +125,10 @@ export class EditRevenueDialogComponent {
     expenseDetails = {
         expenseId: this.data.row,
         userId: 3,
-        transactionTypeId: 0,
-        amount: 0,
-        date: 0,
-        description: '',
+        transactionTypeId: EXPENSE_TYPE_ID,
+        amount: EXPENSE_AMOUNT,
+        date: EXPENSE_DATE,
+        description: EXPENSE_DESCRIPTION,
         action: ''
     };
 
