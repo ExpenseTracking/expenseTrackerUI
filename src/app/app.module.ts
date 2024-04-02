@@ -5,8 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule} from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { DatePipe } from '@angular/common';
+import { MatIconButton } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +27,9 @@ import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.
 import { AboutPageComponent } from './Home/about-page/about-page.component';
 import { FAQPageComponent } from './Home/faq-page/faq-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
+import { AddNewRevenueDialogComponent } from './Home/service-revenue/add-new-revenue-dialog/add-new-revenue-dialog.component';
+import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-dialog/edit-revenue-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +42,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ServiceDashboardComponent,
     ServiceRevenueComponent,
     AboutPageComponent,
-    FAQPageComponent
+    FAQPageComponent,
+    DeleteRevenueDialogComponent,
+    AddNewRevenueDialogComponent,
+    EditRevenueDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -41,11 +54,18 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     HttpClientModule,
     MatMenuModule,
     MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
     MatTableModule,
-    MatGridListModule
+    MatGridListModule,
+    MatIconButton
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
