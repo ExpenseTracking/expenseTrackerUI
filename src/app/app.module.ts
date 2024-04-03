@@ -30,6 +30,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
 import { AddNewRevenueDialogComponent } from './Home/service-revenue/add-new-revenue-dialog/add-new-revenue-dialog.component';
 import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-dialog/edit-revenue-dialog.component';
+import { RetirementCalculatorComponent } from './Home/retirement-calculator/retirement-calculator.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-
     FAQPageComponent,
     DeleteRevenueDialogComponent,
     AddNewRevenueDialogComponent,
-    EditRevenueDialogComponent
+    EditRevenueDialogComponent,
+    RetirementCalculatorComponent
   ],
   imports: [
     BrowserModule,
