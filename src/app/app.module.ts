@@ -14,6 +14,8 @@ import { MatTableModule} from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DatePipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -61,7 +63,9 @@ import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-
     MatDialogModule,
     MatTableModule,
     MatGridListModule,
-    MatIconButton
+    MatIconButton,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [
     provideAnimationsAsync(),

@@ -3,8 +3,14 @@
     <h1>Welcome back, --Username--</h1>
 
     <!-- net worth -->
-    <p id="moneyText">
-        Money: --$5,000,000.00-- <br>
-        (Up or down percentage)
+    <p>
+        Net-Worth: ${{ (totalIncome - totalExpenses) | number:'1.2-2' }} <br>
     </p>
+
+    <mat-list>
+        <mat-list-item>Total Income: ${{ totalIncome | number:'1.2-2' }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Total Expenses: ${{ totalExpenses | number:'1.2-2' }}</mat-list-item>
+    </mat-list>
+
 </div>
