@@ -15,9 +15,9 @@
 
         <!-- select source dropdown -->
         <p class="newRevenueDialogField">
-            <button mat-button [matMenuTriggerFor]="menu">{{ incomeSourceButton }}</button>
+            <button mat-button [matMenuTriggerFor]="menu">{{ incomeSourceName }}</button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item *ngFor="let element of incomeSources" (click)="updateIncomeSourceButton(element.incomeSourceName); incomeDetails.incomeSourceId = element.incomeSourceId">
+                <button mat-menu-item *ngFor="let element of incomeSources" (click)="updateIncomeSourceButton(element.incomeSourceName); incomeSourceId = element.incomeSourceId">
                     {{ element.incomeSourceName }}
                 </button>
             </mat-menu>
@@ -26,21 +26,24 @@
         <!-- enter amount field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="number" value="{{ incomeAmount }}" [(ngModel)]="incomeDetails.amount">
+                <mat-label>Amount $</mat-label>
+                <input matInput type="number" value="{{ incomeAmount }}" [(ngModel)]="incomeAmount">
             </mat-form-field>
         </p>
 
         <!-- select date field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="date" value="{{ incomeDate }}" [(ngModel)]="incomeDetails.date">
+                <mat-label>Date</mat-label>
+                <input matInput type="date" value="{{ incomeDate }}" [(ngModel)]="incomeDate">
             </mat-form-field>
         </p>
 
         <!-- enter description field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="text" value="{{ incomeDescription }}" placeholder="Description" [(ngModel)]="incomeDetails.description">
+                <mat-label>Description</mat-label>
+                <input matInput type="text" value="{{ incomeDescription }}" placeholder="Description" [(ngModel)]="incomeDescription">
             </mat-form-field>
         </p>
 
@@ -76,9 +79,9 @@
 
         <!-- select source dropdown -->
         <p class="newRevenueDialogField">
-            <button mat-button [matMenuTriggerFor]="menu">{{ expenseTypeButton }}</button>
+            <button mat-button [matMenuTriggerFor]="menu">{{ expenseTypeName }}</button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item *ngFor="let element of transactionTypes" (click)="updateExpenseTypeButton(element.transactionTypeName); expenseDetails.transactionTypeId = element.transactionTypeId">
+                <button mat-menu-item *ngFor="let element of transactionTypes" (click)="updateExpenseTypeButton(element.transactionTypeName); expenseTypeId = element.transactionTypeId">
                     {{ element.transactionTypeName }}
                 </button>
             </mat-menu>
@@ -87,21 +90,24 @@
         <!-- enter amount field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="number" value="{{ expenseAmount }}" [(ngModel)]="expenseDetails.amount">
+                <mat-label>Amount $</mat-label>
+                <input matInput type="number" value="{{ expenseAmount }}" [(ngModel)]="expenseAmount">
             </mat-form-field>
         </p>
 
         <!-- select date field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="date" value="{{ expenseDate }}" [(ngModel)]="expenseDetails.date">
+                <mat-label>Date</mat-label>
+                <input matInput type="date" value="{{ expenseDate }}" [(ngModel)]="expenseDate">
             </mat-form-field>
         </p>
 
         <!-- enter description field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="text" value="{{ expenseDescription }}" [(ngModel)]="expenseDetails.description">
+                <mat-label>Description</mat-label>
+                <input matInput type="text" value="{{ expenseDescription }}" [(ngModel)]="expenseDescription">
             </mat-form-field>
         </p>
 

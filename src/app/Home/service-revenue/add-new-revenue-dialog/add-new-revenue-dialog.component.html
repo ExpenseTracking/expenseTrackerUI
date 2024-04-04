@@ -26,21 +26,24 @@
         <!-- enter amount field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="number" placeholder="Amount $" [(ngModel)]="incomeDetails.amount">
+                <mat-label>Amount $</mat-label>
+                <input matInput type="number"[(ngModel)]="incomeDetails.amount">
             </mat-form-field>
         </p>
 
         <!-- select date field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="date" placeholder="Date occurred" [(ngModel)]="incomeDetails.date">
+                <mat-label>Date</mat-label>
+                <input matInput type="date" [(ngModel)]="incomeDetails.date">
             </mat-form-field>
         </p>
 
         <!-- enter description field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="text" placeholder="Description" [(ngModel)]="incomeDetails.description">
+                <mat-label>Description</mat-label>
+                <input matInput type="text" [(ngModel)]="incomeDetails.description">
             </mat-form-field>
         </p>
 
@@ -87,21 +90,24 @@
         <!-- enter amount field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="number" placeholder="Amount $" [(ngModel)]="expenseDetails.amount">
+                <mat-label>Amount $</mat-label>
+                <input matInput type="number" [(ngModel)]="expenseDetails.amount">
             </mat-form-field>
         </p>
 
         <!-- select date field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="date" placeholder="Date occurred" [(ngModel)]="expenseDetails.date">
+                <mat-label>Date</mat-label>
+                <input matInput type="date" [(ngModel)]="expenseDetails.date">
             </mat-form-field>
         </p>
 
         <!-- enter description field -->
         <p class="newRevenueDialogField">
             <mat-form-field>
-                <input matInput type="text" placeholder="Description" [(ngModel)]="expenseDetails.description">
+                <mat-label>Description</mat-label>
+                <input matInput type="text" [(ngModel)]="expenseDetails.description">
             </mat-form-field>
         </p>
 
