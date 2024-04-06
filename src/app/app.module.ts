@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -53,6 +53,7 @@ import { RetirementCalculatorComponent } from './Home/retirement-calculator/reti
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatMenuModule,
     MatCheckboxModule,
@@ -63,7 +64,7 @@ import { RetirementCalculatorComponent } from './Home/retirement-calculator/reti
     MatDialogModule,
     MatTableModule,
     MatGridListModule,
-    MatIconButton
+    MatIconButton,
   ],
   providers: [
     provideAnimationsAsync(),

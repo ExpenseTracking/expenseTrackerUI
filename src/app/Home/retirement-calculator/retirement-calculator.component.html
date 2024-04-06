@@ -1,1 +1,43 @@
-<h1 id="homeHeader">Welcome to your retirement savings calculator!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retirement Calculator</title> 
+  <link href="retirement-calculator.component.css" rel="stylesheet"> 
+</head>
+<body>
+  <div class="calculator"> <!-- Container for the calculator -->
+    <h2>Retirement Calculator</h2> <!-- Heading for the calculator -->
+    <form [formGroup]="retirementForm" (ngSubmit)="calculateRetirement()"> <!-- Form for input fields, calls function to display retirement results on submit -->
+      <mat-form-field appearance="fill"> 
+        <mat-label>Current Age</mat-label> <!-- Label for the input field -->
+        <input matInput formControlName="currentAge" type="number" required> <!-- Input field for current age -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"> <!-- Angular Material form field -->
+        <mat-label>Retirement Age</mat-label> <!-- Label for the input field -->
+        <input matInput formControlName="retirementAge" type="number" required> <!-- Input field for retirement age -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"> <!-- Angular Material form field -->
+        <mat-label>Annual Income</mat-label> <!-- Label for the input field -->
+        <input matInput formControlName="annualIncome" type="number" required> <!-- Input field for annual income -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"> <!-- Angular Material form field -->
+        <mat-label>Current Savings</mat-label> <!-- Label for the input field -->
+        <input matInput formControlName="savings" type="number" required> <!-- Input field for current savings -->
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Calculate</button> <!-- Submit button -->
+    </form>
+
+    <div id="results" *ngIf="showResults"> <!-- Container for displaying results -->
+      <h3>Results:</h3> <!-- Heading for results -->
+      <p>Total Savings Needed: {{ totalSavingsNeeded | currency }}</p> <!-- Display total savings needed -->
+      <p>Years until Retirement: {{ yearsUntilRetirement }}</p> <!-- Display years until retirement -->
+    </div>
+  </div>
+</body>
+</html>
