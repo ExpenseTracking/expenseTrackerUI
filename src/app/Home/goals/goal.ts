@@ -1,6 +1,6 @@
 export interface Goal {
-    name: string;
-    details: string;
+    description: string;
+    created: Date;
     deadline: Date;
     isCompleted: boolean;
     isDeleted: boolean;
