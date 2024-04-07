@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DatePipe } from '@angular/common';
 
 import { DeleteRevenueDialogComponent } from './delete-revenue-dialog/delete-revenue-dialog.component';
 import { AddNewRevenueDialogComponent } from './add-new-revenue-dialog/add-new-revenue-dialog.component';
@@ -24,9 +23,7 @@ export class ServiceRevenueComponent implements OnInit {
 
     // injecting components/services via constructor
     constructor(private apiService: ApiService,
-        private deleteRevenueDialog: MatDialog,
-        private addNewRevenueDialog: MatDialog,
-        private datePipe: DatePipe,
+        private revenueDialog: MatDialog,
         private cdr: ChangeDetectorRef) { }
 
     ngOnInit() {
@@ -43,7 +40,7 @@ export class ServiceRevenueComponent implements OnInit {
     // method to delete row of data when user clicks delete
     deleteIncomeRow(incomeId: any) {
         // open dialog window
-        const dialogRef = this.deleteRevenueDialog.open(DeleteRevenueDialogComponent);
+        const dialogRef = this.revenueDialog.open(DeleteRevenueDialogComponent);
 
         dialogRef.afterClosed().subscribe(result => {
             if (result === 'delete') {
@@ -60,13 +57,13 @@ export class ServiceRevenueComponent implements OnInit {
     // method to delete row of data when user clicks delete
     deleteExpenseRow(expenseId: any) {
         // open dialog window
-        const dialogRef = this.deleteRevenueDialog.open(DeleteRevenueDialogComponent);
+        const dialogRef = this.revenueDialog.open(DeleteRevenueDialogComponent);
 
         dialogRef.afterClosed().subscribe(result => {
             if (result === 'delete') {
                 this.apiService.deleteExpense(expenseId).subscribe(() => {
                     this.apiService.getExpenseByUserId(3).subscribe(updatedExpense => {
-                        this.income = updatedExpense;
+                        this.expense = updatedExpense;
                         this.cdr.detectChanges();
                     });
                 });
@@ -76,7 +73,7 @@ export class ServiceRevenueComponent implements OnInit {
 
     // method to open dialog for adding new income
     addNewRevenue(revenueType: string) {
-        const dialogRef = this.addNewRevenueDialog.open(AddNewRevenueDialogComponent, {
+        const dialogRef = this.revenueDialog.open(AddNewRevenueDialogComponent, {
             data: { revenueType }
         });
 
@@ -106,7 +103,7 @@ export class ServiceRevenueComponent implements OnInit {
     // method to update revenue
     editRevenue(revenueType: string, row: any) {
         // open correct dialog income or expense
-        const dialogRef = this.addNewRevenueDialog.open(EditRevenueDialogComponent, {
+        const dialogRef = this.revenueDialog.open(EditRevenueDialogComponent, {
             data: { revenueType, row }
         });
 
