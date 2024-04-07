@@ -1,4 +1,4 @@
-<div class="container" style="min-height: 80vh;">
+<div class="container" style="min-height: 80vh; background-color: rgb(137, 134, 0); color: white;">
     <!-- user welcome message -->
     <h1>Welcome back, --Username--</h1>
 
@@ -7,7 +7,7 @@
         Net-Worth: ${{ (totalIncome - totalExpenses) | number:'1.2-2' }} <br>
     </p>
 
-    <mat-list>
+    <mat-list id="revenueList">
         <mat-list-item>Total Income: ${{ totalIncome | number:'1.2-2' }}</mat-list-item>
         <mat-divider></mat-divider>
         <mat-list-item>Total Expenses: ${{ totalExpenses | number:'1.2-2' }}</mat-list-item>
