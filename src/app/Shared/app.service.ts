@@ -82,7 +82,7 @@ export class ApiService {
     //// expense API Calls ////
 
 
-    //// Transaction Type API Calls ////
+    //// income source API Calls ////
     getIncomeSource(): Observable<any[]> {
         return this.http.get<any[]>(`${this.apiUrl}/IncomeSource`);
     }
@@ -102,5 +102,5 @@ export class ApiService {
     deleteIncomeSource(id: number): Observable<any> {
         return this.http.delete<any>(`${this.apiUrl}/IncomeSource/${id}`);
     }
-    //// Transaction Type API Calls ////
+    //// income source API Calls ////
 }
