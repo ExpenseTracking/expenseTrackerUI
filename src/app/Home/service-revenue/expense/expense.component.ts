@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { DeleteRevenueDialogComponent } from '../delete-revenue-dialog/delete-revenue-dialog.component';
-import { AddRevenueDialogComponent } from '../add-revenue-dialog/add-revenue-dialog.component';
+import { AddExpenseDialogComponent } from '../add-expense-dialog/add-expense-dialog.component';
 import { Expense } from '../../../Shared/models';
 import { ApiService } from '../../../Shared/app.service';
 import { EditRevenueDialogComponent } from '../edit-revenue-dialog/edit-revenue-dialog.component';
@@ -49,10 +49,8 @@ export class ExpenseComponent {
     }
 
     // method to open dialog for adding new expense
-    addExpense(revenueType: string) {
-        const dialogRef = this.revenueDialog.open(AddRevenueDialogComponent, {
-            data: { revenueType }
-        });
+    addExpense() {
+        const dialogRef = this.revenueDialog.open(AddExpenseDialogComponent);
 
         // get data back
         dialogRef.afterClosed().subscribe(result => {

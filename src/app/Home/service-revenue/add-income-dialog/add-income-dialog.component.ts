@@ -10,7 +10,6 @@ import { incomeSource } from "../../../Shared/models"
     styleUrl: './add-income-dialog.component.css'
 })
 export class AddIncomeDialogComponent {
-    // data variable to hold incoming string argument
     constructor(private apiService: ApiService,
         private dialogRef: MatDialogRef<AddIncomeDialogComponent>) { }
 
