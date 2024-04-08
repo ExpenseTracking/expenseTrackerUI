@@ -29,7 +29,6 @@ import { FAQPageComponent } from './Home/faq-page/faq-page.component';
 import { ProfilePageComponent } from './Home/profile-page/profile-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
-import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-dialog/edit-revenue-dialog.component';
 import { IncomeComponent } from './Home/service-revenue/income/income.component';
 import { ExpenseComponent } from './Home/service-revenue/expense/expense.component';
 import { AddIncomeDialogComponent } from './Home/service-revenue/add-income-dialog/add-income-dialog.component';
@@ -50,7 +49,6 @@ import { EditExpenseDialogComponent } from './Home/service-revenue/edit-expense-
     AboutPageComponent,
     FAQPageComponent,
     DeleteRevenueDialogComponent,
-    EditRevenueDialogComponent,
     ProfilePageComponent,
     IncomeComponent,
     ExpenseComponent,
