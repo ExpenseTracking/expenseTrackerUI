@@ -5,7 +5,7 @@ import { DeleteRevenueDialogComponent } from '../delete-revenue-dialog/delete-re
 import { AddIncomeDialogComponent } from '../add-income-dialog/add-income-dialog.component';
 import { Income } from '../../../Shared/models';
 import { ApiService } from '../../../Shared/app.service';
-import { EditRevenueDialogComponent } from '../edit-revenue-dialog/edit-revenue-dialog.component';
+import { EditIncomeDialogComponent } from '../edit-income-dialog/edit-income-dialog.component';
 
 @Component({
     selector: 'app-income',
@@ -66,10 +66,10 @@ export class IncomeComponent implements OnInit {
     }
 
     // method to update revenue
-    editIncome(revenueType: string, row: any) {
-        // open correct dialog income or expense
-        const dialogRef = this.revenueDialog.open(EditRevenueDialogComponent, {
-            data: { revenueType, row }
+    editIncome(row: any) {
+        // open correct dialog income
+        const dialogRef = this.revenueDialog.open(EditIncomeDialogComponent, {
+            data: { row }
         });
 
         // get data back

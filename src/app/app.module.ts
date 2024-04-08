@@ -34,6 +34,7 @@ import { IncomeComponent } from './Home/service-revenue/income/income.component'
 import { ExpenseComponent } from './Home/service-revenue/expense/expense.component';
 import { AddIncomeDialogComponent } from './Home/service-revenue/add-income-dialog/add-income-dialog.component';
 import { AddExpenseDialogComponent } from './Home/service-revenue/add-expense-dialog/add-expense-dialog.component';
+import { EditIncomeDialogComponent } from './Home/service-revenue/edit-income-dialog/edit-income-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AddExpenseDialogComponent } from './Home/service-revenue/add-expense-di
     IncomeComponent,
     ExpenseComponent,
     AddIncomeDialogComponent,
-    AddExpenseDialogComponent
+    AddExpenseDialogComponent,
+    EditIncomeDialogComponent
   ],
   imports: [
     BrowserModule,
