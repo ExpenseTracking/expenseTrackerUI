@@ -32,6 +32,7 @@ import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-reve
 import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-dialog/edit-revenue-dialog.component';
 import { AddRevenueDialogComponent } from './Home/service-revenue/add-revenue-dialog/add-revenue-dialog.component';
 import { IncomeComponent } from './Home/service-revenue/income/income.component';
+import { ExpenseComponent } from './Home/service-revenue/expense/expense.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { IncomeComponent } from './Home/service-revenue/income/income.component'
     EditRevenueDialogComponent,
     ProfilePageComponent,
     AddRevenueDialogComponent,
-    IncomeComponent
+    IncomeComponent,
+    ExpenseComponent
   ],
   imports: [
     BrowserModule,
