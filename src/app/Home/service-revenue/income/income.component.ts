@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { DeleteRevenueDialogComponent } from '../delete-revenue-dialog/delete-revenue-dialog.component';
-import { AddRevenueDialogComponent } from '../add-revenue-dialog/add-revenue-dialog.component';
+import { AddIncomeDialogComponent } from '../add-income-dialog/add-income-dialog.component';
 import { Income } from '../../../Shared/models';
 import { ApiService } from '../../../Shared/app.service';
 import { EditRevenueDialogComponent } from '../edit-revenue-dialog/edit-revenue-dialog.component';
@@ -31,7 +31,7 @@ export class IncomeComponent implements OnInit {
         })
     }
     // method to delete row of data when user clicks delete
-    deleteIncomeRecord(incomeId: any) {
+    deleteIncome(incomeId: any) {
         // open dialog window
         const dialogRef = this.revenueDialog.open(DeleteRevenueDialogComponent);
 
@@ -48,10 +48,8 @@ export class IncomeComponent implements OnInit {
     }
 
     // method to open dialog for adding new income
-    addIncomeRecord(revenueType: string) {
-        const dialogRef = this.revenueDialog.open(AddRevenueDialogComponent, {
-            data: { revenueType }
-        });
+    addIncome() {
+        const dialogRef = this.revenueDialog.open(AddIncomeDialogComponent);
 
         // get data back
         dialogRef.afterClosed().subscribe(result => {
@@ -68,7 +66,7 @@ export class IncomeComponent implements OnInit {
     }
 
     // method to update revenue
-    editIncomeRecord(revenueType: string, row: any) {
+    editIncome(revenueType: string, row: any) {
         // open correct dialog income or expense
         const dialogRef = this.revenueDialog.open(EditRevenueDialogComponent, {
             data: { revenueType, row }

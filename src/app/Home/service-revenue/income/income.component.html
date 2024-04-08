@@ -29,10 +29,10 @@
     <ng-container matColumnDef="buttons">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-            <button mat-icon-button style="color: gold;" (click)="editIncomeRecord('income', element.incomeId)">
+            <button mat-icon-button style="color: gold;" (click)="editIncome('income', element.incomeId)">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button color="warn" (click)="deleteIncomeRecord(element.incomeId)">
+            <button mat-icon-button color="warn" (click)="deleteIncome(element.incomeId)">
                 <mat-icon>delete_forever</mat-icon>
             </button>
         </td>
@@ -45,6 +45,6 @@
 <br>
 <!-- button to add new income -->
 <div style="text-align: center;">
-    <button mat-raised-button id="addNewButton" (click)="addIncomeRecord('income')">Add new income</button>
+    <button mat-raised-button id="addNewButton" (click)="addIncome()">Add new income</button>
 </div>
 <br>
