@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from '../../Shared/app.service';
-import { Income, Expense } from '../../Shared/models';
+import { Income, Expense, User } from '../../Shared/models';
 
 @Component({
     selector: 'app-service-dashboard',
@@ -11,33 +11,42 @@ import { Income, Expense } from '../../Shared/models';
 export class ServiceDashboardComponent implements OnInit {
     constructor(private apiService: ApiService) { }
 
-    // income and expense data storage
+    // income, expense, and user data storage
     expense: Expense[] = [];
     income: Income[] = [];
+    user: User[] = [];
 
     // to hold totals
     totalIncome: number = 0;
     totalExpenses: number = 0;
 
     ngOnInit() {
-        // get income
-        this.apiService.getIncomeByUserId(3).subscribe((data: Income[]) => {
-            this.income = data;
+        // get user info
+        this.apiService.getUserByUserId(3).subscribe((userData: User[]) => {
+            this.user = userData;
 
-            // get income total
-            for (let i of this.income) {
-                this.totalIncome += i.amount;
+            // check if user data is available
+            if (this.user.length > 0) {
+                // get income
+                this.apiService.getIncomeByUserId(this.user[0]['userId']).subscribe((incomeData: Income[]) => {
+                    this.income = incomeData;
+
+                    // get income total
+                    for (let i of this.income) {
+                        this.totalIncome += i.amount;
+                    }
+                });
+
+                // get expenses
+                this.apiService.getExpenseByUserId(this.user[0]['userId']).subscribe((expenseData: Expense[]) => {
+                    this.expense = expenseData;
+
+                    // get expense total
+                    for (let e of this.expense) {
+                        this.totalExpenses += e.amount;
+                    }
+                });
             }
-        })
-
-        // get expenses
-        this.apiService.getExpenseByUserId(3).subscribe((data: Expense[]) => {
-            this.expense = data;
-
-            // get expense total
-            for (let e of this.expense) {
-                this.totalExpenses += e.amount;
-            }
-        })
+        });
     }
 }

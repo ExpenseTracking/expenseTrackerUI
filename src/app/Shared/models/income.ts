@@ -5,7 +5,7 @@ export interface Income {
     'amount': number,
     'date': Date,
     'description': string,
-    'CreatedAt': Date,
+    'createdAt': Date,
     'updatedAt': Date,
     'deletedAt': Date,
     'isDeleted': boolean,

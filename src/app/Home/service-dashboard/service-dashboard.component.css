@@ -9,6 +9,28 @@
     transform: translateY(-50%);
 }
 
-::ng-deep #revenueList{
-    color: black;
+.mat-divider {
+    border-top-color: #FFD700;
+    border-width: 3px;
+}
+
+#netWorthCard{
+    min-height: 25vh;
+}
+
+#revenueCard{
+    min-height: 30vh;
+}
+
+.title{
+    color: white;
+}
+
+.moneyValue{
+    font-size: larger;
+}
+
+.infoText{
+    color: white;
+    font-size: large;
 }
