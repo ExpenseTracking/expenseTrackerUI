@@ -29,8 +29,12 @@ import { FAQPageComponent } from './Home/faq-page/faq-page.component';
 import { ProfilePageComponent } from './Home/profile-page/profile-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
-import { AddNewRevenueDialogComponent } from './Home/service-revenue/add-new-revenue-dialog/add-new-revenue-dialog.component';
-import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-dialog/edit-revenue-dialog.component';
+import { IncomeComponent } from './Home/service-revenue/income/income.component';
+import { ExpenseComponent } from './Home/service-revenue/expense/expense.component';
+import { AddIncomeDialogComponent } from './Home/service-revenue/add-income-dialog/add-income-dialog.component';
+import { AddExpenseDialogComponent } from './Home/service-revenue/add-expense-dialog/add-expense-dialog.component';
+import { EditIncomeDialogComponent } from './Home/service-revenue/edit-income-dialog/edit-income-dialog.component';
+import { EditExpenseDialogComponent } from './Home/service-revenue/edit-expense-dialog/edit-expense-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,9 +49,13 @@ import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-
     AboutPageComponent,
     FAQPageComponent,
     DeleteRevenueDialogComponent,
-    AddNewRevenueDialogComponent,
-    EditRevenueDialogComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    IncomeComponent,
+    ExpenseComponent,
+    AddIncomeDialogComponent,
+    AddExpenseDialogComponent,
+    EditIncomeDialogComponent,
+    EditExpenseDialogComponent
   ],
   imports: [
     BrowserModule,

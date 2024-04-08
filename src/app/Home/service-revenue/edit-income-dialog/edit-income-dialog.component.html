@@ -1,0 +1,54 @@
+<!-- edit income dialog -->
+
+<!-- x button to cancel -->
+<button mat-icon-button matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+
+<!-- body of dialog -->
+<mat-dialog-content>
+    <header>
+        <h1><strong>Edit</strong></h1>
+    </header>
+
+    <!-- select source dropdown -->
+    <p class="editDialogField">
+        <button mat-button [matMenuTriggerFor]="menu">{{ incomeSourceName }}</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let element of incomeSources"
+                (click)="updateIncomeSourceButton(element.incomeSourceName); incomeSourceId = element.incomeSourceId">
+                {{ element.incomeSourceName }}
+            </button>
+        </mat-menu>
+    </p>
+
+    <!-- enter amount field -->
+    <p class="editDialogField">
+        <mat-form-field>
+            <mat-label>Amount $</mat-label>
+            <input matInput type="number" value="{{ incomeAmount }}" [(ngModel)]="incomeAmount">
+        </mat-form-field>
+    </p>
+
+    <!-- select date field -->
+    <p class="editDialogField">
+        <mat-form-field>
+            <mat-label>Date</mat-label>
+            <input matInput type="date" value="{{ incomeDate }}" [(ngModel)]="incomeDate">
+        </mat-form-field>
+    </p>
+
+    <!-- enter description field -->
+    <p class="editDialogField">
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input matInput type="text" value="{{ incomeDescription }}" placeholder="Description"
+                [(ngModel)]="incomeDescription">
+        </mat-form-field>
+    </p>
+</mat-dialog-content>
+
+<!-- confirm actions -->
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="accent" (click)="onConfirmIncome()">Update</button>
+</mat-dialog-actions>
