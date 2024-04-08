@@ -31,6 +31,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
 import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-dialog/edit-revenue-dialog.component';
 import { AddRevenueDialogComponent } from './Home/service-revenue/add-revenue-dialog/add-revenue-dialog.component';
+import { IncomeComponent } from './Home/service-revenue/income/income.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AddRevenueDialogComponent } from './Home/service-revenue/add-revenue-di
     DeleteRevenueDialogComponent,
     EditRevenueDialogComponent,
     ProfilePageComponent,
-    AddRevenueDialogComponent
+    AddRevenueDialogComponent,
+    IncomeComponent
   ],
   imports: [
     BrowserModule,
