@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { DeleteRevenueDialogComponent } from './delete-revenue-dialog/delete-revenue-dialog.component';
-import { AddNewRevenueDialogComponent } from './add-new-revenue-dialog/add-new-revenue-dialog.component';
+import { AddRevenueDialogComponent } from './add-revenue-dialog/add-revenue-dialog.component';
 import { Income, Expense } from '../../Shared/models';
 import { ApiService } from '../../Shared/app.service';
 import { EditRevenueDialogComponent } from './edit-revenue-dialog/edit-revenue-dialog.component';
@@ -72,8 +72,8 @@ export class ServiceRevenueComponent implements OnInit {
     }
 
     // method to open dialog for adding new income
-    addNewRevenue(revenueType: string) {
-        const dialogRef = this.revenueDialog.open(AddNewRevenueDialogComponent, {
+    addRevenue(revenueType: string) {
+        const dialogRef = this.revenueDialog.open(AddRevenueDialogComponent, {
             data: { revenueType }
         });
 

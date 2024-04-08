@@ -6,15 +6,15 @@ import { ApiService } from '../../../Shared/app.service';
 import { messages, transactionType, incomeSource } from "../../../Shared/models"
 
 @Component({
-    selector: 'app-add-new-revenue-dialog',
-    templateUrl: './add-new-revenue-dialog.component.html',
-    styleUrl: './add-new-revenue-dialog.component.css'
+    selector: 'app-add-revenue-dialog',
+    templateUrl: './add-revenue-dialog.component.html',
+    styleUrl: './add-revenue-dialog.component.css'
 })
-export class AddNewRevenueDialogComponent {
+export class AddRevenueDialogComponent {
     // data variable to hold incoming string argument
     constructor(@Inject(MAT_DIALOG_DATA) public data: any,
         private apiService: ApiService,
-        private dialogRef: MatDialogRef<AddNewRevenueDialogComponent>) { }
+        private dialogRef: MatDialogRef<AddRevenueDialogComponent>) { }
 
     // pull and hold data from API for dropdown list
     transactionTypes: transactionType[] = [];

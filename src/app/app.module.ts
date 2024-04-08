@@ -29,8 +29,8 @@ import { FAQPageComponent } from './Home/faq-page/faq-page.component';
 import { ProfilePageComponent } from './Home/profile-page/profile-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
-import { AddNewRevenueDialogComponent } from './Home/service-revenue/add-new-revenue-dialog/add-new-revenue-dialog.component';
 import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-dialog/edit-revenue-dialog.component';
+import { AddRevenueDialogComponent } from './Home/service-revenue/add-revenue-dialog/add-revenue-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,9 +45,9 @@ import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-
     AboutPageComponent,
     FAQPageComponent,
     DeleteRevenueDialogComponent,
-    AddNewRevenueDialogComponent,
     EditRevenueDialogComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    AddRevenueDialogComponent
   ],
   imports: [
     BrowserModule,
