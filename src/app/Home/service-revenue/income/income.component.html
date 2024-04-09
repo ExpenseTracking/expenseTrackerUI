@@ -1,0 +1,50 @@
+<!-- income table -->
+<table mat-table [dataSource]="income" class="mat-elevation-z8" id="table">
+
+    <!-- source Column -->
+    <ng-container matColumnDef="incomeSourceName">
+        <th mat-header-cell *matHeaderCellDef> Source </th>
+        <td mat-cell *matCellDef="let element"> {{element.incomeSourceName}} </td>
+    </ng-container>
+
+    <!-- amount Column -->
+    <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let element" style="color: #78b95e;"> ${{element.amount.toFixed(2)}} </td>
+    </ng-container>
+
+    <!-- date Column -->
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date | date: 'EEE, MMM d, y'}}</td>
+    </ng-container>
+
+    <!-- description Column -->
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <!-- actions column -->
+    <ng-container matColumnDef="buttons">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button style="color: gold;" (click)="editIncome(element.incomeId)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteIncome(element.incomeId)">
+                <mat-icon>delete_forever</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="incomeColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: incomeColumns;"></tr>
+</table>
+
+<br>
+<!-- button to add new income -->
+<div style="text-align: center;">
+    <button mat-raised-button id="addNewButton" (click)="addIncome()">Add new income</button>
+</div>
+<br>
