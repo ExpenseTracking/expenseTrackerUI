@@ -14,9 +14,10 @@ import { MatTableModule} from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DatePipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
- import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
 import { CompanyHomePageComponent } from './Home/company-home-page/company-home-page.component';
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
@@ -35,6 +36,9 @@ import { AddIncomeDialogComponent } from './Home/service-revenue/add-income-dial
 import { AddExpenseDialogComponent } from './Home/service-revenue/add-expense-dialog/add-expense-dialog.component';
 import { EditIncomeDialogComponent } from './Home/service-revenue/edit-income-dialog/edit-income-dialog.component';
 import { EditExpenseDialogComponent } from './Home/service-revenue/edit-expense-dialog/edit-expense-dialog.component';
+import { AddTransactionTypeDialogComponent } from './Home/transaction-type/add-transaction-type-dialog/add-transaction-type-dialog.component';
+import { DeleteTransactionTypeDialogComponent } from './Home/transaction-type/delete-transaction-type-dialog/delete-transaction-type-dialog.component';
+import { EditTransactionTypeDialogComponent } from './Home/transaction-type/edit-transaction-type-dialog/edit-transaction-type-dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,10 @@ import { EditExpenseDialogComponent } from './Home/service-revenue/edit-expense-
     AddIncomeDialogComponent,
     AddExpenseDialogComponent,
     EditIncomeDialogComponent,
-    EditExpenseDialogComponent
+    EditExpenseDialogComponent,
+    AddTransactionTypeDialogComponent,
+    DeleteTransactionTypeDialogComponent,
+    EditTransactionTypeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +78,8 @@ import { EditExpenseDialogComponent } from './Home/service-revenue/edit-expense-
     MatDialogModule,
     MatTableModule,
     MatGridListModule,
-    MatIconButton
+    MatIconButton,
+    MatPaginator
   ],
   providers: [
     provideAnimationsAsync(),

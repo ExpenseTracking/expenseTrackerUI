@@ -1,7 +1,8 @@
 export interface transactionType
 {
-    'transactionTypeId': number,
+    'transactionTypeId'?: number,
     'userId': number,
     'transactionTypeName': string,
-    'isDeleted': boolean
+    'isDeleted': boolean,
+    'userName': string
 }

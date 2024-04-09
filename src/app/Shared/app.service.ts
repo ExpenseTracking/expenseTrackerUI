@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 import { environment } from "../../enviornments/enviornment";
+import { transactionType } from "./models";
 
 @Injectable({
     providedIn: 'root'
@@ -18,16 +19,16 @@ export class ApiService {
         return this.http.get<any[]>(`${this.apiUrl}/TransactionType`);
     }
 
-    getTransactionTypeById(id: number): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/TransactionType/${id}`);
+    getTransactionTypeByUserId(userId: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/TransactionType/${userId}`);
     }
 
-    addTransactionType(transactionType: any): Observable<any> {
+    addTransactionType(transactionType: transactionType): Observable<any> {
         return this.http.post<any>(`${this.apiUrl}/TransactionType`, transactionType);
     }
 
-    updateTransactionType(id: number, transactionType: any): Observable<any> {
-        return this.http.put<any>(`${this.apiUrl}/TransactionType/${id}`, transactionType);
+    updateTransactionType(transactionType: transactionType): Observable<any> {
+        return this.http.put<any>(`${this.apiUrl}/TransactionType`, transactionType);
     }
 
     deleteTransactionType(id: number): Observable<any> {
