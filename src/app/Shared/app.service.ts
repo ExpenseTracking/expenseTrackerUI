@@ -82,7 +82,7 @@ export class ApiService {
     //// expense API Calls ////
 
 
-    //// Income source API Calls ////
+    //// income source API Calls ////
     getIncomeSource(): Observable<any[]> {
         return this.http.get<any[]>(`${this.apiUrl}/IncomeSource`);
     }
