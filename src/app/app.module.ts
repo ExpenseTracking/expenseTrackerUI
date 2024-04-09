@@ -16,7 +16,7 @@ import { DatePipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
- import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
 import { CompanyHomePageComponent } from './Home/company-home-page/company-home-page.component';
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
@@ -31,6 +31,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
 import { AddNewRevenueDialogComponent } from './Home/service-revenue/add-new-revenue-dialog/add-new-revenue-dialog.component';
 import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-dialog/edit-revenue-dialog.component';
+import { GoalsComponent } from './Home/goals/goals.component';
+import { DeleteGoalDialogComponent } from './Home/goals/delete-goal-dialog/delete-goal-dialog.component';
+import { EditGoalDialogComponent } from './Home/goals/edit-goal-dialog/edit-goal-dialog.component';
+import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/create-goal-dialog.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,11 @@ import { EditRevenueDialogComponent } from './Home/service-revenue/edit-revenue-
     DeleteRevenueDialogComponent,
     AddNewRevenueDialogComponent,
     EditRevenueDialogComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    GoalsComponent,
+    DeleteGoalDialogComponent,
+    EditGoalDialogComponent,
+    CreateGoalDialogComponent
   ],
   imports: [
     BrowserModule,

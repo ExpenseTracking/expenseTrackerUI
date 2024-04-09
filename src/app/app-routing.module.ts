@@ -13,6 +13,7 @@ import { FAQPageComponent } from './Home/faq-page/faq-page.component';
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
 import { AddNewRevenueDialogComponent } from './Home/service-revenue/add-new-revenue-dialog/add-new-revenue-dialog.component';
 import { ProfilePageComponent } from './Home/profile-page/profile-page.component';
+import { GoalsComponent } from './Home/goals/goals.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/companyHome', pathMatch: 'full' },
@@ -29,7 +30,8 @@ const routes: Routes = [
     { path: 'about', component: AboutPageComponent },
     { path: 'faqs', component: FAQPageComponent},
     { path: 'deleteRevenue', component: DeleteRevenueDialogComponent},
-    { path: 'newRevenue', component: AddNewRevenueDialogComponent}
+    { path: 'newRevenue', component: AddNewRevenueDialogComponent},
+    { path: 'goals', component: GoalsComponent}
   ];
 
 @NgModule({

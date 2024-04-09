@@ -1,0 +1,38 @@
+<ng-container>
+
+  <button mat-icon-button matDialogClose>
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <mat-dialog-content>
+    <header>
+      <h1><strong>Edit</strong></h1>
+    </header>
+
+    <p class="newGoalDialogField">
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput type="text" value="{{ goalDescription}}" placeholder="Description" [(ngModel)]="goalDescription">
+      </mat-form-field>
+    </p>
+
+    <p class="newGoalDialogField">
+      <mat-form-field>
+        <mat-label>Deadline</mat-label>
+        <input matInput type="date" value="{{ goalDeadline}}" [(ngModel)]="goalDeadline">
+      </mat-form-field>
+    </p>
+
+    <p class="newGoalDialogField">
+      <button mat-button [matMenuTriggerFor]="menu">{{ goalCompleted ? 'Yes' : 'No' }}</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="updateCompleted(true)">Yes</button>
+        <button mat-menu-item (click)="updateCompleted(false)">No</button>
+      </mat-menu>
+    </p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="accent" (click)="onConfirmGoal()">Update</button>
+  </mat-dialog-actions>
+</ng-container>
