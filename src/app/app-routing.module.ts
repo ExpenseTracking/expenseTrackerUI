@@ -25,8 +25,6 @@ const routes: Routes = [
     { path: 'profile', component: ProfilePageComponent },
     { path: 'about', component: AboutPageComponent },
     { path: 'faqs', component: FAQPageComponent},
-    { path: 'about', component: AboutPageComponent },
-    { path: 'faqs', component: FAQPageComponent},
     { path: 'deleteRevenue', component: DeleteRevenueDialogComponent}
   ];
 
