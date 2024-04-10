@@ -55,7 +55,7 @@ export class ExpenseComponent implements OnInit {
         // get data back
         dialogRef.afterClosed().subscribe(result => {
             // add new expense to list
-            if (result.action === 'createExpense') {
+            if (result) {
                 this.apiService.addExpense(result).subscribe(() => {
                     this.apiService.getExpenseByUserId(3).subscribe(updateExpense => {
                         this.expense = updateExpense;
