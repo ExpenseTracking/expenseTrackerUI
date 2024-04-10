@@ -20,31 +20,9 @@ export class EditIncomeDialogComponent implements OnInit {
     income!: Income;
     incomeSources: incomeSource[] = [];
 
-    // Variables to store income details
-    // incomeSourceName!: string;
-    // incomeSourceId!: number;
-    // incomeAmount!: number;
-    // incomeDate!: Date;
-    // incomeDescription!: string;
-
     ngOnInit() {
         // store incoming income info
         this.income = this.data;
-        // income data
-        // this.apiService.getIncomeByUserId(3).subscribe((data: Income[]) => {
-        //     this.income = data;
-
-        //     // data for source/type button dropdown
-        //     for (let incomeItem of this.income) {
-        //         if (incomeItem.incomeId == this.data.row) {
-        //             this.incomeSourceId = incomeItem.incomeSourceId;
-        //             this.incomeSourceName = incomeItem.incomeSourceName;
-        //             this.incomeAmount = incomeItem.amount;
-        //             this.incomeDate = incomeItem.date;
-        //             this.incomeDescription = incomeItem.description;
-        //         }
-        //     }
-        // });
 
         this.apiService.getIncomeSource().subscribe((data: incomeSource[]) => {
             this.incomeSources = data;
@@ -58,15 +36,6 @@ export class EditIncomeDialogComponent implements OnInit {
 
     // close dialog and send back 'create' to page
     onConfirm(): void {
-        // const incomeDetails = {
-        //     incomeId: this.data.row,
-        //     userId: 3,
-        //     incomeSourceId: this.incomeSourceId,
-        //     amount: this.incomeAmount,
-        //     date: this.incomeDate,
-        //     description: this.incomeDescription,
-        //     action: 'updateIncome'
-        // };
         this.dialogRef.close(this.income);
     }
 
