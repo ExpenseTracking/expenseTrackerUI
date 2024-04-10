@@ -36,7 +36,7 @@ export class IncomeComponent implements OnInit {
         const dialogRef = this.revenueDialog.open(DeleteRevenueDialogComponent);
 
         dialogRef.afterClosed().subscribe(result => {
-            if (result === 'delete') {
+            if (result) {
                 this.apiService.deleteIncome(incomeId).subscribe(() => {
                     this.apiService.getIncomeByUserId(3).subscribe(updatedIncome => {
                         this.income = updatedIncome;

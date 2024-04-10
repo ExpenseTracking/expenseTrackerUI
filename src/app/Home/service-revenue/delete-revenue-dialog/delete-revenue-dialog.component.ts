@@ -10,8 +10,13 @@ export class DeleteRevenueDialogComponent {
     // injecting dialog ref to send user choice to page
     constructor(private dialogRef: MatDialogRef<DeleteRevenueDialogComponent>) { }
 
-    // close dialog and send back 'delete' to page
+    // user confirms delte operation return true
     onConfirm(): void {
-        this.dialogRef.close('delete');
+        this.dialogRef.close(true);
+    }
+
+    // user cancels delete operation return false
+    onCancel(): void {
+        this.dialogRef.close(false);
     }
 }

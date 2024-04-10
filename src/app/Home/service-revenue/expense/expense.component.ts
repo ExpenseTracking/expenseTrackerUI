@@ -37,7 +37,7 @@ export class ExpenseComponent implements OnInit {
         const dialogRef = this.revenueDialog.open(DeleteRevenueDialogComponent);
 
         dialogRef.afterClosed().subscribe(result => {
-            if (result === 'delete') {
+            if (result) {
                 this.apiService.deleteExpense(expenseId).subscribe(() => {
                     this.apiService.getExpenseByUserId(3).subscribe(updatedExpense => {
                         this.expense = updatedExpense;
