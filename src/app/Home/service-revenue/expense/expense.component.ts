@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { DeleteRevenueDialogComponent } from '../delete-revenue-dialog/delete-revenue-dialog.component';
 import { AddExpenseDialogComponent } from '../add-expense-dialog/add-expense-dialog.component';
@@ -12,7 +12,7 @@ import { EditExpenseDialogComponent } from '../edit-expense-dialog/edit-expense-
     templateUrl: './expense.component.html',
     styleUrl: './expense.component.css'
 })
-export class ExpenseComponent {
+export class ExpenseComponent implements OnInit {
     // columns for data tables
     expenseColumns: string[] = ['type', 'amount', 'date', 'description', 'buttons'];
 
@@ -67,19 +67,19 @@ export class ExpenseComponent {
     }
 
     // method to update expense
-    editExpense(row: any) {
+    editExpense(expense: any) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = expense;
         // open correct dialog expense
-        const dialogRef = this.revenueDialog.open(EditExpenseDialogComponent, {
-            data: { row }
-        });
+        const dialogRef = this.revenueDialog.open(EditExpenseDialogComponent, dialogConfig);
 
         // get data back
         dialogRef.afterClosed().subscribe(result => {
             // update expense in list
-            if (result.action === 'updateExpense') {
+            if (result) {
                 this.apiService.updateExpense(result.expenseId, result).subscribe(() => {
-                    this.apiService.getExpenseByUserId(3).subscribe(updateExpense => {
-                        this.expense = updateExpense;
+                    this.apiService.getExpenseByUserId(3).subscribe(updatedExpense => {
+                        this.expense = updatedExpense;
                         this.cdr.detectChanges();
                     });
                 });

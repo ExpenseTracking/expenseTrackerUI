@@ -30,7 +30,7 @@
     <ng-container matColumnDef="buttons">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
-            <button mat-icon-button style="color: gold;" (click)="editExpense(element.expenseId)">
+            <button mat-icon-button style="color: gold;" (click)="editExpense(element)">
                 <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button color="warn" (click)="deleteExpense(element.expenseId)">
