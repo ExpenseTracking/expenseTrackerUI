@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { DeleteRevenueDialogComponent } from '../delete-revenue-dialog/delete-revenue-dialog.component';
 import { AddIncomeDialogComponent } from '../add-income-dialog/add-income-dialog.component';
@@ -66,16 +66,16 @@ export class IncomeComponent implements OnInit {
     }
 
     // method to update revenue
-    editIncome(row: any) {
+    editIncome(income: any) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = income;
         // open correct dialog income
-        const dialogRef = this.revenueDialog.open(EditIncomeDialogComponent, {
-            data: { row }
-        });
+        const dialogRef = this.revenueDialog.open(EditIncomeDialogComponent, dialogConfig);
 
         // get data back
         dialogRef.afterClosed().subscribe(result => {
             // update income in list
-            if (result.action === 'updateIncome') {
+            if (result) {
                 this.apiService.updateIncome(result.incomeId, result).subscribe(() => {
                     this.apiService.getIncomeByUserId(3).subscribe(updatedIncome => {
                         this.income = updatedIncome;
