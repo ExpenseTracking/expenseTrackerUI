@@ -35,6 +35,11 @@ import { AddIncomeDialogComponent } from './Home/service-revenue/add-income-dial
 import { AddExpenseDialogComponent } from './Home/service-revenue/add-expense-dialog/add-expense-dialog.component';
 import { EditIncomeDialogComponent } from './Home/service-revenue/edit-income-dialog/edit-income-dialog.component';
 import { EditExpenseDialogComponent } from './Home/service-revenue/edit-expense-dialog/edit-expense-dialog.component';
+import { GoalsComponent } from './Home/goals/goals.component';
+import { DeleteGoalDialogComponent } from './Home/goals/delete-goal-dialog/delete-goal-dialog.component';
+import { EditGoalDialogComponent } from './Home/goals/edit-goal-dialog/edit-goal-dialog.component';
+import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/create-goal-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +59,11 @@ import { EditExpenseDialogComponent } from './Home/service-revenue/edit-expense-
     AddIncomeDialogComponent,
     AddExpenseDialogComponent,
     EditIncomeDialogComponent,
-    EditExpenseDialogComponent
+    EditExpenseDialogComponent,
+    GoalsComponent,
+    DeleteGoalDialogComponent,
+    EditGoalDialogComponent,
+    CreateGoalDialogComponent
   ],
   imports: [
     BrowserModule,

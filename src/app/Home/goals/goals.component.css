@@ -1,0 +1,9 @@
+::ng-deep #table{
+  font-weight: 700;
+  font-size: large;
+}
+
+::ng-deep #addNewButton{
+  color: blue;
+  background-color: white;
+}
