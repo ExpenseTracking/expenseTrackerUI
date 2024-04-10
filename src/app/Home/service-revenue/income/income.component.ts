@@ -54,7 +54,7 @@ export class IncomeComponent implements OnInit {
         // get data back
         dialogRef.afterClosed().subscribe(result => {
             // add new income to list
-            if (result.action === 'createIncome') {
+            if (result) {
                 this.apiService.addIncome(result).subscribe(() => {
                     this.apiService.getIncomeByUserId(3).subscribe(updatedIncome => {
                         this.income = updatedIncome;
