@@ -1,0 +1,43 @@
+<ng-container>
+
+  <!-- close button -->
+  <button mat-icon-button matDialogClose>
+      <mat-icon>close</mat-icon>
+  </button>
+
+  <!-- new goal header -->
+  <mat-dialog-content>
+      <header>
+        <h1><strong>New goal details</strong></h1>
+      </header>
+
+      <!-- Description label and input field -->
+      <p class="newGoalDialogField">
+          <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input matInput type="text" [(ngModel)]="goalDetails.description">
+          </mat-form-field>
+      </p>
+
+      <!-- Deadline label and input field -->
+      <p class="newGoalDialogField">
+          <mat-form-field>
+            <mat-label>Deadline</mat-label>
+            <input matInput type="date" [(ngModel)]="goalDetails.deadline">
+          </mat-form-field>
+      </p>
+
+      <!-- Date created label and input field -->
+      <p class="newGoalDialogField">
+        <mat-form-field>
+          <mat-label>Date created</mat-label>
+          <input matInput type="date" [(ngModel)]="goalDetails.date">
+        </mat-form-field>
+      </p>
+  </mat-dialog-content>
+
+  <!-- Confirm button -->
+  <mat-dialog-actions align="end">
+      <button mat-raised-button color="accent" (click)="onConfirmGoal()">Create</button>
+  </mat-dialog-actions>
+</ng-container>
