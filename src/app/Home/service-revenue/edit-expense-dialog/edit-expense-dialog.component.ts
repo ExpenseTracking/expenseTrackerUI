@@ -30,8 +30,9 @@ export class EditExpenseDialogComponent implements OnInit{
     }
 
     // function to update value of expense button string
-    updateExpenseTypeButton(source: string): void {
-        this.expense.transactionTypeName = source;
+    updateExpenseTypeButton(typeName: string, typeId?: number): void {
+        this.expense.transactionTypeName = typeName;
+        this.expense.transactionTypeId = typeId !== undefined ? typeId : 0;
     }
 
     // close dialog and send new data back

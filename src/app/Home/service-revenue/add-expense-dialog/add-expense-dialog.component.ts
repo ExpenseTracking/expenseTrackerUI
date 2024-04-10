@@ -34,8 +34,9 @@ export class AddExpenseDialogComponent implements OnInit {
     expenseTypeButton = 'Select expense type';
 
     // function to update value of expense button string
-    updateExpenseTypeButton(typeName: string): void {
+    updateExpenseTypeButton(typeName: string, typeId?: number): void {
         this.expenseTypeButton = typeName;
+        this.transactionTypeId = typeId !== undefined ? typeId : 0;
     }
 
     // close dialog and send new expense back if user data is valid
