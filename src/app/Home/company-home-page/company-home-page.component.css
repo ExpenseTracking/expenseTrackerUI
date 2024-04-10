@@ -1,4 +1,83 @@
-#homeHeader{
-    color: navy;
-    text-align: center;
+.first-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 0; 
+}
+
+.content {
+    padding: 20px; 
+}
+
+#homeHeader {
+    font-weight: bold;
+    font-size: 40px;
+}
+
+
+.mission-container {
+    background-color: rgba(173, 216, 230, 0.5); 
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.mission-container h3 {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.mission-container p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+.mission-container {
+    background-color: rgba(173, 216, 230, 0.5); /* Light blue with transparency */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.mission-container h3 {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.mission-container p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.solution-container {
+    padding: 50px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.solution-content {
+    flex-grow: 1;
+}
+
+#solutionHeader {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#featureList {
+    margin-top: 10px;
+}
+
+#featureList li {
+    margin-bottom: 5px;
 }
