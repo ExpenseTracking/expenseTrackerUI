@@ -34,8 +34,9 @@ export class AddIncomeDialogComponent implements OnInit {
     incomeSourceButton = 'Select income source';
 
     // function to update value of income button string
-    updateIncomeSourceButton(source: string): void {
+    updateIncomeSourceButton(source: string, sourceId?: number): void {
         this.incomeSourceButton = source;
+        this.incomeSourceId = sourceId !== undefined ? sourceId: 0;
     }
 
     // close dialog and send back 'create' to page

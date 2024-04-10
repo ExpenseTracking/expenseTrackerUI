@@ -16,7 +16,7 @@
         <button mat-button [matMenuTriggerFor]="menu">{{ income.incomeSourceName }}</button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item *ngFor="let element of incomeSources"
-                (click)="updateIncomeSourceButton(element.incomeSourceName); income.incomeSourceId= element.incomeSourceId">
+                (click)="updateIncomeSourceButton(element.incomeSourceName, element.incomeSourceId);">
                 {{ element.incomeSourceName }}
             </button>
         </mat-menu>
