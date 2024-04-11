@@ -5,102 +5,124 @@ import { Observable } from "rxjs";
 import { environment } from "../../enviornments/enviornment";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 
 export class ApiService {
-    constructor(private http: HttpClient) {}
-    
-    apiUrl = environment.api_url;
+  constructor(private http: HttpClient) { }
 
-    //// Transaction Type API Calls ////
-    getTransactionType(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.apiUrl}/TransactionType`);
-    }
+  apiUrl = environment.api_url;
 
-    getTransactionTypeById(id: number): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/TransactionType/${id}`);
-    }
+  //// Transaction Type API Calls ////
+  getTransactionType(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/TransactionType`);
+  }
 
-    addTransactionType(transactionType: any): Observable<any> {
-        return this.http.post<any>(`${this.apiUrl}/TransactionType`, transactionType);
-    }
+  getTransactionTypeById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/TransactionType/${id}`);
+  }
 
-    updateTransactionType(id: number, transactionType: any): Observable<any> {
-        return this.http.put<any>(`${this.apiUrl}/TransactionType/${id}`, transactionType);
-    }
+  addTransactionType(transactionType: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/TransactionType`, transactionType);
+  }
 
-    deleteTransactionType(id: number): Observable<any> {
-        return this.http.delete<any>(`${this.apiUrl}/TransactionType/${id}`);
-    }
-    //// Transaction Type API Calls ////
+  updateTransactionType(id: number, transactionType: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/TransactionType/${id}`, transactionType);
+  }
 
-
-    //// income API Calls ////
-    getIncome(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.apiUrl}/Income`);
-    }
-
-    getIncomeByUserId(id: number): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/Income/${id}`);
-    }
-
-    addIncome(income: any): Observable<any> {
-        return this.http.post<any>(`${this.apiUrl}/Income`, income);
-    }
-
-    updateIncome(id: number, income: any): Observable<any> {
-        return this.http.put<any>(`${this.apiUrl}/Income/${id}`, income);
-    }
-
-    deleteIncome(id: number): Observable<any> {
-        return this.http.delete<any>(`${this.apiUrl}/Income/${id}`);
-    }
-    //// income API Calls ////
+  deleteTransactionType(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/TransactionType/${id}`);
+  }
+  //// Transaction Type API Calls ////
 
 
-    //// expense API Calls ////
-    getExpense(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.apiUrl}/Expense`);
-    }
+  //// income API Calls ////
+  getIncome(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Income`);
+  }
 
-    getExpenseByUserId(id: number): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/Expense/${id}`);
-    }
+  getIncomeByUserId(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/Income/${id}`);
+  }
 
-    addExpense(expense: any): Observable<any> {
-        return this.http.post<any>(`${this.apiUrl}/Expense`, expense);
-    }
+  addIncome(income: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/Income`, income);
+  }
 
-    updateExpense(id: number, expense: any): Observable<any> {
-        return this.http.put<any>(`${this.apiUrl}/Expense/${id}`, expense);
-    }
+  updateIncome(id: number, income: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/Income/${id}`, income);
+  }
 
-    deleteExpense(id: number): Observable<any> {
-        return this.http.delete<any>(`${this.apiUrl}/Expense/${id}`);
-    }
-    //// expense API Calls ////
+  deleteIncome(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/Income/${id}`);
+  }
+  //// income API Calls ////
 
 
-    //// income source API Calls ////
-    getIncomeSource(): Observable<any[]> {
-        return this.http.get<any[]>(`${this.apiUrl}/IncomeSource`);
-    }
+  //// expense API Calls ////
+  getExpense(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Expense`);
+  }
 
-    getIncomeSourceById(id: number): Observable<any> {
-        return this.http.get<any>(`${this.apiUrl}/IncomeSource/${id}`);
-    }
+  getExpenseByUserId(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/Expense/${id}`);
+  }
 
-    addIncomeSource(transactionType: any): Observable<any> {
-        return this.http.post<any>(`${this.apiUrl}/IncomeSource`, transactionType);
-    }
+  addExpense(expense: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/Expense`, expense);
+  }
 
-    updateIncomeSource(id: number, transactionType: any): Observable<any> {
-        return this.http.put<any>(`${this.apiUrl}/IncomeSource/${id}`, transactionType);
-    }
+  updateExpense(id: number, expense: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/Expense/${id}`, expense);
+  }
 
-    deleteIncomeSource(id: number): Observable<any> {
-        return this.http.delete<any>(`${this.apiUrl}/IncomeSource/${id}`);
-    }
-    //// income source API Calls ////
+  deleteExpense(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/Expense/${id}`);
+  }
+  //// expense API Calls ////
+
+
+  //// income source API Calls ////
+  getIncomeSource(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/IncomeSource`);
+  }
+
+  getIncomeSourceById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/IncomeSource/${id}`);
+  }
+
+  addIncomeSource(transactionType: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/IncomeSource`, transactionType);
+  }
+
+  updateIncomeSource(id: number, transactionType: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/IncomeSource/${id}`, transactionType);
+  }
+
+  deleteIncomeSource(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/IncomeSource/${id}`);
+  }
+  //// income source API Calls ////
+
+  //// Goal API Calls ////
+  getGoals(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/Goals`);
+  }
+
+  getGoalsById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/Goals/${id}`);
+  }
+
+  createGoal(transactionType: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/Goals`, transactionType);
+  }
+
+  updateGoal(id: number, transactionType: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/Goals/${id}`, transactionType);
+  }
+
+  deleteGoal(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/Goals/${id}`);
+  }
+  //// Goals API Calls ////
 }
