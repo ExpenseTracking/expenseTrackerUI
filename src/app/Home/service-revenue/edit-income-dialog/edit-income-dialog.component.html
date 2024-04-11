@@ -2,7 +2,7 @@
 
 <!-- x button to cancel -->
 <button mat-icon-button matDialogClose>
-    <mat-icon>close</mat-icon>
+    <mat-icon (click)="onCancel()">close</mat-icon>
 </button>
 
 <!-- body of dialog -->
@@ -13,10 +13,10 @@
 
     <!-- select source dropdown -->
     <p class="editDialogField">
-        <button mat-button [matMenuTriggerFor]="menu">{{ incomeSourceName }}</button>
+        <button mat-button [matMenuTriggerFor]="menu">{{ income.incomeSourceName }}</button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item *ngFor="let element of incomeSources"
-                (click)="updateIncomeSourceButton(element.incomeSourceName); incomeSourceId = element.incomeSourceId">
+                (click)="updateIncomeSourceButton(element.incomeSourceName, element.incomeSourceId);">
                 {{ element.incomeSourceName }}
             </button>
         </mat-menu>
@@ -26,7 +26,7 @@
     <p class="editDialogField">
         <mat-form-field>
             <mat-label>Amount $</mat-label>
-            <input matInput type="number" value="{{ incomeAmount }}" [(ngModel)]="incomeAmount">
+            <input matInput type="number" value="{{ income.amount }}" [(ngModel)]="income.amount">
         </mat-form-field>
     </p>
 
@@ -34,7 +34,7 @@
     <p class="editDialogField">
         <mat-form-field>
             <mat-label>Date</mat-label>
-            <input matInput type="date" value="{{ incomeDate }}" [(ngModel)]="incomeDate">
+            <input matInput type="date" value="{{ income.date }}" [(ngModel)]="income.date">
         </mat-form-field>
     </p>
 
@@ -42,13 +42,13 @@
     <p class="editDialogField">
         <mat-form-field>
             <mat-label>Description</mat-label>
-            <input matInput type="text" value="{{ incomeDescription }}" placeholder="Description"
-                [(ngModel)]="incomeDescription">
+            <input matInput type="text" value="{{ income.description }}" placeholder="Description"
+                [(ngModel)]="income.description">
         </mat-form-field>
     </p>
 </mat-dialog-content>
 
 <!-- confirm actions -->
 <mat-dialog-actions align="end">
-    <button mat-raised-button color="accent" (click)="onConfirmIncome()">Update</button>
+    <button mat-raised-button color="accent" (click)="onConfirm()">Update</button>
 </mat-dialog-actions>
