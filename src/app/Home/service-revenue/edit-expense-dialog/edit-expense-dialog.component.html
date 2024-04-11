@@ -1,7 +1,7 @@
 <!-- edit expense dialog -->
 <!-- x button to cancel -->
 <button mat-icon-button matDialogClose>
-    <mat-icon>close</mat-icon>
+    <mat-icon (click)="onCancel()">close</mat-icon>
 </button>
 
 <!-- body of dialog -->
@@ -10,12 +10,12 @@
         <h1><strong>Edit expense</strong></h1>
     </header>
 
-    <!-- select source dropdown -->
+    <!-- select transaction type dropdown -->
     <p class="editDialogField">
-        <button mat-button [matMenuTriggerFor]="menu">{{ expenseTypeName }}</button>
+        <button mat-button [matMenuTriggerFor]="menu">{{ expense.transactionTypeName }}</button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item *ngFor="let element of transactionTypes"
-                (click)="updateExpenseTypeButton(element.transactionTypeName); expenseTypeId = element.transactionTypeId">
+                (click)="updateExpenseTypeButton(element.transactionTypeName, element.transactionTypeId);">
                 {{ element.transactionTypeName }}
             </button>
         </mat-menu>
@@ -25,7 +25,7 @@
     <p class="editDialogField">
         <mat-form-field>
             <mat-label>Amount $</mat-label>
-            <input matInput type="number" value="{{ expenseAmount }}" [(ngModel)]="expenseAmount">
+            <input matInput type="number" value="{{ expense.amount }}" [(ngModel)]="expense.amount">
         </mat-form-field>
     </p>
 
@@ -33,7 +33,7 @@
     <p class="editDialogField">
         <mat-form-field>
             <mat-label>Date</mat-label>
-            <input matInput type="date" value="{{ expenseDate }}" [(ngModel)]="expenseDate">
+            <input matInput type="date" value="{{ expense.date }}" [(ngModel)]="expense.date">
         </mat-form-field>
     </p>
 
@@ -41,19 +41,12 @@
     <p class="editDialogField">
         <mat-form-field>
             <mat-label>Description</mat-label>
-            <input matInput type="text" value="{{ expenseDescription }}" [(ngModel)]="expenseDescription">
+            <input matInput type="text" value="{{ expense.description }}" [(ngModel)]="expense.description">
         </mat-form-field>
     </p>
-
-    <!-- recurring checkbox option -->
-    <!-- <p class="editDialogField">
-            <mat-checkbox>
-                Recurring
-            </mat-checkbox>
-        </p> -->
 </mat-dialog-content>
 
 <!-- confirm actions -->
 <mat-dialog-actions align="end">
-    <button mat-raised-button color="accent" (click)="onConfirmExpense()">Update</button>
+    <button mat-raised-button color="accent" (click)="onConfirm()">Update</button>
 </mat-dialog-actions>

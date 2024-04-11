@@ -1,5 +1,5 @@
 export interface Income {
-    'incomeId': number,
+    'incomeId'?: number,
     'userId': number,
     'incomeSourceId': number,
     'amount': number,

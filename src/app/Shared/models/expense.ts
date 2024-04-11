@@ -1,5 +1,5 @@
 export interface Expense {
-    'expenseId': number,
+    'expenseId'?: number,
     'userId': number,
     'transactionTypeId': number,
     'amount': number,

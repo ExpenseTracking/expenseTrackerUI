@@ -9,8 +9,8 @@ import { environment } from "../../enviornments/enviornment";
 })
 
 export class ApiService {
-    constructor(private http: HttpClient) {}
-    
+    constructor(private http: HttpClient) { }
+
     apiUrl = environment.api_url;
 
     //// Transaction Type API Calls ////
@@ -125,4 +125,26 @@ export class ApiService {
         return this.http.delete<any>(`${this.apiUrl}/User/${id}`);
     }
     //// User API Calls ////
+
+    //// Goal API Calls ////
+    getGoals(): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/Goals`);
+    }
+
+    getGoalsById(id: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/Goals/${id}`);
+    }
+
+    createGoal(transactionType: any): Observable<any> {
+        return this.http.post<any>(`${this.apiUrl}/Goals`, transactionType);
+    }
+
+    updateGoal(id: number, transactionType: any): Observable<any> {
+        return this.http.put<any>(`${this.apiUrl}/Goals/${id}`, transactionType);
+    }
+
+    deleteGoal(id: number): Observable<any> {
+        return this.http.delete<any>(`${this.apiUrl}/Goals/${id}`);
+    }
+    //// Goals API Calls ////
 }

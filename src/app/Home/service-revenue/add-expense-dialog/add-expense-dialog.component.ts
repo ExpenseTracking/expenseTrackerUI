@@ -2,14 +2,21 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 import { ApiService } from '../../../Shared/app.service';
-import { transactionType } from "../../../Shared/models"
+import { Expense, transactionType } from "../../../Shared/models"
 
 @Component({
-  selector: 'app-add-expense-dialog',
-  templateUrl: './add-expense-dialog.component.html',
-  styleUrl: './add-expense-dialog.component.css'
+    selector: 'app-add-expense-dialog',
+    templateUrl: './add-expense-dialog.component.html',
+    styleUrl: './add-expense-dialog.component.css'
 })
 export class AddExpenseDialogComponent implements OnInit {
+    // temp variables for new expense details
+    userId: number = 3;
+    transactionTypeId: number = 0;
+    amount: number = 0;
+    date!: Date;
+    description: string = '';
+
     constructor(private apiService: ApiService,
         private dialogRef: MatDialogRef<AddExpenseDialogComponent>) { }
 
@@ -27,23 +34,38 @@ export class AddExpenseDialogComponent implements OnInit {
     expenseTypeButton = 'Select expense type';
 
     // function to update value of expense button string
-    updateExpenseTypeButton(source: string): void {
-        this.expenseTypeButton = source;
+    updateExpenseTypeButton(typeName: string, typeId?: number): void {
+        this.expenseTypeButton = typeName;
+        this.transactionTypeId = typeId !== undefined ? typeId : 0;
     }
 
-    // object to hold new expense details
-    expenseDetails = {
-        userId: 3,
-        transactionTypeId: 0,
-        amount: 0,
-        date: 0,
-        description: '',
-        action: ''
-    };
+    // close dialog and send new expense back if user data is valid
+    onConfirm(): void {
+        if (this.transactionTypeId != 0 &&
+            this.amount != 0 &&
+            this.description.trim() !== '' &&
+            this.date) {
 
-    // close dialog and send back 'create' to page
-    onConfirmExpense(): void {
-        this.expenseDetails.action = 'createExpense';
-        this.dialogRef.close(this.expenseDetails);
+            const newExpense: Expense = {
+                userId: this.userId,
+                transactionTypeId: this.transactionTypeId,
+                amount: this.amount,
+                date: this.date,
+                description: this.description,
+                createdAt: new Date,
+                updatedAt: new Date,
+                deletedAt: new Date,
+                isDeleted: false,
+                transactionTypeName: '',
+                userName: ''
+            };
+
+            this.dialogRef.close(newExpense);
+        }
+    }
+
+    // if user cancels add operation
+    onCancel(): void {
+        this.dialogRef.close();
     }
 }
