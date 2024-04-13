@@ -20,7 +20,6 @@ import { AppComponent } from './app.component';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
 import { CompanyHomePageComponent } from './Home/company-home-page/company-home-page.component';
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
-import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
 import { CompanyReviewsComponent } from './Home/company-reviews/company-reviews.component';
 import { ServiceDashboardComponent } from './Home/service-dashboard/service-dashboard.component';
 import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.component';
@@ -39,6 +38,7 @@ import { GoalsComponent } from './Home/goals/goals.component';
 import { DeleteGoalDialogComponent } from './Home/goals/delete-goal-dialog/delete-goal-dialog.component';
 import { EditGoalDialogComponent } from './Home/goals/edit-goal-dialog/edit-goal-dialog.component';
 import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/create-goal-dialog.component';
+import { FooterComponent } from './Home/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +46,7 @@ import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/creat
     TransactionTypeComponent,
     CompanyHomePageComponent,
     CompanyNavbarComponent,
-    CompanyFooterComponent,
+    FooterComponent,
     CompanyReviewsComponent,
     ServiceDashboardComponent,
     ServiceRevenueComponent,
