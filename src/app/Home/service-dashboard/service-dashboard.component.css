@@ -3,14 +3,6 @@
     border-width: 3px;
 }
 
-#netWorthCard{
-    min-height: 25vh;
-}
-
-#revenueCard{
-    min-height: 25vh;
-}
-
 .title{
     color: white;
 }
