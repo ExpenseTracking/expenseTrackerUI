@@ -54,7 +54,7 @@ export class AddIncomeDialogComponent implements OnInit {
                 amount: this.amount,
                 date: this.date,
                 description: this.description,
-                CreatedAt: new Date,
+                createdAt: new Date,
                 updatedAt: new Date,
                 deletedAt: new Date,
                 isDeleted: false,

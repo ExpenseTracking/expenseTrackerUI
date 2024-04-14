@@ -16,22 +16,22 @@ import { GoalsComponent } from './Home/goals/goals.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/companyHome', pathMatch: 'full' },
-    { path: 'companyHome', component: CompanyHomePageComponent},
-    { path: 'companyNav', component: CompanyNavbarComponent},
-    { path: 'companyFooter', component: CompanyFooterComponent},
-    { path: 'companyReviews', component: CompanyReviewsComponent},
+    { path: 'companyHome', component: CompanyHomePageComponent },
+    { path: 'companyNav', component: CompanyNavbarComponent },
+    { path: 'companyFooter', component: CompanyFooterComponent },
+    { path: 'companyReviews', component: CompanyReviewsComponent },
     { path: 'transactionType', component: TransactionTypeComponent },
-    { path: 'dashboard', component: ServiceDashboardComponent},
-    { path: 'revenue', component: ServiceRevenueComponent},
+    { path: 'dashboard', component: ServiceDashboardComponent },
+    { path: 'revenue', component: ServiceRevenueComponent },
     { path: 'profile', component: ProfilePageComponent },
     { path: 'about', component: AboutPageComponent },
-    { path: 'faqs', component: FAQPageComponent},
-    { path: 'deleteRevenue', component: DeleteRevenueDialogComponent},
-    { path: 'goals', component: GoalsComponent}
-  ];
+    { path: 'faqs', component: FAQPageComponent },
+    { path: 'deleteRevenue', component: DeleteRevenueDialogComponent },
+    { path: 'goals', component: GoalsComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
