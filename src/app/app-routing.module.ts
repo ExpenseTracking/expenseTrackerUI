@@ -21,17 +21,17 @@ const routes: Routes = [
     { path: 'footer', component: FooterComponent},
     { path: 'companyReviews', component: CompanyReviewsComponent},
     { path: 'transactionType', component: TransactionTypeComponent },
-    { path: 'dashboard', component: ServiceDashboardComponent},
-    { path: 'revenue', component: ServiceRevenueComponent},
+    { path: 'dashboard', component: ServiceDashboardComponent },
+    { path: 'revenue', component: ServiceRevenueComponent },
     { path: 'profile', component: ProfilePageComponent },
     { path: 'about', component: AboutPageComponent },
-    { path: 'faqs', component: FAQPageComponent},
-    { path: 'deleteRevenue', component: DeleteRevenueDialogComponent},
-    { path: 'goals', component: GoalsComponent}
-  ];
+    { path: 'faqs', component: FAQPageComponent },
+    { path: 'deleteRevenue', component: DeleteRevenueDialogComponent },
+    { path: 'goals', component: GoalsComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
