@@ -14,6 +14,7 @@ import { MatTableModule} from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DatePipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
  import { AppRoutingModule } from './app-routing.module';
@@ -39,6 +40,8 @@ import { GoalsComponent } from './Home/goals/goals.component';
 import { DeleteGoalDialogComponent } from './Home/goals/delete-goal-dialog/delete-goal-dialog.component';
 import { EditGoalDialogComponent } from './Home/goals/edit-goal-dialog/edit-goal-dialog.component';
 import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/create-goal-dialog.component';
+import { LoginComponent } from './Home/login/login.component';
+import { SignupComponent } from './Home/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,9 @@ import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/creat
     GoalsComponent,
     DeleteGoalDialogComponent,
     EditGoalDialogComponent,
-    CreateGoalDialogComponent
+    CreateGoalDialogComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +84,8 @@ import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/creat
     MatDialogModule,
     MatTableModule,
     MatGridListModule,
-    MatIconButton
+    MatIconButton,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync(),

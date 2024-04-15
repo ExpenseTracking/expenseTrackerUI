@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 import { environment } from "../../enviornments/enviornment";
+import { user, transactionType } from "./models";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,12 @@ export class ApiService {
 
   apiUrl = environment.api_url;
 
+  //// Authentication API Call ////
+  authenticateUser(user: user): Observable<user> {
+    return this.http.post<user>(`${this.apiUrl}/Authetication`, user)
+  }
+  //// Authentication API Call ////
+
   //// Transaction Type API Calls ////
   getTransactionType(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/TransactionType`);
@@ -22,7 +29,7 @@ export class ApiService {
     return this.http.get<any>(`${this.apiUrl}/TransactionType/${id}`);
   }
 
-  addTransactionType(transactionType: any): Observable<any> {
+  addTransactionType(transactionType: transactionType): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/TransactionType`, transactionType);
   }
 
@@ -34,7 +41,6 @@ export class ApiService {
     return this.http.delete<any>(`${this.apiUrl}/TransactionType/${id}`);
   }
   //// Transaction Type API Calls ////
-
 
   //// income API Calls ////
   getIncome(): Observable<any[]> {
@@ -58,7 +64,6 @@ export class ApiService {
   }
   //// income API Calls ////
 
-
   //// expense API Calls ////
   getExpense(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/Expense`);
@@ -81,7 +86,6 @@ export class ApiService {
   }
   //// expense API Calls ////
 
-
   //// income source API Calls ////
   getIncomeSource(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/IncomeSource`);
@@ -103,6 +107,28 @@ export class ApiService {
     return this.http.delete<any>(`${this.apiUrl}/IncomeSource/${id}`);
   }
   //// income source API Calls ////
+
+  //// User API Calls ////
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/User`);
+  }
+
+  getUserByUserId(id: number): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/User/${id}`);
+  }
+
+  addUser(newUser: any): Observable<any> {
+      return this.http.post<any>(`${this.apiUrl}/User`, newUser);
+  }
+
+  updateUser(user: any): Observable<any> {
+      return this.http.put<any>(`${this.apiUrl}/User`, user);
+  }
+
+  deleteUser(id: number): Observable<any> {
+      return this.http.delete<any>(`${this.apiUrl}/User/${id}`);
+  }
+  //// User API Calls ////
 
   //// Goal API Calls ////
   getGoals(): Observable<any[]> {
