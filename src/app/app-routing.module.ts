@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CompanyHomePageComponent } from './Home/company-home-page/company-home-page.component';
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
-import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
 import { CompanyReviewsComponent } from './Home/company-reviews/company-reviews.component';
 import { ServiceDashboardComponent } from './Home/service-dashboard/service-dashboard.component';
@@ -16,6 +15,7 @@ import { GoalsComponent } from './Home/goals/goals.component';
 import { LoginComponent } from './Home/login/login.component';
 import { AuthGuard } from './Shared/auth.guard';
 import { SignupComponent } from './Home/signup/signup.component';
+import { FooterComponent } from './Home/footer/footer.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/companyHome', pathMatch: 'full' },
@@ -23,7 +23,7 @@ const routes: Routes = [
     { path: 'signup', component: SignupComponent},
     { path: 'companyHome', component: CompanyHomePageComponent},
     { path: 'companyNav', component: CompanyNavbarComponent},
-    { path: 'companyFooter', component: CompanyFooterComponent},
+    { path: 'footer', component: FooterComponent},
     { path: 'companyReviews', component: CompanyReviewsComponent},
     { path: 'transactionType', component: TransactionTypeComponent, canActivate: [AuthGuard]},
     { path: 'dashboard', component: ServiceDashboardComponent, canActivate: [AuthGuard]},
@@ -36,7 +36,7 @@ const routes: Routes = [
   ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

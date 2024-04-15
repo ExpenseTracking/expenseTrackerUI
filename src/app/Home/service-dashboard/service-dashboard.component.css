@@ -1,10 +1,17 @@
-#moneyText {
-    font-size: large; 
-    font-weight: 700; 
-    color: #6f9460;
-    margin: auto;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+.mat-divider {
+    border-top-color: #FFD700;
+    border-width: 3px;
+}
+
+.title{
+    color: white;
+}
+
+.moneyValue{
+    font-size: larger;
+}
+
+.infoText{
+    color: white;
+    font-size: large;
 }

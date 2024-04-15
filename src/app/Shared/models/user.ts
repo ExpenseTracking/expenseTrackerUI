@@ -8,4 +8,3 @@ export interface user {
     'UpdatedAt'?: Date,
     'DeletedAt'?: Date,
     'IsDeleted'?: boolean
-}
