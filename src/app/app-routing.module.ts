@@ -12,23 +12,28 @@ import { FAQPageComponent } from './Home/faq-page/faq-page.component';
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
 import { ProfilePageComponent } from './Home/profile-page/profile-page.component';
 import { GoalsComponent } from './Home/goals/goals.component';
+import { LoginComponent } from './Home/login/login.component';
+import { AuthGuard } from './Shared/auth.guard';
+import { SignupComponent } from './Home/signup/signup.component';
 import { FooterComponent } from './Home/footer/footer.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/companyHome', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent},
+    { path: 'signup', component: SignupComponent},
     { path: 'companyHome', component: CompanyHomePageComponent},
     { path: 'companyNav', component: CompanyNavbarComponent},
     { path: 'footer', component: FooterComponent},
     { path: 'companyReviews', component: CompanyReviewsComponent},
-    { path: 'transactionType', component: TransactionTypeComponent },
-    { path: 'dashboard', component: ServiceDashboardComponent },
-    { path: 'revenue', component: ServiceRevenueComponent },
-    { path: 'profile', component: ProfilePageComponent },
-    { path: 'about', component: AboutPageComponent },
-    { path: 'faqs', component: FAQPageComponent },
-    { path: 'deleteRevenue', component: DeleteRevenueDialogComponent },
-    { path: 'goals', component: GoalsComponent }
-];
+    { path: 'transactionType', component: TransactionTypeComponent, canActivate: [AuthGuard]},
+    { path: 'dashboard', component: ServiceDashboardComponent, canActivate: [AuthGuard]},
+    { path: 'revenue', component: ServiceRevenueComponent, canActivate: [AuthGuard]},
+    { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
+    { path: 'about', component: AboutPageComponent},
+    { path: 'faqs', component: FAQPageComponent},
+    { path: 'deleteRevenue', component: DeleteRevenueDialogComponent, canActivate: [AuthGuard]},
+    { path: 'goals', component: GoalsComponent, canActivate: [AuthGuard]}
+  ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

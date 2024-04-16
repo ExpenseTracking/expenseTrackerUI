@@ -1,11 +1,11 @@
-export interface User{
-    'userId': number,
-    'username': string,
-    'password': string,
-    'email': string,
-    'roldId': number,
-    'createdAt': Date,
-    'updatedAt': Date,
-    'deletedAt': Date,
-    'isDeleted': boolean,
+export interface user {
+    'UserId'?: number,
+    'Username': string,
+    'Password': string,
+    'Email'?: string,
+    'RoleId'?: number,
+    'CreatedAt'?: Date,
+    'UpdatedAt'?: Date,
+    'DeletedAt'?: Date,
+    'IsDeleted'?: boolean
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -41,57 +41,62 @@ import { GoalsComponent } from './Home/goals/goals.component';
 import { DeleteGoalDialogComponent } from './Home/goals/delete-goal-dialog/delete-goal-dialog.component';
 import { EditGoalDialogComponent } from './Home/goals/edit-goal-dialog/edit-goal-dialog.component';
 import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/create-goal-dialog.component';
+import { LoginComponent } from './Home/login/login.component';
+import { SignupComponent } from './Home/signup/signup.component';
 import { FooterComponent } from './Home/footer/footer.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        TransactionTypeComponent,
-        CompanyHomePageComponent,
-        CompanyNavbarComponent,
-        FooterComponent,
-        CompanyReviewsComponent,
-        ServiceDashboardComponent,
-        ServiceRevenueComponent,
-        AboutPageComponent,
-        FAQPageComponent,
-        DeleteRevenueDialogComponent,
-        ProfilePageComponent,
-        IncomeComponent,
-        ExpenseComponent,
-        AddIncomeDialogComponent,
-        AddExpenseDialogComponent,
-        EditIncomeDialogComponent,
-        EditExpenseDialogComponent,
-        GoalsComponent,
-        DeleteGoalDialogComponent,
-        EditGoalDialogComponent,
-        CreateGoalDialogComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        MatMenuModule,
-        MatCheckboxModule,
-        MatButtonModule,
-        MatIconModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDialogModule,
-        MatTableModule,
-        MatGridListModule,
-        MatIconButton,
-        MatDividerModule,
-        MatListModule,
-        MatCardModule,
-        MatCardContent
-    ],
-    providers: [
-        provideAnimationsAsync(),
-        DatePipe
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    TransactionTypeComponent,
+    CompanyHomePageComponent,
+    CompanyNavbarComponent,
+    FooterComponent,
+    CompanyReviewsComponent,
+    ServiceDashboardComponent,
+    ServiceRevenueComponent,
+    AboutPageComponent,
+    FAQPageComponent,
+    DeleteRevenueDialogComponent,
+    ProfilePageComponent,
+    IncomeComponent,
+    ExpenseComponent,
+    AddIncomeDialogComponent,
+    AddExpenseDialogComponent,
+    EditIncomeDialogComponent,
+    EditExpenseDialogComponent,
+    GoalsComponent,
+    DeleteGoalDialogComponent,
+    EditGoalDialogComponent,
+    CreateGoalDialogComponent,
+    LoginComponent,
+    SignupComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MatMenuModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatTableModule,
+    MatGridListModule,
+    MatIconButton,
+    MatCardModule,
+    MatCardContent,
+    MatDividerModule,
+    MatListModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    provideAnimationsAsync(),
+    DatePipe
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
