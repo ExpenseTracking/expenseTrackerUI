@@ -16,7 +16,7 @@ export class ApiService {
 
   //// Authentication API Call ////
   authenticateUser(user: user): Observable<user> {
-    return this.http.post<user>(`${this.apiUrl}/Authetication`, user)
+    return this.http.post<user>(`${this.apiUrl}/Authentication`, user)
   }
   //// Authentication API Call ////
 
