@@ -18,7 +18,9 @@ export class LoginComponent {
     private apiService: ApiService, 
     private authService: AuthService, 
     private router: Router
-  ) {}
+  ) {
+    this.user = { Username: '', Password: ''};
+  }
 
   login(): void {
     this.apiService.authenticateUser(this.user).subscribe(
