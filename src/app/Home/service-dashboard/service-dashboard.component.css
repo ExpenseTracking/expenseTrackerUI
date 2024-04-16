@@ -3,15 +3,10 @@
     border-width: 3px;
 }
 
-.title{
-    color: white;
-}
-
 .moneyValue{
     font-size: larger;
 }
 
 .infoText{
-    color: white;
     font-size: large;
 }

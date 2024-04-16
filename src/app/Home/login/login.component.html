@@ -5,10 +5,10 @@
     <mat-card-content>
       <form (ngSubmit)="login()">
         <mat-form-field class="full-width">
-          <input matInput placeholder="Username" [(ngModel)]="user.Username" name="sername" required>
+          <input matInput placeholder="Username" [(ngModel)]="user.username" name="sername" required>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input matInput type="password" placeholder="Password" [(ngModel)]="user.Password" name="password" required>
+          <input matInput type="password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
         </mat-form-field>
         <button mat-raised-button color="primary" type="submit" class="full-width">Login</button>
         <div *ngIf="errorMessage.length > 0" class="error-message">{{errorMessage}}</div>
