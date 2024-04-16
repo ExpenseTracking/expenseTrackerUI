@@ -1,26 +1,28 @@
 import { NgModule } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DatePipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatCardContent, MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
- import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
 import { CompanyHomePageComponent } from './Home/company-home-page/company-home-page.component';
 import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
-import { CompanyFooterComponent } from './Home/company-footer/company-footer.component';
 import { CompanyReviewsComponent } from './Home/company-reviews/company-reviews.component';
 import { ServiceDashboardComponent } from './Home/service-dashboard/service-dashboard.component';
 import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.component';
@@ -39,6 +41,9 @@ import { GoalsComponent } from './Home/goals/goals.component';
 import { DeleteGoalDialogComponent } from './Home/goals/delete-goal-dialog/delete-goal-dialog.component';
 import { EditGoalDialogComponent } from './Home/goals/edit-goal-dialog/edit-goal-dialog.component';
 import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/create-goal-dialog.component';
+import { LoginComponent } from './Home/login/login.component';
+import { SignupComponent } from './Home/signup/signup.component';
+import { FooterComponent } from './Home/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,7 @@ import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/creat
     TransactionTypeComponent,
     CompanyHomePageComponent,
     CompanyNavbarComponent,
-    CompanyFooterComponent,
+    FooterComponent,
     CompanyReviewsComponent,
     ServiceDashboardComponent,
     ServiceRevenueComponent,
@@ -63,7 +68,9 @@ import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/creat
     GoalsComponent,
     DeleteGoalDialogComponent,
     EditGoalDialogComponent,
-    CreateGoalDialogComponent
+    CreateGoalDialogComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +86,12 @@ import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/creat
     MatDialogModule,
     MatTableModule,
     MatGridListModule,
-    MatIconButton
+    MatIconButton,
+    MatCardModule,
+    MatCardContent,
+    MatDividerModule,
+    MatListModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync(),
