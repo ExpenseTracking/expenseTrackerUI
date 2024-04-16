@@ -8,8 +8,15 @@
             <mat-card-header>
                 <mat-card-title class="title">
                     <h2>
-                        Net-Worth: <div style="color: #78b95e;" class="moneyValue">${{ (totalIncome - totalExpenses) |
-                            number:'1.2-2' }}</div>
+                        <div *ngIf="totalIncome - totalExpenses >= 0; then positiveNetWorth else negativeNetWorth"></div>
+                        <ng-template #positiveNetWorth>
+                            Net-Worth: <div style="color: #78b95e;" class="moneyValue">${{ (totalIncome - totalExpenses)
+                                | number:'1.2-2' }}</div>
+                        </ng-template>
+                        <ng-template #negativeNetWorth>
+                            Net-Worth: <div style="color: rgb(248, 79, 79);" class="moneyValue">${{ (totalIncome - totalExpenses)
+                                | number:'1.2-2' }}</div>
+                        </ng-template>
                     </h2>
                 </mat-card-title>
             </mat-card-header>
