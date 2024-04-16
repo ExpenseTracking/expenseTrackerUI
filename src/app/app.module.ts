@@ -88,7 +88,9 @@ import { FooterComponent } from './Home/footer/footer.component';
     MatGridListModule,
     MatIconButton,
     MatCardModule,
-    MatCardContent
+    MatCardContent,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [
     provideAnimationsAsync(),

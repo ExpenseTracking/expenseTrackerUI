@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from '../../Shared/app.service';
-import { Income, Expense, User } from '../../Shared/models';
+import { Income, Expense, user } from '../../Shared/models';
 
 @Component({
     selector: 'app-service-dashboard',
@@ -14,7 +14,7 @@ export class ServiceDashboardComponent implements OnInit {
     // income, expense, and user data storage
     expense: Expense[] = [];
     income: Income[] = [];
-    user: User[] = [];
+    user: user[] = [];
 
     // to hold totals
     totalIncome: number = 0;
@@ -22,7 +22,7 @@ export class ServiceDashboardComponent implements OnInit {
 
     ngOnInit() {
         // get user info
-        this.apiService.getUserByUserId(3).subscribe((userData: User[]) => {
+        this.apiService.getUserByUserId(3).subscribe((userData: user[]) => {
             this.user = userData;
 
             // check if user data is available
