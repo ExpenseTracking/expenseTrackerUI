@@ -19,7 +19,6 @@ export class ServiceDashboardComponent implements OnInit {
     constructor(private apiService: ApiService, private authService: AuthService) {
         // get user info
         this.user = authService.getUser();
-        console.log(this.user);
     }
 
     // to hold totals

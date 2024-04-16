@@ -4,63 +4,70 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 import { ApiService } from '../../../Shared/app.service';
 import { Goal } from '../../../Shared/models/goal';
+import { user } from '../../../Shared/models';
 
 @Component({
-  selector: 'app-edit-goal-dialog',
-  templateUrl: './edit-goal-dialog.component.html',
-  styleUrl: './edit-goal-dialog.component.css'
+    selector: 'app-edit-goal-dialog',
+    templateUrl: './edit-goal-dialog.component.html',
+    styleUrl: './edit-goal-dialog.component.css'
 })
 export class EditGoalDialogComponent {
-  //data variable to hold incoming string argument
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private apiService: ApiService,
-    private dialogRef: MatDialogRef<EditGoalDialogComponent>
-  ) { }
+    row: any;
+    user: user;
 
-  //pull and hold data from API
-  goal: Goal[] = [];
+    //data variable to hold incoming arguments
+    constructor(
+        @Inject(MAT_DIALOG_DATA) public data: any,
+        private apiService: ApiService,
+        private dialogRef: MatDialogRef<EditGoalDialogComponent>
+    ) {
+        this.row = data.row;
+        this.user = data.user;
+    }
 
-  //variables to store incoming details
-  goalDescription!: string;
-  goalDate!: Date;
-  goalDeadline!: Date;
-  isCompleted!: boolean;
+    //pull and hold data from API
+    goal: Goal[] = [];
 
-  ngOnInit() {
+    // variables to store incoming details
+    goalDescription!: string;
+    goalDate!: Date;
+    goalDeadline!: Date;
+    isCompleted!: boolean;
 
-    //goals data
-    this.apiService.getGoalsById(3).subscribe((data: Goal[]) => {
-      this.goal = data;
+    ngOnInit() {
 
-      //data for goal properties
-      for (let goalItem of this.goal) {
-        if (goalItem.goalId == this.data.row) {
-          this.goalDescription = goalItem.description;
-          this.goalDate = goalItem.date;
-          this.goalDeadline = goalItem.deadline;
-          this.isCompleted = goalItem.isCompleted;
-        }
-      }
-    });
-  }
+        //goals data
+        this.apiService.getGoalsById(this.user.userId).subscribe((data: Goal[]) => {
+            this.goal = data;
 
-  //update completed status button
-  updateCompleted(source: boolean): void {
-    this.isCompleted = source;
-  }
+            //data for goal properties
+            for (let goalItem of this.goal) {
+                if (goalItem.goalId == this.data.row) {
+                    this.goalDescription = goalItem.description;
+                    this.goalDate = goalItem.date;
+                    this.goalDeadline = goalItem.deadline;
+                    this.isCompleted = goalItem.isCompleted;
+                }
+            }
+        });
+    }
 
-  //close dialog and send back 'updateGoal' to page
-  onConfirmGoal(): void {
-    const goalDetails = {
-      goalId: this.data.row,
-      userId: 3,
-      description: this.goalDescription,
-      deadline: this.goalDeadline,
-      date: this.goalDate,
-      isCompleted: this.isCompleted,
-      action: 'updateGoal'
-    };
-    this.dialogRef.close(goalDetails);
-  }
+    //update completed status button
+    updateCompleted(source: boolean): void {
+        this.isCompleted = source;
+    }
+
+    //close dialog and send back 'updateGoal' to page
+    onConfirmGoal(): void {
+        const goalDetails = {
+            goalId: this.data.row,
+            userId: this.user.userId,
+            description: this.goalDescription,
+            deadline: this.goalDeadline,
+            date: this.goalDate,
+            isCompleted: this.isCompleted,
+            action: 'updateGoal'
+        };
+        this.dialogRef.close(goalDetails);
+    }
 }
