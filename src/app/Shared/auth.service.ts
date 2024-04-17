@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable, map } from "rxjs";
 
 import { user } from './models';
 
@@ -7,19 +8,22 @@ import { user } from './models';
 })
 
 export class AuthService {
-    currUser: user;
+    private currentUserSubject: BehaviorSubject<user | null> = new BehaviorSubject<user | null>(null);
+    public currentUser$: Observable<user | null> = this.currentUserSubject.asObservable();
  
     constructor() {}
 
     setUser(user: user): void {
-        this.currUser = user;
+        this.currentUserSubject.next(user);
     }
 
-    getUser(): user {
-        return this.currUser;
+    getUser(): Observable<user | null> {
+        return this.currentUser$;
     }
 
-    isAuthenticated(): boolean {
-        return !!this.currUser;
+    isAuthenticated(): Observable<boolean> {
+        return this.currentUser$.pipe(
+            map(user => !!user)
+        );
     }
 }
