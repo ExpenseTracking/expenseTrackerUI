@@ -34,8 +34,8 @@ export class ApiService {
     return this.http.post<any>(`${this.apiUrl}/TransactionType`, transactionType);
   }
 
-  updateTransactionType(id: number, transactionType: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/TransactionType/${id}`, transactionType);
+  updateTransactionType(transactionType: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/TransactionType`, transactionType);
   }
 
   deleteTransactionType(id: number): Observable<any> {

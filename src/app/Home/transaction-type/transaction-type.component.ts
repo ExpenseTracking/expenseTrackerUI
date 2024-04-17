@@ -24,7 +24,7 @@ export class TransactionTypeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.apiService.getTransactionTypeByUserId(this.userid).subscribe((data: transactionType[]) => {
+    this.apiService.getTransactionTypeById(this.userid).subscribe((data: transactionType[]) => {
       this.transactionTypes = data;
     })
   }
@@ -36,7 +36,7 @@ export class TransactionTypeComponent implements OnInit {
       if (result) {
         this.apiService.deleteTransactionType(transactionTypeId)
         .subscribe(() => {
-          this.apiService.getTransactionTypeByUserId(this.userid)
+          this.apiService.getTransactionTypeById(this.userid)
           .subscribe(updatedTransactionTypes => {
             this.transactionTypes = updatedTransactionTypes;
 
@@ -54,7 +54,7 @@ export class TransactionTypeComponent implements OnInit {
       if (result) {
         this.apiService.addTransactionType(result)
         .subscribe(() => {
-          this.apiService.getTransactionTypeByUserId(this.userid)
+          this.apiService.getTransactionTypeById(this.userid)
           .subscribe(updatedTransactionTypes => {
             this.transactionTypes = updatedTransactionTypes;
 
@@ -75,7 +75,7 @@ export class TransactionTypeComponent implements OnInit {
       if (result) {
         this.apiService.updateTransactionType(result)
         .subscribe(() => {
-          this.apiService.getTransactionTypeByUserId(this.userid)
+          this.apiService.getTransactionTypeById(this.userid)
           .subscribe(updatedTransactionTypes => {
             this.transactionTypes = updatedTransactionTypes;
 
