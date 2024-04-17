@@ -9,35 +9,165 @@
 <body>
   <div class="calculator"> <!-- Container for the calculator -->
     <h2>Retirement Calculator</h2> <!-- Heading for the calculator -->
-    <form [formGroup]="retirementForm" (ngSubmit)="calculateRetirement()"> <!-- Form for input fields, calls function to display retirement results on submit -->
-      <mat-form-field appearance="fill"> 
-        <mat-label>Current Age</mat-label> <!-- Label for the input field -->
-        <input matInput formControlName="currentAge" type="number" required> <!-- Input field for current age -->
-      </mat-form-field>
 
-      <mat-form-field appearance="fill"> <!-- Angular Material form field -->
-        <mat-label>Retirement Age</mat-label> <!-- Label for the input field -->
-        <input matInput formControlName="retirementAge" type="number" required> <!-- Input field for retirement age -->
-      </mat-form-field>
+    <!-- Form for input fields, calls function to display retirement results on submit -->
+    <form [formGroup]="retirementForm">
+      
+      <!-- Age input field -->
+      <div class="form-group">
+        <label for="age">Age</label>
+        <mat-form-field appearance="fill"> 
+          <!-- Input field for age -->
+          <input matInput formControlName="age" id="age" type="number" required>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field appearance="fill"> <!-- Angular Material form field -->
-        <mat-label>Annual Income</mat-label> <!-- Label for the input field -->
-        <input matInput formControlName="annualIncome" type="number" required> <!-- Input field for annual income -->
-      </mat-form-field>
+      <!-- Annual Pre-tax Income input field -->
+      <div class="form-group">
+        <label for="annualPreTaxIncome">Annual Pre-tax Income</label>
+        <mat-form-field appearance="fill"> 
+          <!-- Add dollar sign prefix -->
+          <span matPrefix class="dollar-sign">$&nbsp;</span>
+          <!-- Input field for annual pre-tax income -->
+          <input matInput formControlName="annualPreTaxIncome" id="annualPreTaxIncome" type="number" required>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field appearance="fill"> <!-- Angular Material form field -->
-        <mat-label>Current Savings</mat-label> <!-- Label for the input field -->
-        <input matInput formControlName="savings" type="number" required> <!-- Input field for current savings -->
-      </mat-form-field>
+      <!-- Current Retirement Savings input field -->
+      <div class="form-group">
+        <label for="currentRetirementSavings">Current Retirement Savings</label>
+        <mat-form-field appearance="fill"> 
+          <!-- Add dollar sign prefix -->
+          <span matPrefix class="dollar-sign">$&nbsp;</span>
+          <!-- Input field for current retirement savings -->
+          <input matInput formControlName="currentRetirementSavings" id="currentRetirementSavings" type="number" required>
+        </mat-form-field>
+      </div>
 
-      <button mat-raised-button color="primary" type="submit">Calculate</button> <!-- Submit button -->
+      <!-- Monthly Contribution input field -->
+      <div class="form-group">
+        <label for="monthlyContribution">Monthly Contribution</label>
+        <mat-form-field appearance="fill"> 
+          <!-- Add dollar sign prefix -->
+          <span matPrefix class="dollar-sign">$&nbsp;</span>
+          <!-- Input field for monthly contribution -->
+          <input matInput formControlName="monthlyContribution" id="monthlyContribution" type="number" required>
+        </mat-form-field>
+      </div>
+
+      <!-- Monthly Retirement Budget input field -->
+      <div class="form-group">
+        <label for="monthlyRetirementBudget">Monthly Retirement Budget</label>
+        <mat-form-field appearance="fill"> 
+          <!-- Add dollar sign prefix -->
+          <span matPrefix class="dollar-sign">$&nbsp;</span>
+          <!-- Input field for monthly retirement budget -->
+          <input matInput formControlName="monthlyRetirementBudget" id="monthlyRetirementBudget" type="number" required>
+        </mat-form-field>
+      </div>
+
+      <!-- Advanced Details toggle button -->
+      <div style="margin-bottom: 20px;"> <!-- Add margin-bottom to create space between buttons -->
+        <button mat-raised-button color="primary" (click)="toggleAdvancedDetails()">
+          {{ showAdvancedDetails ? 'Hide Advanced Details' : 'Show Advanced Details' }}
+        </button>
+      </div>
+
+      <!-- Advanced Details section -->
+      <div *ngIf="showAdvancedDetails"> 
+        <!-- Retirement Age input field -->
+        <div class="form-group">
+          <label for="retirementAge">Retirement Age</label>
+          <mat-form-field appearance="fill"> 
+            <!-- Input field for retirement age with default value -->
+            <input matInput formControlName="retirementAge" id="retirementAge" type="number" value="67" required>
+          </mat-form-field>
+        </div>
+
+        <!-- Life Expectancy input field -->
+        <div class="form-group">
+          <label for="lifeExpectancy">Life Expectancy</label>
+          <mat-form-field appearance="fill"> 
+            <!-- Input field for life expectancy with default value -->
+            <input matInput formControlName="lifeExpectancy" id="lifeExpectancy" type="number" value="95" required>
+          </mat-form-field>
+        </div>
+
+        <!-- Pre-Retirement Rate of Return input field -->
+        <div class="form-group">
+          <label for="preRetirementRateOfReturn">Pre-Retirement Rate of Return</label>
+          <mat-form-field appearance="fill">
+            <!-- Input field for pre-retirement rate of return with default value -->
+            <input matInput formControlName="preRetirementRateOfReturn" id="preRetirementRateOfReturn" type="number" min="0" max="100" step="1" value="6" required>
+            <span matSuffix class="percentage-sign">%</span> <!-- Display suffix as % -->
+          </mat-form-field>
+        </div>
+
+        <!-- Post-Retirement Rate of Return input field -->
+        <div class="form-group">
+          <label for="postRetirementRateOfReturn">Post-Retirement Rate of Return</label>
+          <mat-form-field appearance="fill">
+            <!-- Input field for post-retirement rate of return with default value -->
+            <input matInput formControlName="postRetirementRateOfReturn" id="postRetirementRateOfReturn" type="number" min="0" max="100" step="1" value="5" required>
+            <span matSuffix class="percentage-sign">%</span> <!-- Display suffix as % -->
+          </mat-form-field>
+        </div>
+
+        <!-- Inflation Rate input field -->
+        <div class="form-group">
+          <label for="inflationRate">Inflation Rate</label>
+          <mat-form-field appearance="fill">
+            <!-- Input field for inflation rate with default value -->
+            <input matInput formControlName="inflationRate" id="inflationRate" type="number" min="0" max="100" step="1" value="3" required>
+            <span matSuffix class="percentage-sign">%</span> <!-- Display suffix as % -->
+          </mat-form-field>
+        </div>
+
+        <!-- Annual Income Increase input field -->
+        <div class="form-group">
+          <label for="annualIncomeIncrease">Annual Income Increase</label>
+          <mat-form-field appearance="fill">
+            <!-- Input field for annual income increase with default value -->
+            <input matInput formControlName="annualIncomeIncrease" id="annualIncomeIncrease" type="number" min="0" max="100" step="1" value="2" required>
+            <span matSuffix class="percentage-sign">%</span> <!-- Display suffix as % -->
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <button mat-raised-button color="primary" (click)="calculateRetirement()">Calculate</button>
     </form>
 
-    <div id="results" *ngIf="showResults"> <!-- Container for displaying results -->
-      <h3>Results:</h3> <!-- Heading for results -->
-      <p>Total Savings Needed: {{ totalSavingsNeeded | currency }}</p> <!-- Display total savings needed -->
-      <p>Years until Retirement: {{ yearsUntilRetirement }}</p> <!-- Display years until retirement -->
+    <!-- Results section -->
+    <div id="results" *ngIf="showResults">
+      <h3>Retirement Savings at Age {{ retirementForm.get('retirementAge')?.value}}:</h3>
+      <p>What you'll have: {{ totalRetirementSavings | currency }}</p>
+      <p>What you'll need: {{ targetRetirementSavingsNeeded | currency }}</p>
     </div>
+  </div>
+<div> <br></div>
+  <!-- Explanation section -->
+  <div>
+    <h1>How this Calculator Works</h1>
+    <p>
+      Our retirement calculator operates on a set of predefined assumptions and calculations:
+    </p>
+    <ul>
+      <li><strong>Retirement Age:</strong> Assumed to be 67, aligning with when most individuals become eligible for full Social Security benefits.</li>
+      <li><strong>Life Expectancy:</strong> Anticipated lifespan extending until 95 years.</li>
+      <li><strong>Rate of Return:</strong> Before retirement, we estimate a 6% rate of return, adjusting to 5% during retirement, reflecting a conservative investment portfolio strategy.</li>
+      <li><strong>Inflation Rate:</strong> Considered an average annual inflation rate of 3%, accounting for the eroding effect of inflation on purchasing power over time.</li>
+      <li><strong>Salary Increases:</strong> Expected to increase by 2% annually, reflecting typical salary growth patterns.</li>
+    </ul>
+    <p>
+      The calculation of "What you'll have" involves projecting your current age, existing savings, income, and contributions until your retirement age. This calculation factors in salary increments and compound interest to estimate your total retirement savings.
+    </p>
+    <p>
+      Conversely, for "What you'll need," we utilize your anticipated life expectancy to determine the necessary funds required to sustain your projected monthly retirement budget, while considering the impact of inflation.
+    </p>
+    <p>
+      Users retain the flexibility to modify these default assumptions by accessing the "advanced details" option.
+    </p>
   </div>
 </body>
 </html>
