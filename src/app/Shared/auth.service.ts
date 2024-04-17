@@ -26,4 +26,8 @@ export class AuthService {
             map(user => !!user)
         );
     }
+
+    logout(): void {
+        this.currentUserSubject.next(null);
+    }
 }
