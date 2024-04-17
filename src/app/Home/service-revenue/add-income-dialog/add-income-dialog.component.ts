@@ -1,15 +1,22 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 import { ApiService } from '../../../Shared/app.service';
-import { incomeSource } from "../../../Shared/models"
+import { Income, incomeSource } from "../../../Shared/models"
 
 @Component({
     selector: 'app-add-income-dialog',
     templateUrl: './add-income-dialog.component.html',
     styleUrl: './add-income-dialog.component.css'
 })
-export class AddIncomeDialogComponent {
+export class AddIncomeDialogComponent implements OnInit {
+    // variables to hold new income details
+    userId: number = 3;
+    incomeSourceId: number = 0;
+    amount: number = 0;
+    date!: Date;
+    description: string = '';
+
     constructor(private apiService: ApiService,
         private dialogRef: MatDialogRef<AddIncomeDialogComponent>) { }
 
@@ -27,23 +34,40 @@ export class AddIncomeDialogComponent {
     incomeSourceButton = 'Select income source';
 
     // function to update value of income button string
-    updateIncomeSourceButton(source: string): void {
+    updateIncomeSourceButton(source: string, sourceId?: number): void {
         this.incomeSourceButton = source;
+        this.incomeSourceId = sourceId !== undefined ? sourceId: 0;
     }
 
-    // object to hold new income details
-    incomeDetails = {
-        userId: 3,
-        incomeSourceId: 0,
-        amount: 0,
-        date: 0,
-        description: '',
-        action: ''
-    };
-
     // close dialog and send back 'create' to page
-    onConfirmIncome(): void {
-        this.incomeDetails.action = 'createIncome';
-        this.dialogRef.close(this.incomeDetails);
+    onConfirm(): void {
+        // validate user input info
+        if (this.incomeSourceId != 0 &&
+            this.amount != 0 &&
+            this.description.trim() !== '' &&
+            this.date) {
+
+            // new income model to hold info
+            const newIncome: Income = {
+                userId: this.userId,
+                incomeSourceId: this.incomeSourceId,
+                amount: this.amount,
+                date: this.date,
+                description: this.description,
+                createdAt: new Date,
+                updatedAt: new Date,
+                deletedAt: new Date,
+                isDeleted: false,
+                incomeSourceName: '',
+                userName: ''
+            }
+
+            this.dialogRef.close(newIncome);
+        }
+    }
+
+    // if user cancels add operation
+    onCancel(): void {
+        this.dialogRef.close();
     }
 }

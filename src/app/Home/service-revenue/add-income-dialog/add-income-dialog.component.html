@@ -1,7 +1,7 @@
 <!-- add new income dialog -->
 <!-- x button to cancel -->
 <button mat-icon-button matDialogClose>
-    <mat-icon>close</mat-icon>
+    <mat-icon (click)="onCancel()">close</mat-icon>
 </button>
 
 <!-- body of dialog -->
@@ -14,7 +14,7 @@
     <p class="newRevenueDialogField">
         <button mat-button [matMenuTriggerFor]="menu">{{ incomeSourceButton }}</button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item *ngFor="let element of incomeSources" (click)="updateIncomeSourceButton(element.incomeSourceName); incomeDetails.incomeSourceId = element.incomeSourceId">
+            <button mat-menu-item *ngFor="let element of incomeSources" (click)="updateIncomeSourceButton(element.incomeSourceName, element.incomeSourceId);">
                 {{ element.incomeSourceName }}
             </button>
         </mat-menu>
@@ -24,7 +24,7 @@
     <p class="newRevenueDialogField">
         <mat-form-field>
             <mat-label>Amount $</mat-label>
-            <input matInput type="number"[(ngModel)]="incomeDetails.amount">
+            <input matInput type="number"[(ngModel)]="amount">
         </mat-form-field>
     </p>
 
@@ -32,7 +32,7 @@
     <p class="newRevenueDialogField">
         <mat-form-field>
             <mat-label>Date</mat-label>
-            <input matInput type="date" [(ngModel)]="incomeDetails.date">
+            <input matInput type="date" [(ngModel)]="date">
         </mat-form-field>
     </p>
 
@@ -40,12 +40,12 @@
     <p class="newRevenueDialogField">
         <mat-form-field>
             <mat-label>Description</mat-label>
-            <input matInput type="text" [(ngModel)]="incomeDetails.description">
+            <input matInput type="text" [(ngModel)]="description">
         </mat-form-field>
     </p>
 </mat-dialog-content>
 
 <!-- confirm actions -->
 <mat-dialog-actions align="end">
-    <button mat-raised-button color="accent" (click)="onConfirmIncome()">Create</button>
+    <button mat-raised-button color="accent" (click)="onConfirm()">Create</button>
 </mat-dialog-actions>
