@@ -6,6 +6,8 @@ import { AddIncomeDialogComponent } from '../add-income-dialog/add-income-dialog
 import { Income } from '../../../Shared/models';
 import { ApiService } from '../../../Shared/app.service';
 import { EditIncomeDialogComponent } from '../edit-income-dialog/edit-income-dialog.component';
+import { user } from '../../../Shared/models';
+import { AuthService } from '../../../Shared/auth.service';
 
 @Component({
     selector: 'app-income',
@@ -16,17 +18,21 @@ export class IncomeComponent implements OnInit {
     // columns for data table
     incomeColumns: string[] = ['incomeSourceName', 'amount', 'date', 'description', 'buttons'];
 
-    // data variable to hold income
+    // data variable to hold info
     income: Income[] = [];
+    user: user;
 
     // injecting components/services via constructor
     constructor(private apiService: ApiService,
         private revenueDialog: MatDialog,
-        private cdr: ChangeDetectorRef) { }
+        private cdr: ChangeDetectorRef,
+        private authService: AuthService) {
+        this.user = authService.getUser();
+    }
 
     ngOnInit() {
         // income data
-        this.apiService.getIncomeByUserId(3).subscribe((data: Income[]) => {
+        this.apiService.getIncomeByUserId(this.user.userId).subscribe((data: Income[]) => {
             this.income = data;
         })
     }
@@ -38,7 +44,7 @@ export class IncomeComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.apiService.deleteIncome(incomeId).subscribe(() => {
-                    this.apiService.getIncomeByUserId(3).subscribe(updatedIncome => {
+                    this.apiService.getIncomeByUserId(this.user.userId).subscribe(updatedIncome => {
                         this.income = updatedIncome;
                         this.cdr.detectChanges();
                     });
@@ -48,15 +54,17 @@ export class IncomeComponent implements OnInit {
     }
 
     // method to open dialog for adding new income
-    addIncome() {
-        const dialogRef = this.revenueDialog.open(AddIncomeDialogComponent);
+    addIncome(userId: number) {
+        const dialogRef = this.revenueDialog.open(AddIncomeDialogComponent, {
+            data: { userId }
+        });
 
         // get data back
         dialogRef.afterClosed().subscribe(result => {
             // add new income to list
             if (result) {
                 this.apiService.addIncome(result).subscribe(() => {
-                    this.apiService.getIncomeByUserId(3).subscribe(updatedIncome => {
+                    this.apiService.getIncomeByUserId(this.user.userId).subscribe(updatedIncome => {
                         this.income = updatedIncome;
                         this.cdr.detectChanges();
                     });
@@ -77,7 +85,7 @@ export class IncomeComponent implements OnInit {
             // update income in list
             if (result) {
                 this.apiService.updateIncome(result.incomeId, result).subscribe(() => {
-                    this.apiService.getIncomeByUserId(3).subscribe(updatedIncome => {
+                    this.apiService.getIncomeByUserId(this.user.userId).subscribe(updatedIncome => {
                         this.income = updatedIncome;
                         this.cdr.detectChanges();
                     });

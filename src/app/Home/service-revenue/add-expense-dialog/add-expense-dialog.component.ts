@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ApiService } from '../../../Shared/app.service';
 import { Expense, transactionType } from "../../../Shared/models"
@@ -11,14 +11,17 @@ import { Expense, transactionType } from "../../../Shared/models"
 })
 export class AddExpenseDialogComponent implements OnInit {
     // temp variables for new expense details
-    userId: number = 3;
+    userId: number;
     transactionTypeId: number = 0;
     amount: number = 0;
     date!: Date;
     description: string = '';
 
     constructor(private apiService: ApiService,
-        private dialogRef: MatDialogRef<AddExpenseDialogComponent>) { }
+        private dialogRef: MatDialogRef<AddExpenseDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any) {
+        this.userId = data.userId;
+    }
 
     // pull and hold data from API for dropdown list
     transactionTypes: transactionType[] = [];

@@ -2,34 +2,41 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 
-import { ApiService } from '../../../Shared/app.service';
 import { Goal } from '../../../Shared/models/goal';
+import { user } from '../../../Shared/models';
 
 @Component({
-  selector: 'app-create-goal-dialog',
-  templateUrl: './create-goal-dialog.component.html',
-  styleUrl: './create-goal-dialog.component.css'
+    selector: 'app-create-goal-dialog',
+    templateUrl: './create-goal-dialog.component.html',
+    styleUrl: './create-goal-dialog.component.css'
 })
 export class CreateGoalDialogComponent {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-        private apiService: ApiService,
-        private dialogRef: MatDialogRef<CreateGoalDialogComponent>) {}
+    user!: user;
+    goalDetails: Goal;
 
-    //pull and hold data from API for goal properties
-    goal: Goal[] = [];
-
-    //object to hold new goal details
-    goalDetails = {
-      userId: 3,
-      description: '',
-      date: 0,
-      deadline: 0,
-      action: ''
+    //data variable to hold incoming arguments
+    constructor(
+        @Inject(MAT_DIALOG_DATA) public data: any,
+        private dialogRef: MatDialogRef<CreateGoalDialogComponent>
+    ) {
+        this.user = data.user;
+        //object to hold new goal details
+        this.goalDetails = {
+            goalId: 0,
+            userId: this.user.userId,
+            description: '',
+            date: new Date,
+            deadline: new Date,
+            isCompleted: false,
+            createdAt: new Date,
+            updatedAt: new Date,
+            deletedAt: new Date,
+            isDeleted: false
+        }
     }
 
     //close dialog and send 'createGoal' to page
     onConfirmGoal(): void {
-      this.goalDetails.action = 'createGoal';
-      this.dialogRef.close(this.goalDetails);
+        this.dialogRef.close(this.goalDetails);
     }
 }

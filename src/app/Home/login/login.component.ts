@@ -19,7 +19,7 @@ export class LoginComponent {
     private authService: AuthService, 
     private router: Router
   ) {
-    this.user = { Username: '', Password: ''};
+    this.user = { username: '', password: ''};
   }
 
   login(): void {

@@ -6,6 +6,8 @@ import { AddExpenseDialogComponent } from '../add-expense-dialog/add-expense-dia
 import { Expense } from '../../../Shared/models';
 import { ApiService } from '../../../Shared/app.service';
 import { EditExpenseDialogComponent } from '../edit-expense-dialog/edit-expense-dialog.component';
+import { user } from '../../../Shared/models';
+import { AuthService } from '../../../Shared/auth.service';
 
 @Component({
     selector: 'app-expense',
@@ -16,17 +18,21 @@ export class ExpenseComponent implements OnInit {
     // columns for data tables
     expenseColumns: string[] = ['type', 'amount', 'date', 'description', 'buttons'];
 
-    // data variable to hold expense
+    // data variable to hold info
     expense: Expense[] = [];
+    user: user;
 
     // injecting components/services via constructor
     constructor(private apiService: ApiService,
         private revenueDialog: MatDialog,
-        private cdr: ChangeDetectorRef) { }
+        private cdr: ChangeDetectorRef,
+        private authService: AuthService) {
+        this.user = authService.getUser();
+    }
 
     ngOnInit() {
         // expense data
-        this.apiService.getExpenseByUserId(3).subscribe((data: Expense[]) => {
+        this.apiService.getExpenseByUserId(this.user.userId).subscribe((data: Expense[]) => {
             this.expense = data;
         })
     }
@@ -39,7 +45,7 @@ export class ExpenseComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.apiService.deleteExpense(expenseId).subscribe(() => {
-                    this.apiService.getExpenseByUserId(3).subscribe(updatedExpense => {
+                    this.apiService.getExpenseByUserId(this.user.userId).subscribe(updatedExpense => {
                         this.expense = updatedExpense;
                         this.cdr.detectChanges();
                     });
@@ -49,15 +55,17 @@ export class ExpenseComponent implements OnInit {
     }
 
     // method to open dialog for adding new expense
-    addExpense() {
-        const dialogRef = this.revenueDialog.open(AddExpenseDialogComponent);
+    addExpense(userId : number) {
+        const dialogRef = this.revenueDialog.open(AddExpenseDialogComponent, {
+            data: { userId }
+        });
 
         // get data back
         dialogRef.afterClosed().subscribe(result => {
             // add new expense to list
             if (result) {
                 this.apiService.addExpense(result).subscribe(() => {
-                    this.apiService.getExpenseByUserId(3).subscribe(updateExpense => {
+                    this.apiService.getExpenseByUserId(this.user.userId).subscribe(updateExpense => {
                         this.expense = updateExpense;
                         this.cdr.detectChanges();
                     });
@@ -78,7 +86,7 @@ export class ExpenseComponent implements OnInit {
             // update expense in list
             if (result) {
                 this.apiService.updateExpense(result.expenseId, result).subscribe(() => {
-                    this.apiService.getExpenseByUserId(3).subscribe(updatedExpense => {
+                    this.apiService.getExpenseByUserId(this.user.userId).subscribe(updatedExpense => {
                         this.expense = updatedExpense;
                         this.cdr.detectChanges();
                     });

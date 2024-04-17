@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit, inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ApiService } from '../../../Shared/app.service';
 import { Income, incomeSource } from "../../../Shared/models"
@@ -10,15 +10,18 @@ import { Income, incomeSource } from "../../../Shared/models"
     styleUrl: './add-income-dialog.component.css'
 })
 export class AddIncomeDialogComponent implements OnInit {
-    // variables to hold new income details
-    userId: number = 3;
+    // variables to hold new income info
+    userId: number;
     incomeSourceId: number = 0;
     amount: number = 0;
     date!: Date;
     description: string = '';
 
     constructor(private apiService: ApiService,
-        private dialogRef: MatDialogRef<AddIncomeDialogComponent>) { }
+        private dialogRef: MatDialogRef<AddIncomeDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any) {
+        this.userId = data.userId;
+    }
 
     // pull and hold data from API for dropdown list
     incomeSources: incomeSource[] = [];
@@ -36,7 +39,7 @@ export class AddIncomeDialogComponent implements OnInit {
     // function to update value of income button string
     updateIncomeSourceButton(source: string, sourceId?: number): void {
         this.incomeSourceButton = source;
-        this.incomeSourceId = sourceId !== undefined ? sourceId: 0;
+        this.incomeSourceId = sourceId !== undefined ? sourceId : 0;
     }
 
     // close dialog and send back 'create' to page
