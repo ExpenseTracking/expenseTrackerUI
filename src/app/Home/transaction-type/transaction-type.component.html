@@ -1,16 +1,37 @@
-<table mat-table [dataSource]="transactionTypes" class="mat-elevation-z8">
-    <ng-container matColumnDef="transactionTypeId">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let element">{{element.transactionTypeId}}</td>
-    </ng-container>
-    <ng-container matColumnDef="userId">
-        <th mat-header-cell *matHeaderCellDef>User Id</th>
-        <td mat-cell *matCellDef="let element">{{element.userId}}</td>
-    </ng-container>
-    <ng-container matColumnDef="transactionTypeName">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let element">{{element.transactionTypeName}}</td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
-</table>
+<div class="mat-elevation-z8" matSort>
+    <button mat-button (click)="addTransaction()">New Transaction Type</button>
+    <table mat-table [dataSource]="transactionTypes">
+        <ng-container matColumnDef="transactionTypeId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id">Id</th>
+            <td mat-cell *matCellDef="let element">{{element.transactionTypeId}}</td>
+        </ng-container>
+        <ng-container matColumnDef="userId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by username">User</th>
+            <td mat-cell *matCellDef="let element">
+                <ng-container **ngIf="element.userId !== 0; else sysDefault">{{element.username}}</ng-container>
+                <ng-template #sysDefault>System Default</ng-template>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="transactionTypeName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.transactionTypeName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="deleteTransaction(element.transactionTypeId)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button (click)="editTransaction(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    aria-label="Select page of transaction types">
+    </mat-paginator>
+</div>
