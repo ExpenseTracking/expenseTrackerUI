@@ -26,7 +26,7 @@ export class LoginComponent {
     this.apiService.authenticateUser(this.user).subscribe(
       (authUser: user) => {
         this.authService.setUser(authUser);
-        this.router.navigate(['/companyHome']);
+        this.router.navigate(['/dashboard']);
       },
       error => {
         if (error.status === 404) {

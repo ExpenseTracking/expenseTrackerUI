@@ -1,0 +1,54 @@
+<!-- current navbar for all home pages. will become its
+own separate component in the future -->
+<div class="container">
+    <!-- navbar  -->
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <img src="../assets/Images/companyLogo.png" alt="Logo" width="40" height="25"
+                    class="d-inline-block align-text-top">
+                Plutus Solutions
+            </a>
+            <ul class="nav" style="list-style-type: none; align-items: center;">
+                <div *ngIf="isAuthorizedUser; then serviceLinks else companyLinks"></div>
+                <ng-template #serviceLinks>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/transactionType">Type</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/revenue">Revenue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/goals">Goals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/profile">Profile</a>
+                    </li>
+                </ng-template>
+                
+                <ng-template #companyLinks>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/companyReviews">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/faqs">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/login">Login/Signup</a>
+                    </li>
+                </ng-template>
+
+            </ul>
+        </div>
+    </nav>
+    <router-outlet></router-outlet>
+</div>
