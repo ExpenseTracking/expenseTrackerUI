@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { DatePipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardContent, MatCardModule } from '@angular/material/card';
@@ -37,6 +38,9 @@ import { AddIncomeDialogComponent } from './Home/service-revenue/add-income-dial
 import { AddExpenseDialogComponent } from './Home/service-revenue/add-expense-dialog/add-expense-dialog.component';
 import { EditIncomeDialogComponent } from './Home/service-revenue/edit-income-dialog/edit-income-dialog.component';
 import { EditExpenseDialogComponent } from './Home/service-revenue/edit-expense-dialog/edit-expense-dialog.component';
+import { AddTransactionTypeDialogComponent } from './Home/transaction-type/add-transaction-type-dialog/add-transaction-type-dialog.component';
+import { DeleteTransactionTypeDialogComponent } from './Home/transaction-type/delete-transaction-type-dialog/delete-transaction-type-dialog.component';
+import { EditTransactionTypeDialogComponent } from './Home/transaction-type/edit-transaction-type-dialog/edit-transaction-type-dialog.component';
 import { GoalsComponent } from './Home/goals/goals.component';
 import { DeleteGoalDialogComponent } from './Home/goals/delete-goal-dialog/delete-goal-dialog.component';
 import { EditGoalDialogComponent } from './Home/goals/edit-goal-dialog/edit-goal-dialog.component';
@@ -65,6 +69,9 @@ import { FooterComponent } from './Home/footer/footer.component';
     AddExpenseDialogComponent,
     EditIncomeDialogComponent,
     EditExpenseDialogComponent,
+    AddTransactionTypeDialogComponent,
+    DeleteTransactionTypeDialogComponent,
+    EditTransactionTypeDialogComponent,
     GoalsComponent,
     DeleteGoalDialogComponent,
     EditGoalDialogComponent,
@@ -87,6 +94,7 @@ import { FooterComponent } from './Home/footer/footer.component';
     MatTableModule,
     MatGridListModule,
     MatIconButton,
+    MatPaginator,
     MatCardModule,
     MatCardContent,
     MatDividerModule,
