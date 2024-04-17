@@ -1,12 +1,16 @@
+h1 {
+    margin-top: 3%;
+}
+
 .mat-divider {
     border-top-color: #FFD700;
     border-width: 3px;
 }
 
-.moneyValue{
+.moneyValue {
     font-size: larger;
 }
 
-.infoText{
+.infoText {
     font-size: large;
 }
