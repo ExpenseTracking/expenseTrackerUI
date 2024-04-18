@@ -1,6 +1,7 @@
 .calculator {
   max-width: 400px;
   margin: auto;
+  margin-top: 3%;
   padding: 20px;
   border: 2px solid #e3e2e2;
   border-radius: 5px;
@@ -38,12 +39,12 @@ button:hover {
 }
 
 .percentage-sign {
-  color: #ccc;
+  color: #000;
   position: relative;
   left: -40px; /* Adjust this value as needed */
 }
 
 .dollar-sign{
 
-  color:#ccc;
+  color:#000;
 }
