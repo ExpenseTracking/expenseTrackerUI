@@ -35,6 +35,7 @@
 /* styles for sign out button */
 .signOutButtonContainer{
     text-align: right;
+    padding-top: 10px;
 }
 
 .signOutButtonContainer #signOutBttn{
@@ -42,5 +43,6 @@
     height: 30px;
     width: 100px;
     font-weight: bold;
+    background-color: lightblue;
     
 }

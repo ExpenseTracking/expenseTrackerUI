@@ -1,8 +1,37 @@
+body{
+  background-image: url("../login/assets/background.png")
+}
+
+.matcardContainer{
+  padding-top: 100px;
+  padding-bottom: 200px;
+}
+
 .login-card {
     max-width: 400px;
     margin: 0 auto;
-    margin-top: 100px;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px #9b9b9b,
+                0 1px 1px 0 #9b9b9b,
+                0 1px 3px 0 #9b9b9b;
+  }
+
+  .backBttnContainer{
+    display: inline-block;
+  }
+
+  .backBttn{
+    border: none;
+    background-color: white;
+    color: black;
+    font-weight: 500;
+    font-size: medium;
+    border-radius: 18px;
+  }
+
+  .userInput{
+    align-items: start;
   }
   
   .full-width {
@@ -17,3 +46,41 @@
     color: red;
     margin-top: 10px;
   }
+
+.loginHeader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
+
+.loginHeaderText{
+  font-size: xx-large;
+  font-weight: 600;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.usernameSubtitle{
+  font-size: medium;
+  color: black;
+}
+
+.passwordSubtitle{
+  font-size: medium;
+  color: black;
+}
+
+.loginBttn{
+  width: 100%;
+  font-size: medium;
+  border-radius: 18px;
+  background-image: linear-gradient(to right, #AE8625, #F7EF8A, #D2AC47, #EDC967);
+}
+
+.signUpBttn{
+  width: 100%;
+  color: black;
+  font-size: medium;
+  border-radius: 18px;
+}
