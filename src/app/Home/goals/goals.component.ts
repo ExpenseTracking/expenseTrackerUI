@@ -22,7 +22,6 @@ export class GoalsComponent implements OnInit {
 
     //data variable to hold info
     goal: Goal[] = [];
-    userid: number = 0;
     user$: Observable<user | null>;
     user: user | null = null;
 

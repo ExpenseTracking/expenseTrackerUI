@@ -15,7 +15,6 @@ export class ServiceDashboardComponent implements OnInit {
     // income, expense, and user data storage
     expense: Expense[] = [];
     income: Income[] = [];
-    userid: number = 0;
     user$: Observable<user | null>;
     user: user | null = null;
 

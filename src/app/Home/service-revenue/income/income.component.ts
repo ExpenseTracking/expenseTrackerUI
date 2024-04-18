@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 
 import { DeleteRevenueDialogComponent } from '../delete-revenue-dialog/delete-revenue-dialog.component';
 import { AddIncomeDialogComponent } from '../add-income-dialog/add-income-dialog.component';
@@ -20,21 +21,31 @@ export class IncomeComponent implements OnInit {
 
     // data variable to hold info
     income: Income[] = [];
-    user: user;
+    user$: Observable<user | null>;
+    user: user | null = null;
 
     // injecting components/services via constructor
     constructor(private apiService: ApiService,
         private revenueDialog: MatDialog,
         private cdr: ChangeDetectorRef,
         private authService: AuthService) {
-        this.user = authService.getUser();
     }
 
     ngOnInit() {
-        // income data
-        this.apiService.getIncomeByUserId(this.user.userId).subscribe((data: Income[]) => {
-            this.income = data;
-        })
+        // assign observable
+        this.user$ = this.authService.getUser();
+
+        // subscribe to this observable
+        this.user$.subscribe((userChanges: user | null) => {
+            this.user = userChanges;
+        });
+
+        // get income data
+        if (this.user) {
+            this.apiService.getIncomeByUserId(this.user.userId).subscribe((data: Income[]) => {
+                this.income = data;
+            })
+        }
     }
     // method to delete row of data when user clicks delete
     deleteIncome(incomeId: any) {
