@@ -32,6 +32,7 @@ import { FAQPageComponent } from './Home/faq-page/faq-page.component';
 import { ProfilePageComponent } from './Home/profile-page/profile-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
+import { RetirementCalculatorComponent } from './Home/retirement-calculator/retirement-calculator.component';
 import { IncomeComponent } from './Home/service-revenue/income/income.component';
 import { ExpenseComponent } from './Home/service-revenue/expense/expense.component';
 import { AddIncomeDialogComponent } from './Home/service-revenue/add-income-dialog/add-income-dialog.component';
@@ -62,6 +63,8 @@ import { FooterComponent } from './Home/footer/footer.component';
     AboutPageComponent,
     FAQPageComponent,
     DeleteRevenueDialogComponent,
+    RetirementCalculatorComponent,
+
     ProfilePageComponent,
     IncomeComponent,
     ExpenseComponent,
@@ -83,6 +86,7 @@ import { FooterComponent } from './Home/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatMenuModule,
     MatCheckboxModule,
