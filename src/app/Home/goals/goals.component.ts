@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 
 import { Goal } from '../../Shared/models/goal';
 import { ApiService } from '../../Shared/app.service';
@@ -21,19 +22,31 @@ export class GoalsComponent implements OnInit {
 
     //data variable to hold info
     goal: Goal[] = [];
-    user: user;
+    userid: number = 0;
+    user$: Observable<user | null>;
+    user: user | null = null;
 
     constructor(private apiService: ApiService,
         private goalDialog: MatDialog,
         private cdr: ChangeDetectorRef,
         private authService: AuthService) {
-        this.user = authService.getUser();
     }
 
     ngOnInit() {
-        this.apiService.getGoalsById(this.user.userId).subscribe((data: Goal[]) => {
-            this.goal = data;
-        })
+        // assign observable
+        this.user$ = this.authService.getUser();
+
+        // subscribe to this observable
+        this.user$.subscribe((userChanges: user | null) => {
+            this.user = userChanges;
+        });
+
+        // get user's goals
+        if (this.user) {
+            this.apiService.getGoalsById(this.user.userId).subscribe((data: Goal[]) => {
+                this.goal = data;
+            })
+        }
     }
 
     deleteGoalRow(goalId: any) {
