@@ -33,7 +33,7 @@ const routes: Routes = [
     { path: 'about', component: AboutPageComponent},
     { path: 'faqs', component: FAQPageComponent},
     { path: 'deleteRevenue', component: DeleteRevenueDialogComponent},
-    { path: 'retirement', component: RetirementCalculatorComponent},
+    { path: 'retirement', component: RetirementCalculatorComponent, canActivate: [AuthGuard]},
     { path: 'deleteRevenue', component: DeleteRevenueDialogComponent, canActivate: [AuthGuard]},
     { path: 'goals', component: GoalsComponent, canActivate: [AuthGuard]}
   ];
