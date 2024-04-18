@@ -1,11 +1,11 @@
 export interface Income {
-    'incomeId': number,
+    'incomeId'?: number,
     'userId': number,
     'incomeSourceId': number,
     'amount': number,
     'date': Date,
     'description': string,
-    'CreatedAt': Date,
+    'createdAt': Date,
     'updatedAt': Date,
     'deletedAt': Date,
     'isDeleted': boolean,

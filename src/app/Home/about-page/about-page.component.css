@@ -1,0 +1,15 @@
+.mat-grid-tile-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 195px;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+  }
+  
+  .mat-grid-tile-footer p {
+    margin: 0;
+    word-wrap: break-word;
+  }
+  

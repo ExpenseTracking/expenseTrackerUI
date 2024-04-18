@@ -1,9 +1,8 @@
-<mat-grid-list cols="3" rowHeight="300px">
-    <mat-grid-tile *ngFor="let tile of tiles">
-      <img src="{{tile.image}}" alt="Placeholder">
-      <mat-grid-tile-footer>
-        <h3>{{tile.text}}</h3>
-      </mat-grid-tile-footer>
-    </mat-grid-tile>
-  </mat-grid-list>
-  
+<mat-grid-list cols="3" rowHeight="675px"> 
+  <mat-grid-tile *ngFor="let tile of tiles">
+    <img src="{{tile.image}}" alt="Placeholder">
+    <mat-grid-tile-footer>
+      <p>{{tile.text}}</p> 
+    </mat-grid-tile-footer>
+  </mat-grid-tile>
+</mat-grid-list>
