@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { ApiService } from '../../Shared/app.service';
 import { AuthService } from '../../Shared/auth.service';
@@ -18,7 +19,8 @@ export class LoginComponent {
   constructor(
     private apiService: ApiService, 
     private authService: AuthService, 
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
     this.user = { username: '', password: ''};
   }
@@ -42,5 +44,9 @@ export class LoginComponent {
 
   navigateToSignUp(): void {
     this.router.navigate(['/signup']);
+  }
+
+  goBack(): void{
+    this.location.back();
   }
 }
