@@ -15,7 +15,7 @@ import { AuthService } from '../../Shared/auth.service';
   styleUrl: './transaction-type.component.css'
 })
 export class TransactionTypeComponent implements OnInit {
-  displayColumns: string[] = ['transactionTypeId', 'userId', 'transactionTypeName'];
+  displayColumns: string[] = ['userId', 'transactionTypeName', 'actions'];
   transactionTypes: transactionType[] = [];
   user$: Observable<user | null>;
   user: user | null = null;
@@ -61,8 +61,10 @@ export class TransactionTypeComponent implements OnInit {
     });
   }
 
-  addTransaction() {
-    const dialogRef = this.transactionDialog.open(AddTransactionTypeDialogComponent);
+  addTransaction(userId: number) {
+    const dialogRef = this.transactionDialog.open(AddTransactionTypeDialogComponent, {
+        data: { userId }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
