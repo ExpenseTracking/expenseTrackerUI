@@ -9,8 +9,8 @@ own separate component in the future -->
                     class="d-inline-block align-text-top">
                 Plutus Solutions
             </a>
-            <ul class="nav" style="list-style-type: none; align-items: center;">
-                <div *ngIf="isAuthorizedUser; then serviceLinks else companyLinks"></div>
+            <ul class="nav list-inline mx-auto justify-content-center" style="list-style-type: none; align-items: center;">
+                <div *ngIf="(authService.isAuthenticated() | async); then serviceLinks else companyLinks"></div>
                 <ng-template #serviceLinks>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/dashboard">Dashboard</a>
@@ -25,10 +25,10 @@ own separate component in the future -->
                         <a class="nav-link" routerLink="/goals">Goals</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/profile">Profile</a>
+                        <a class="nav-link" routerLink="/profile">{{user.username}}</a>
                     </li>
                 </ng-template>
-                
+
                 <ng-template #companyLinks>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/">Home</a>
@@ -43,7 +43,9 @@ own separate component in the future -->
                         <a class="nav-link" routerLink="/faqs">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/login">Login/Signup</a>
+                        <a class="nav-link" routerLink="/profile">
+                            <mat-icon>account_circle</mat-icon>
+                        </a>
                     </li>
                 </ng-template>
 

@@ -1,0 +1,50 @@
+.calculator {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 3%;
+  padding: 20px;
+  border: 2px solid #e3e2e2;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  text-align: center; /* Center align all content */
+}
+
+h2 {
+  text-align: center;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+button {
+  width: 100%;
+}
+
+button:hover {
+  background-color: #4aa8d4;
+}
+
+#results {
+  font-size: 18px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+}
+
+.percentage-sign {
+  color: #000;
+  position: relative;
+  left: -40px; /* Adjust this value as needed */
+}
+
+.dollar-sign{
+
+  color:#000;
+}
