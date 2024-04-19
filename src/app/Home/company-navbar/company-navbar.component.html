@@ -42,6 +42,7 @@ own separate component in the future -->
                 </li>
             </ul>
         </div>
+        <button mat-button (click)="logout()" *ngIf="(authService.isAuthenticated() | async)">Logout</button>
     </nav>
     <router-outlet></router-outlet>
 </div>
