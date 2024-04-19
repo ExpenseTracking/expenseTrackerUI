@@ -9,7 +9,7 @@ own separate component in the future -->
                     class="d-inline-block align-text-top">
                 Plutus Solutions
             </a>
-            <ul class="nav list-inline mx-auto justify-content-center" style="list-style-type: none; align-items: center;">
+            <ul class="nav" style="list-style-type: none; align-items: center;">
                 <div *ngIf="(authService.isAuthenticated() | async); then serviceLinks else companyLinks"></div>
                 <ng-template #serviceLinks>
                     <li class="nav-item">
