@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 
 import { DeleteRevenueDialogComponent } from '../delete-revenue-dialog/delete-revenue-dialog.component';
 import { AddExpenseDialogComponent } from '../add-expense-dialog/add-expense-dialog.component';
@@ -20,21 +21,31 @@ export class ExpenseComponent implements OnInit {
 
     // data variable to hold info
     expense: Expense[] = [];
-    user: user;
+    user$: Observable<user | null>;
+    user: user | null = null;
 
     // injecting components/services via constructor
     constructor(private apiService: ApiService,
         private revenueDialog: MatDialog,
         private cdr: ChangeDetectorRef,
         private authService: AuthService) {
-        this.user = authService.getUser();
     }
 
     ngOnInit() {
-        // expense data
-        this.apiService.getExpenseByUserId(this.user.userId).subscribe((data: Expense[]) => {
-            this.expense = data;
-        })
+        // assign the observable
+        this.user$ = this.authService.getUser();
+
+        // subscribe to this observable
+        this.user$.subscribe((userChanges: user | null) => {
+            this.user = userChanges;
+        });
+
+        if (this.user) {
+            // get expense data
+            this.apiService.getExpenseByUserId(this.user.userId).subscribe((data: Expense[]) => {
+                this.expense = data;
+            })
+        }
     }
 
     // method to delete row of data when user clicks delete
@@ -55,7 +66,7 @@ export class ExpenseComponent implements OnInit {
     }
 
     // method to open dialog for adding new expense
-    addExpense(userId : number) {
+    addExpense(userId: number) {
         const dialogRef = this.revenueDialog.open(AddExpenseDialogComponent, {
             data: { userId }
         });

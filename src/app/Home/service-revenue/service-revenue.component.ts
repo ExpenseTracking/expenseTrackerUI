@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { user } from '../../Shared/models';
 import { AuthService } from '../../Shared/auth.service';
@@ -8,10 +9,19 @@ import { AuthService } from '../../Shared/auth.service';
     templateUrl: './service-revenue.component.html',
     styleUrl: './service-revenue.component.css'
 })
-export class ServiceRevenueComponent {
-    user: user;
+export class ServiceRevenueComponent implements OnInit {
+    user$: Observable<user | null>;
+    user: user | null = null;
 
-    constructor(private authService: AuthService){
-        this.user = authService.getUser();
+    constructor(private authService: AuthService) { }
+
+    ngOnInit(): void {
+        // assign observable
+        this.user$ = this.authService.getUser();
+
+        // subscribe to this observable
+        this.user$.subscribe((userChanges: user | null) => {
+            this.user = userChanges;
+        });
     }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, NgControl } from '@angular/forms';
 
 import { user } from '../../Shared/models';
@@ -19,7 +20,8 @@ export class SignupComponent {
     private formBuilder: FormBuilder,
     private apiService: ApiService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {
     this.newUser = this.formBuilder.group({
       username: ['', Validators.required],
@@ -49,5 +51,9 @@ export class SignupComponent {
 
       }
     );
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
