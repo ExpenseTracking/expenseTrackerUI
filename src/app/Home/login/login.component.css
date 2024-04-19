@@ -17,10 +17,6 @@ body{
                 0 1px 3px 0 #9b9b9b;
   }
 
-  .backBttnContainer{
-    display: inline-block;
-  }
-
   .backBttn{
     border: none;
     background-color: white;
