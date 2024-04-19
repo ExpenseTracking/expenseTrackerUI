@@ -23,7 +23,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TransactionTypeComponent } from './Home/transaction-type/transaction-type.component';
 import { CompanyHomePageComponent } from './Home/company-home-page/company-home-page.component';
-import { CompanyNavbarComponent } from './Home/company-navbar/company-navbar.component';
 import { CompanyReviewsComponent } from './Home/company-reviews/company-reviews.component';
 import { ServiceDashboardComponent } from './Home/service-dashboard/service-dashboard.component';
 import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.component';
@@ -49,13 +48,13 @@ import { CreateGoalDialogComponent } from './Home/goals/create-goal-dialog/creat
 import { LoginComponent } from './Home/login/login.component';
 import { SignupComponent } from './Home/signup/signup.component';
 import { FooterComponent } from './Home/footer/footer.component';
+import { NavbarComponent } from './Home/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TransactionTypeComponent,
     CompanyHomePageComponent,
-    CompanyNavbarComponent,
     FooterComponent,
     CompanyReviewsComponent,
     ServiceDashboardComponent,
@@ -80,7 +79,8 @@ import { FooterComponent } from './Home/footer/footer.component';
     EditGoalDialogComponent,
     CreateGoalDialogComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
