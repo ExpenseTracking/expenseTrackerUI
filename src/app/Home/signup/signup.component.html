@@ -1,19 +1,44 @@
-<form class="signup-form" (ngSubmit)="signUp()" [formGroup]="newUser">
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Username" formControlName="username" required>
-      <mat-error *ngIf="newUser.get('username').touched && newUser.get('username').hasError('required')">Username is required</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field class="full-width">
-      <input matInput type="password" placeholder="Password" formControlName="password" required>
-      <mat-error *ngIf="newUser.get('password').touched && newUser.get('password').hasError('required')">Password is required</mat-error>
-    </mat-form-field>
-  
-    <mat-form-field class="full-width">
-      <input matInput type="email" placeholder="Email" formControlName="email" required>
-      <mat-error *ngIf="newUser.get('email').touched && newUser.get('email').hasError('required')">Email is required</mat-error>
-      <mat-error *ngIf="newUser.get('email').touched && newUser.get('email').hasError('email')">Invalid email format</mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" [disabled]="newUser.invalid">Sign Up</button>
-</form>
+<body>
+  <div class="matcardContainer">
+    <mat-card class="signup-card">
+
+      <div class="backBttnContainer">
+        <button mat-button class="backBttn" (click)="goBack()">&#8249;  Back</button>
+      </div>
+
+      <div class="signupHeader">
+        <mat-card-title class="signupHeaderText">Sign Up</mat-card-title>
+      </div>
+
+      <mat-card-content>
+        <form class="signup-form" (ngSubmit)="signUp()" [formGroup]="newUser">
+
+          <mat-card-subtitle class="usernameSubtitle">Username</mat-card-subtitle>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Type your Username" formControlName="username" required>
+            <mat-error *ngIf="newUser.get('username').touched && newUser.get('username').hasError('required')">Username is required</mat-error>
+          </mat-form-field>
+        
+          <mat-card-subtitle class="passwordSubtitle">Password</mat-card-subtitle>
+          <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Type your Password" formControlName="password" required>
+            <mat-error *ngIf="newUser.get('password').touched && newUser.get('password').hasError('required')">Password is required</mat-error>
+          </mat-form-field>
+        
+          <mat-card-subtitle class="emailSubtitle">Email</mat-card-subtitle>
+          <mat-form-field class="full-width">
+            <input matInput type="email" placeholder="Type your Email" formControlName="email" required>
+            <mat-error *ngIf="newUser.get('email').touched && newUser.get('email').hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="newUser.get('email').touched && newUser.get('email').hasError('email')">Invalid email format</mat-error>
+          </mat-form-field>
+
+          <div class="signupBttnContainer">
+            <button mat-raised-button class="signupBttn" type="submit" [disabled]="newUser.invalid">Sign Up</button>
+          </div>
+      </form>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</body>
   
