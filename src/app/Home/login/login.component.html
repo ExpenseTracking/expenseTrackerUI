@@ -18,7 +18,7 @@
           </mat-form-field>
           <mat-card-subtitle class="passwordSubtitle">Password</mat-card-subtitle>
           <mat-form-field class="full-width">
-            <input matInput type="Type your password" placeholder="Password" [(ngModel)]="user.password" name="password" required>
+            <input matInput type="Password" placeholder="Type your Password" [(ngModel)]="user.password" name="password" required>
           </mat-form-field>
           <button mat-raised-button type="submit" class="loginBttn">Login</button>
           <div *ngIf="errorMessage.length > 0" class="error-message">{{errorMessage}}</div>
