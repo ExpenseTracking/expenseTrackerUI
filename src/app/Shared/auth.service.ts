@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, map } from "rxjs";
+import { Router } from "@angular/router";
 
 import { user } from './models';
 
@@ -11,7 +12,7 @@ export class AuthService {
     private currentUserSubject: BehaviorSubject<user | null> = new BehaviorSubject<user | null>(null);
     public currentUser$: Observable<user | null> = this.currentUserSubject.asObservable();
  
-    constructor() {}
+    constructor( private router: Router) {}
 
     setUser(user: user): void {
         this.currentUserSubject.next(user);
@@ -29,5 +30,6 @@ export class AuthService {
 
     logout(): void {
         this.currentUserSubject.next(null);
+        this.router.navigate(['/']);
     }
 }

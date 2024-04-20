@@ -1,0 +1,88 @@
+/* Define CSS for the sidebar */
+#sidebar {
+    width: 250px;
+    height: 100%; /* Adjust the height as needed */
+    position: fixed;
+    top: 0;
+    right: -250px; /* Hide the sidebar by default */
+    background-color: white; /* Example background color */
+    transition: all 0.3s ease;
+}
+
+/* Apply the active class to display the sidebar */
+#sidebar.active {
+    right: 0;
+}
+
+/* Adjust body content when sidebar is active */
+body {
+    transition: margin-left 0.3s ease; /* Change transition to margin-left */
+}
+
+body.content-shifted {
+    margin-right: 140px; /* Shift body content to the left when sidebar is active */
+}
+
+.container {
+    width: calc(100% - 250px); /* Adjust container width to accommodate sidebar */
+}
+
+.bttn{
+    color: #D5C069;
+    border-style: none;
+}
+
+.topheader{
+    padding-top: 20px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.userIconContainer{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.userIcon{
+    size: 80px;
+}
+
+.signOutBttnContainer{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.signOutBttn{
+    border-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 18px;
+    background-image: linear-gradient(to right, #AE8625, #F7EF8A, #D2AC47, #EDC967);
+    font-weight: 500;
+}
+
+.deleteBttnContainer{
+    text-align: center;
+    padding-top: 300px;
+}
+
+.deleteBttn{
+    border-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 18px;
+    font-weight: 500;
+    background-color: red;
+}
+
+hr{
+    border: none;
+    height: 2px;    
+    background-color: #333;
+}

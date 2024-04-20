@@ -18,6 +18,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCardContent, MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,6 @@ import { ServiceDashboardComponent } from './Home/service-dashboard/service-dash
 import { ServiceRevenueComponent } from './Home/service-revenue/service-revenue.component';
 import { AboutPageComponent } from './Home/about-page/about-page.component';
 import { FAQPageComponent } from './Home/faq-page/faq-page.component';
-import { ProfilePageComponent } from './Home/profile-page/profile-page.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DeleteRevenueDialogComponent } from './Home/service-revenue/delete-revenue-dialog/delete-revenue-dialog.component';
 import { RetirementCalculatorComponent } from './Home/retirement-calculator/retirement-calculator.component';
@@ -64,7 +64,6 @@ import { NavbarComponent } from './Home/navbar/navbar.component';
     DeleteRevenueDialogComponent,
     RetirementCalculatorComponent,
 
-    ProfilePageComponent,
     IncomeComponent,
     ExpenseComponent,
     AddIncomeDialogComponent,
@@ -103,7 +102,8 @@ import { NavbarComponent } from './Home/navbar/navbar.component';
     MatCardContent,
     MatDividerModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSidenavModule
   ],
   providers: [
     provideAnimationsAsync(),

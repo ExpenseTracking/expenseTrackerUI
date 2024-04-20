@@ -1,5 +1,6 @@
 <!-- current navbar for all home pages. will become its
 own separate component in the future -->
+<body [ngClass]="{'content-shifted': sidebarActive}">
 <div class="container">
     <!-- navbar  -->
     <nav class="navbar bg-body-tertiary">
@@ -21,11 +22,13 @@ own separate component in the future -->
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/revenue">Revenue</a>
                     </li>
-                    <li class="nav-item">
+                    <li  class="nav-item">
                         <a class="nav-link" routerLink="/goals">Goals</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/profile">{{user.username}}</a>
+                        <div class="profilebttn">
+                            <button type="button" class="bttn bg-body-tertiary" (click)="toggleSidebar()">{{user.username}}</button>
+                        </div>  
                     </li>
                 </ng-template>
 
@@ -43,7 +46,7 @@ own separate component in the future -->
                         <a class="nav-link" routerLink="/faqs">FAQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/profile">
+                        <a class="nav-link" routerLink="/login">
                             <mat-icon>account_circle</mat-icon>
                         </a>
                     </li>
@@ -52,5 +55,28 @@ own separate component in the future -->
             </ul>
         </div>
     </nav>
+
     <router-outlet></router-outlet>
 </div>
+
+<!-- Sidebar -->
+<div id="sidebar" [ngClass]="{'active' : sidebarActive}">
+    <h2 class="topheader">Profile</h2><br>
+    <div class="userIconContainer">
+        <mat-icon class="userIcon">account_circle</mat-icon><br>
+    </div>
+    <p class="username">Username: {{ user?.username }}</p>
+    <hr>
+    <p class="email">Email: {{user?.email}}</p>
+    <hr>
+    <p class="dateJoined">Date Joined: {{user?.createdAt | date: 'MMM d, y'}}</p>
+    <hr>
+    <div class="signOutBttnContainer">
+        <button type="button" class="signOutBttn" (click)="signout()"> Sign Out</button>
+    </div>
+    <div class="deleteBttnContainer">
+        <button type="button" class="deleteBttn" (click)="deleteAccount()">Delete Account</button>
+    </div>
+</div>
+
+</body>
