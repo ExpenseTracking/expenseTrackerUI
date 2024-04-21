@@ -15,11 +15,11 @@
 }
 
 /* Adjust body content when sidebar is active */
-body {
+#test {
     transition: margin-left 0.3s ease; /* Change transition to margin-left */
 }
 
-body.content-shifted {
+#test.content-shifted {
     margin-right: 140px; /* Shift body content to the left when sidebar is active */
 }
 
